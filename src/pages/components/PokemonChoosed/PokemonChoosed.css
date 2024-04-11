@@ -1,0 +1,35 @@
+.pokemon_titlename {
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 315px;
+  left: 238px;
+  text-transform: uppercase;
+}
+
+.pokemon_type {
+  font-size: 15px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 355px;
+  left: 236px;
+  text-transform: uppercase;
+}
+
+.div_pkm_img {
+  position: absolute;
+  top: 290px;
+  right: 220px;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.pokemon_img {
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 100%;
+}

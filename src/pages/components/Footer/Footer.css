@@ -1,0 +1,47 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-top: 214px;
+  bottom: 0;
+}
+
+.footer_title {
+  font-size: 13px;
+  color: rgb(172, 72, 72);
+}
+
+.logos_rrss_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  color: #fff;
+}
+
+.logos_rrss_div > a,
+img {
+  display: flex;
+}
+
+.github_logo {
+  width: 110px;
+  filter: contrast(0%);
+  padding: 10px;
+}
+
+.linkedin_logo {
+  width: 35px;
+  margin-right: 5px;
+  filter: contrast(0%);
+  padding: 10px;
+}
+
+.netlify_logo {
+  width: 110px;
+  filter: grayscale(100%);
+  padding: 10px;
+}
