@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PokeApi from '../api/PokeApi';
+import Navbar from './components/Navbar/Navbar';
 
 const PokeHome = () => {
+  const [newPkm, setNewPkm] = useState('');
+
   return (
     <>
-      <PokeApi />
+      <Navbar setNewPkm={setNewPkm} />
+      <PokeApi newPkm={newPkm} />
     </>
   );
 };

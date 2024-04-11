@@ -1,11 +1,9 @@
 import './navbar.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import PokeApi from '../../../api/PokeApi';
 
-const Navbar = () => {
+const Navbar = ({ setNewPkm }) => {
   const [showInput, setShowInput] = useState(false);
-
   const [inputValue, setInputValue] = useState('');
 
   const toggleInput = () => {
@@ -16,7 +14,9 @@ const Navbar = () => {
     setInputValue(event.target.value);
   };
 
-  <PokeApi inputValue={inputValue} />;
+  const handleSubmit = () => {
+    setNewPkm(inputValue);
+  };
 
   return (
     <nav>
@@ -28,7 +28,16 @@ const Navbar = () => {
         </li>
         <li>
           {showInput ? (
-            <input type="text" className="poke_input" onChange={handleChange} />
+            <div>
+              <input
+                type="text"
+                className="poke_input"
+                onChange={handleChange}
+              />
+              <button className="submit_btn" onClick={handleSubmit}>
+                Submit
+              </button>
+            </div>
           ) : (
             <button className="search_btn" onClick={toggleInput}>
               PokeSearch

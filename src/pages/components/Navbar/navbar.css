@@ -43,3 +43,7 @@ li {
 .home_btn:hover {
   background: linear-gradient(#f24437, #c62d1f);
 }
+
+.submit_btn {
+  margin-top: 10px;
+}

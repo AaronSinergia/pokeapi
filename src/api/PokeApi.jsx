@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PokemonChoosed from '../pages/components/PokemonChoosed/PokemonChoosed';
 
-const PokeApi = ({ inputValue }) => {
+const PokeApi = ({ newPkm }) => {
   const [data, setData] = useState(null);
   const { pokemonName } = useParams();
 
-  console.log(inputValue);
+  const pokemonWritedInInput = newPkm.toLowerCase();
 
   const defaultUrl = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
 
-  const pokemonSelected = pokemonName
+  const pokemonSelected = newPkm
+    ? `https://pokeapi.co/api/v2/pokemon/${pokemonWritedInInput}`
+    : pokemonName
     ? `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
     : defaultUrl;
 
@@ -18,7 +20,6 @@ const PokeApi = ({ inputValue }) => {
     fetch(pokemonSelected)
       .then((response) => {
         if (!response.ok) {
-          alert('No se ha encontrado ningún Pokemon con ese nombre');
           throw new Error('La consulta realizada no es válida');
         }
         return response.json();
@@ -28,8 +29,9 @@ const PokeApi = ({ inputValue }) => {
       })
       .catch((error) => {
         console.error('Fetch error:', error);
+        alert('No se ha encontrado ningún Pokemon con ese nombre');
       });
-  }, []);
+  }, [pokemonSelected]);
 
   return (
     <>
