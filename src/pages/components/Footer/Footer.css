@@ -4,7 +4,7 @@ footer {
   position: relative;
   justify-content: center;
   align-items: center;
-  margin-top: 214px;
+  margin-top: 230px;
   bottom: 0;
 }
 
@@ -44,4 +44,16 @@ img {
   width: 110px;
   filter: grayscale(100%);
   padding: 10px;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 3328px) {
+  footer {
+    margin-top: 160px;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+  footer {
+    margin-top: 160px;
+  }
 }

@@ -1,35 +1,117 @@
+.pkmn_choosed {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+img[alt='pokedex_photo'] {
+  width: 360px;
+}
+
 .pokemon_titlename {
-  font-size: 15px;
   color: rgb(255, 255, 255);
-  position: absolute;
-  top: 315px;
-  left: 238px;
   text-transform: uppercase;
+  position: absolute;
+  margin: 30px 0 0 190px;
 }
 
 .pokemon_type {
-  font-size: 15px;
   color: rgb(255, 255, 255);
-  position: absolute;
-  top: 355px;
-  left: 236px;
   text-transform: uppercase;
+  position: absolute;
+  margin: 0 0 30px 190px;
 }
 
 .div_pkm_img {
   position: absolute;
-  top: 290px;
-  right: 220px;
-  width: 120px;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  margin: 0 170px 30px 0;
 }
 
-.pokemon_img {
-  max-width: 100%;
-  min-width: 100%;
-  max-height: 100%;
+@media screen and (min-width: 1024px) and (max-width: 3328px) {
+  img[alt='pokedex_photo'] {
+    width: 550px;
+  }
+
+  .pokemon_titlename {
+    margin: 30px 0 0 300px;
+  }
+
+  .pokemon_type {
+    margin: 0 0 30px 300px;
+  }
+
+  .div_pkm_img {
+    margin: 0 250px 30px 0;
+  }
+
+  .pokemon_img {
+    width: 170px;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+  img[alt='pokedex_photo'] {
+    width: 550px;
+  }
+
+  .pokemon_titlename {
+    margin: 30px 0 0 300px;
+  }
+
+  .pokemon_type {
+    margin: 0 0 30px 300px;
+  }
+
+  .div_pkm_img {
+    margin: 0 250px 30px 0;
+  }
+
+  .pokemon_img {
+    width: 170px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 960px) {
+  img[alt='pokedex_photo'] {
+    width: 500px;
+  }
+
+  .pokemon_titlename {
+    margin: 30px 0 0 250px;
+  }
+
+  .pokemon_type {
+    margin: 0 0 30px 250px;
+  }
+
+  .div_pkm_img {
+    margin: 0 230px 30px 0;
+  }
+
+  .pokemon_img {
+    width: 170px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  img[alt='pokedex_photo'] {
+    width: 460px;
+  }
+
+  .pokemon_titlename {
+    margin: 30px 0 0 250px;
+  }
+
+  .pokemon_type {
+    margin: 0 0 30px 250px;
+  }
+
+  .div_pkm_img {
+    margin: 0 220px 30px 0;
+  }
+
+  .pokemon_img {
+    width: 150px;
+  }
 }

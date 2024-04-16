@@ -47,3 +47,31 @@ li {
 .submit_btn {
   margin-top: 10px;
 }
+
+@media screen and (min-width: 1024px) and (max-width: 3328px) {
+  .ulnav {
+    margin-left: 320px;
+    margin-right: 320px;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+  .ulnav {
+    margin-left: 250px;
+    margin-right: 250px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 960px) {
+  .ulnav {
+    margin-left: 150px;
+    margin-right: 150px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .ulnav {
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
