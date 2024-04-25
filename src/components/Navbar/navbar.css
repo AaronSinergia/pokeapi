@@ -19,59 +19,47 @@ li {
   width: 150px;
 }
 
-.search_btn,
-.home_btn {
-  text-decoration: none;
-  font-size: 15px;
-  font-family: Arial;
-  width: 140px;
-  height: 50px;
-  border-width: 1px;
-  color: #fff;
-  border-color: #d02718;
-  font-weight: bold;
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
-  box-shadow: 3px 4px 0px 0px #8a2a21;
-  text-shadow: 0px 1px 0px #810e05;
-  background: linear-gradient(#c62d1f, #f24437);
-}
-
 .search_btn:hover,
 .home_btn:hover {
   background: linear-gradient(#f24437, #c62d1f);
 }
 
-.submit_btn {
-  margin-top: 10px;
-}
-
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .ulnav {
-    margin-left: 320px;
-    margin-right: 320px;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  .poke_input {
+    margin-right: 5px;
   }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   .ulnav {
-    margin-left: 250px;
-    margin-right: 250px;
+    margin-left: 190px;
+    margin-right: 190px;
+  }
+  .poke_input {
+    margin-right: 5px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
   .ulnav {
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 120px;
+    margin-right: 120px;
+  }
+  .poke_input {
+    margin-right: 5px;
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .ulnav {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .poke_input {
+    margin-right: 5px;
   }
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import PokemonChoosed from '../pages/components/PokemonChoosed/PokemonChoosed';
+import PokemonChoosed from '../components/PokemonChoosed/PokemonChoosed';
+import { fetchFunction } from '../function/fetchFunction';
 
 const PokeApi = ({ newPkm }) => {
   const [data, setData] = useState(null);
@@ -17,20 +18,7 @@ const PokeApi = ({ newPkm }) => {
     : defaultUrl;
 
   useEffect(() => {
-    fetch(pokemonSelected)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('La consulta realizada no es válida');
-        }
-        return response.json();
-      })
-      .then((apiData) => {
-        setData(apiData);
-      })
-      .catch((error) => {
-        console.error('Fetch error:', error);
-        alert('No se ha encontrado ningún Pokemon con ese nombre');
-      });
+    fetchFunction(pokemonSelected, setData);
   }, [pokemonSelected]);
 
   return (
@@ -40,7 +28,9 @@ const PokeApi = ({ newPkm }) => {
           <PokemonChoosed pokemon={data} />
         </>
       ) : (
-        <p>Cargando...</p>
+        <>
+          <p>Cargando...</p>
+        </>
       )}
     </>
   );

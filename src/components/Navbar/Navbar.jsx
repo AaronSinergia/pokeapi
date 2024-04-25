@@ -1,6 +1,9 @@
 import './navbar.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { styleButtons } from '../../utils/buttons/style/styleButtons';
+import { styleInputs } from '../../utils/buttons/style/styleInputs';
+import { styleSbmtBtns } from '../../utils/buttons/style/styleSbmtBtns';
 
 const Navbar = ({ setNewPkm }) => {
   const [showInput, setShowInput] = useState(false);
@@ -18,28 +21,47 @@ const Navbar = ({ setNewPkm }) => {
     setNewPkm(inputValue);
   };
 
+  const handleReload = () => {
+    window.location.href = '/';
+  };
+
   return (
-    <nav>
+    <nav className="navbar">
       <ul className="ulnav">
         <li>
           <Link to="/">
-            <button className="home_btn">PokeHome</button>
+            <button
+              style={styleButtons}
+              className="home_btn"
+              onClick={handleReload}
+            >
+              PokeHome
+            </button>
           </Link>
         </li>
         <li>
           {showInput ? (
             <div>
               <input
+                style={styleInputs}
                 type="text"
                 className="poke_input"
                 onChange={handleChange}
               />
-              <button className="submit_btn" onClick={handleSubmit}>
+              <button
+                style={styleSbmtBtns}
+                className="submit_btn"
+                onClick={handleSubmit}
+              >
                 Submit
               </button>
             </div>
           ) : (
-            <button className="search_btn" onClick={toggleInput}>
+            <button
+              style={styleButtons}
+              className="search_btn"
+              onClick={toggleInput}
+            >
               PokeSearch
             </button>
           )}

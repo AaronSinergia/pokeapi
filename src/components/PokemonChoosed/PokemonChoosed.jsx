@@ -1,12 +1,12 @@
 import React from 'react';
 import './PokemonChoosed.css';
-import Footer from '../Footer/Footer';
+import PokedexIMG from '../PokedexIMG/PokedexIMG';
 
 const PokemonChoosed = ({ pokemon }) => {
   return (
     <>
       <div className="pkmn_choosed">
-        <img src="../../../../public/PngItem_2227129.png" alt="pokedex_photo" />
+        <PokedexIMG />
         <h3 className="pokemon_titlename">{pokemon.name}</h3>
         <h3 className="pokemon_type"> TYPE: {pokemon.types[0].type.name}</h3>
         <div className="div_pkm_img">
@@ -17,7 +17,6 @@ const PokemonChoosed = ({ pokemon }) => {
           />
         </div>
       </div>
-      <Footer />
     </>
   );
 };
