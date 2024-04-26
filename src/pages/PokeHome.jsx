@@ -10,6 +10,12 @@ const PokeHome = () => {
 
   const handleTogglePokeApi = () => {
     setShowPokeApi(!showPokeApi);
+    const onBtnClicked = document.querySelector('.on_title');
+    if (onBtnClicked.innerHTML === 'OFF') {
+      onBtnClicked.innerHTML = 'ON';
+    } else {
+      onBtnClicked.innerHTML = 'OFF';
+    }
   };
 
   return (
@@ -18,8 +24,9 @@ const PokeHome = () => {
       {!showPokeApi && <PokedexIMG />}
       {showPokeApi && <PokeApi newPkm={newPkm} />}
 
-      <div className="onoff_div">
-        <h2 onClick={handleTogglePokeApi} className="on_off" title="ON/OFF">
+      <div onClick={handleTogglePokeApi} className="onoff_div">
+        <h3 className="on_title">OFF</h3>
+        <h2 className="on_off" title="ON/OFF">
           🔵
         </h2>
       </div>

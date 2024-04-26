@@ -12,16 +12,25 @@ img[alt='404'] {
 
 .onoff_div {
   position: relative;
+  height: 30px;
+  bottom: 270px;
+  right: 143px;
+  cursor: pointer;
+}
+
+.on_title {
+  position: relative;
+  z-index: 2;
+  font-size: 10px;
+  top: 7px;
 }
 
 .on_off {
   z-index: 1;
   position: relative;
-  bottom: 278px;
-  right: 142px;
-  font-size: 20px;
+  bottom: 38px;
+  font-size: 23px;
   animation: intermitente 3s ease-in-out infinite;
-  cursor: pointer;
 }
 
 @keyframes intermitente {
@@ -37,52 +46,81 @@ img[alt='404'] {
 }
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
-  .on_off {
-    font-size: 30px;
-    bottom: 420px;
-    right: 218px;
-  }
   img[alt='404'] {
     width: 1200px;
     margin-top: 50px;
+  }
+
+  .onoff_div {
+    bottom: 395px;
+    right: 220px;
+  }
+
+  .on_title {
+    font-size: 13px;
+    top: 1px;
+  }
+
+  .on_off {
+    bottom: 61px;
+    font-size: 32px;
   }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
-  .on_off {
-    font-size: 30px;
-    bottom: 420px;
-    right: 218px;
-  }
-
   img[alt='404'] {
     width: 1200px;
     margin-top: 50px;
   }
+
+  .onoff_div {
+    bottom: 395px;
+    right: 220px;
+  }
+
+  .on_title {
+    font-size: 13px;
+    top: 1px;
+  }
+
+  .on_off {
+    bottom: 61px;
+    font-size: 32px;
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
-  .on_off {
-    font-size: 28px;
-    bottom: 385px;
-    right: 199px;
-  }
-
   img[alt='404'] {
     width: 800px;
     margin-top: 100px;
   }
+
+  .onoff_div {
+    bottom: 362px;
+    right: 200px;
+  }
+
+  .on_title {
+    font-size: 13px;
+    top: 1px;
+  }
+
+  .on_off {
+    bottom: 61px;
+    font-size: 32px;
+  }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
-  .on_off {
-    font-size: 25px;
-    bottom: 353px;
-    right: 182px;
-  }
-
   img[alt='404'] {
     width: 700px;
     margin-top: 100px;
+  }
+
+  .onoff_div {
+    position: relative;
+    height: 30px;
+    bottom: 337px;
+    right: 184px;
   }
 }

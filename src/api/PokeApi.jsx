@@ -7,7 +7,7 @@ const PokeApi = ({ newPkm }) => {
   const [data, setData] = useState(null);
   const { pokemonName } = useParams();
 
-  const pokemonWritedInInput = newPkm.toLowerCase();
+  const pokemonWritedInInput = pokemonName ? pokemonName.toLowerCase() : '';
 
   const defaultUrl = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
 
