@@ -7,14 +7,14 @@ const PokeApi = ({ newPkm }) => {
   const [data, setData] = useState(null);
   const { pokemonName } = useParams();
 
-  const pokemonWritedInInput = pokemonName ? pokemonName.toLowerCase() : '';
+  const pokemonWritedInSEARCHBAR = pokemonName ? pokemonName.toLowerCase() : '';
 
   const defaultUrl = `https://pokeapi.co/api/v2/pokemon/bulbasaur`;
 
   const pokemonSelected = newPkm
-    ? `https://pokeapi.co/api/v2/pokemon/${pokemonWritedInInput}`
-    : pokemonName
-    ? `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    ? `https://pokeapi.co/api/v2/pokemon/${newPkm}`
+    : pokemonWritedInSEARCHBAR
+    ? `https://pokeapi.co/api/v2/pokemon/${pokemonWritedInSEARCHBAR}`
     : defaultUrl;
 
   useEffect(() => {

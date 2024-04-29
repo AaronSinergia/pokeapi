@@ -18,7 +18,7 @@ const Navbar = ({ setNewPkm }) => {
   };
 
   const handleSubmit = () => {
-    setNewPkm(inputValue);
+    setNewPkm(inputValue.toLocaleLowerCase());
   };
 
   const handleReload = () => {

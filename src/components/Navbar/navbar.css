@@ -15,6 +15,13 @@ li {
   padding: 10px;
 }
 
+.home_btn,
+.submit_btn,
+.search_btn {
+  width: 140px;
+  height: 50px;
+}
+
 .poke_input {
   width: 150px;
 }

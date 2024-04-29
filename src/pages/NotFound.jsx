@@ -1,20 +1,8 @@
 import React from 'react';
-import '../App.css';
-import { styleButtons } from '../utils/buttons/style/styleButtons.js';
+import NotFoundIMG from '../components/NotFoundIMG/NotFoundIMG';
 
 const NotFound = () => {
-  const handleReload = () => {
-    window.location.href = '/';
-  };
-
-  return (
-    <div>
-      <img src="../../public/pika404.jpg" alt="404" />
-      <button style={styleButtons} onClick={handleReload}>
-        Recargar
-      </button>
-    </div>
-  );
+  return <NotFoundIMG />;
 };
 
 export default NotFound;

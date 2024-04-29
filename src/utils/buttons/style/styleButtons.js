@@ -1,9 +1,7 @@
 export const styleButtons = {
   textDecoration: 'none',
-  fontSize: '15px',
   fontFamily: 'Arial',
-  width: '140px',
-  height: '50px',
+  fontSize: '15px',
   borderWidth: '1px',
   color: '#fff',
   borderColor: '#d02718',
