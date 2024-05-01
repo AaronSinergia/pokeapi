@@ -1,0 +1,46 @@
+.pokenavigate_btns {
+  display: flex;
+  position: absolute;
+  width: 30%;
+  height: 20%;
+  justify-content: center;
+  align-items: center;
+  top: 190px;
+  margin: 0 180px 0 0;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 3328px) {
+  .pokenavigate_btns {
+    width: 30%;
+    height: 20%;
+    top: 290px;
+    margin: 0 270px 0 0;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+  .pokenavigate_btns {
+    width: 30%;
+    height: 20%;
+    top: 290px;
+    margin: 0 270px 0 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 960px) {
+  .pokenavigate_btns {
+    width: 30%;
+    height: 20%;
+    top: 265px;
+    margin: 0 250px 0 0;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .pokenavigate_btns {
+    width: 30%;
+    height: 20%;
+    top: 245px;
+    margin: 0 230px 0 0;
+  }
+}

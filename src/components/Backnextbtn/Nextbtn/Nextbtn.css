@@ -1,0 +1,11 @@
+.next_btn {
+  height: 50px;
+  width: 70px;
+  top: 184px;
+  right: 198px;
+  cursor: pointer;
+}
+
+.next_btn:hover {
+  transform: scale(1.02);
+}

@@ -1,21 +1,34 @@
 import React from 'react';
 import './PokemonChoosed.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
+import Backnextbtn from '../Backnextbtn/Backnextbtn';
 
-const PokemonChoosed = ({ pokemon }) => {
+const PokemonChoosed = ({ data }) => {
   return (
     <>
       <div className="pkmn_choosed">
         <PokedexIMG />
-        <h3 className="pokemon_titlename">{pokemon.name}</h3>
-        <h3 className="pokemon_type"> TYPE: {pokemon.types[0].type.name}</h3>
+
+        <section className="text_info">
+          <h3 className="pokemon_titlename">{data.name}</h3>
+          <h3 className="pokemon_type"> TYPE: {data.types[0].type.name}</h3>
+        </section>
         <div className="div_pkm_img">
-          <img
-            src={pokemon.sprites.front_default}
-            alt={pokemon.name}
-            className="pokemon_img"
-          />
+          {data.sprites.front_default ? (
+            <img
+              src={data.sprites.front_default}
+              alt={data.name}
+              className="pokemon_img"
+            />
+          ) : (
+            <img
+              src="../../../public/no-image-icon-4.png"
+              alt={data.name}
+              className="pokemon_img"
+            />
+          )}
         </div>
+        <Backnextbtn />
       </div>
     </>
   );

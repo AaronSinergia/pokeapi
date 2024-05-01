@@ -11,6 +11,6 @@ export const fetchFunction = (url, setData) => {
     })
     .catch((error) => {
       console.log(error);
-      alert('No se ha encontrado ningún Pokemon con ese nombre');
+      alert('No se ha encontrado ningún Pokemon');
     });
 };
