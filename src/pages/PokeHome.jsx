@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import PokedexIMG from '../components/PokedexIMG/PokedexIMG';
 import PokeApi from '../api/PokeApi';
 import Footer from '../components/footer/Footer';
 import OnoffBTN from '../components/OnoffBTN/OnoffBTN';
+import { pokeContext } from '../context/pokeContext';
 
 const PokeHome = () => {
-  const [newPkm, setNewPkm] = useState('');
-  const [showPokeApi, setShowPokeApi] = useState(false);
+  const { showPokeApi } = useContext(pokeContext);
 
   return (
     <>
-      <Navbar setNewPkm={setNewPkm} />
+      <Navbar />
       {!showPokeApi && <PokedexIMG />}
-      {showPokeApi && <PokeApi newPkm={newPkm} />}
-      <OnoffBTN showPokeApi={showPokeApi} setShowPokeApi={setShowPokeApi} />
+      {showPokeApi && <PokeApi />}
+      <OnoffBTN />
       <Footer />
     </>
   );

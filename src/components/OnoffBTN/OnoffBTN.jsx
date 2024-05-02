@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './OnoffBTN.css';
+import { pokeContext } from '../../context/pokeContext';
 
-const OnoffBTN = ({ showPokeApi, setShowPokeApi }) => {
+const OnoffBTN = () => {
+  const { showPokeApi, setShowPokeApi } = useContext(pokeContext);
+
   const handleTogglePokeApi = () => {
     setShowPokeApi(!showPokeApi);
     const onBtnClicked = document.querySelector('.on_title');

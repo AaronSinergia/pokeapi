@@ -1,37 +1,60 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PokemonChoosed from '../components/PokemonChoosed/PokemonChoosed';
 import { fetchFunction } from '../function/fetchFunction';
 import { pokeContext } from '../context/pokeContext';
-import { fetchLastPkmn } from '../function/fetchLastPkmn';
 import { default_POKEAPI_Url } from '../config/urls';
 
-const PokeApi = ({ newPkm }) => {
-  const [data, setData] = useState(null);
+const PokeApi = () => {
   const { pokemonName } = useParams();
-  const { pokemon, setPokemon } = useContext(pokeContext);
+  const { pokemon, setPokemon, data, setData, inputPkmID } =
+    useContext(pokeContext);
 
-  const adjustedMinPokemon = pokemon <= 0 ? -1 : pokemon;
+  const defaultAPI_URL = `${default_POKEAPI_Url}/${pokemon}`;
+
+  useEffect(() => {
+    fetchFunction(defaultAPI_URL, setData);
+  }, [pokemon, defaultAPI_URL]);
+
+  useEffect(() => {
+    if (inputPkmID) {
+      fetch(`${default_POKEAPI_Url}/${inputPkmID}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('La consulta realizada no es válida');
+          }
+          return response.json();
+        })
+        .then((apiData) => {
+          setPokemon(apiData.id);
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('No se ha encontrado ningún Pokemon con ese nombre');
+        });
+    }
+  }, [inputPkmID]);
 
   const pokemonWritedInSEARCHBAR = pokemonName ? pokemonName.toLowerCase() : '';
 
-  const defaultAPI_URL = `${default_POKEAPI_Url}/${adjustedMinPokemon}`;
-  const input_dom_API_URL = `${default_POKEAPI_Url}/${newPkm}`;
-
-  const pokemonSelected = newPkm
-    ? input_dom_API_URL
-    : pokemonWritedInSEARCHBAR
-    ? `https://pokeapi.co/api/v2/pokemon/${pokemonWritedInSEARCHBAR}`
-    : defaultAPI_URL;
-
   useEffect(() => {
-    if (adjustedMinPokemon < 0) {
-      const lastPokemonUrl = `https://pokeapi.co/api/v2/pokemon?limit=10000`;
-      fetchLastPkmn(lastPokemonUrl, setPokemon);
-    } else {
-      fetchFunction(pokemonSelected, setData);
+    if (pokemonName) {
+      fetch(`${default_POKEAPI_Url}/${pokemonWritedInSEARCHBAR}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('La consulta realizada no es válida');
+          }
+          return response.json();
+        })
+        .then((apiData) => {
+          setPokemon(apiData.id);
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('No se ha encontrado ningún Pokemon con ese nombre');
+        });
     }
-  }, [pokemon, pokemonSelected, setPokemon]);
+  }, [inputPkmID]);
 
   return (
     <>

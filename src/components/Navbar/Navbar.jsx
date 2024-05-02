@@ -1,13 +1,14 @@
 import './navbar.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import { styleInputs } from '../../utils/buttons/style/styleInputs';
 import { styleSbmtBtns } from '../../utils/buttons/style/styleSbmtBtns';
+import { pokeContext } from '../../context/pokeContext';
 
-const Navbar = ({ setNewPkm }) => {
+const Navbar = () => {
   const [showInput, setShowInput] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const { setinputPkmID, inputValue, setInputValue } = useContext(pokeContext);
 
   const toggleInput = () => {
     setShowInput(!showInput);
@@ -18,7 +19,7 @@ const Navbar = ({ setNewPkm }) => {
   };
 
   const handleSubmit = () => {
-    setNewPkm(inputValue.toLocaleLowerCase());
+    setinputPkmID(inputValue.toLocaleLowerCase());
   };
 
   const handleReload = () => {
