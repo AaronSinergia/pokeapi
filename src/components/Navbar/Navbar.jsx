@@ -8,10 +8,17 @@ import { pokeContext } from '../../context/pokeContext';
 
 const Navbar = () => {
   const [showInput, setShowInput] = useState(false);
-  const { setinputPkmID, inputValue, setInputValue } = useContext(pokeContext);
+  const {
+    setinputPkmID,
+    inputValue,
+    setInputValue,
+    showPokeApi,
+    setShowPokeApi,
+  } = useContext(pokeContext);
 
   const toggleInput = () => {
     setShowInput(!showInput);
+    setShowPokeApi(!showPokeApi);
   };
 
   const handleChange = (event) => {
