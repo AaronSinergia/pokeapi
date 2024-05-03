@@ -52,6 +52,10 @@ const PokeApi = () => {
         .catch((error) => {
           console.log(error);
           alert('No se ha encontrado ningún Pokemon con ese nombre');
+        })
+        .finally(() => {
+          const onBtnClicked = document.querySelector('.on_title');
+          onBtnClicked.innerHTML = 'ON';
         });
     }
   }, [inputPkmID]);
@@ -60,7 +64,7 @@ const PokeApi = () => {
     <>
       {data ? (
         <>
-          <PokemonChoosed data={data} />
+          <PokemonChoosed />
         </>
       ) : (
         <>

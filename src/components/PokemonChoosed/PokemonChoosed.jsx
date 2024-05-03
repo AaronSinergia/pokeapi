@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './PokemonChoosed.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import Backnextbtn from '../Backnextbtn/Backnextbtn';
+import { pokeContext } from '../../context/pokeContext';
 
-const PokemonChoosed = ({ data }) => {
+const PokemonChoosed = () => {
+  const { data } = useContext(pokeContext);
   return (
     <>
       <div className="pkmn_choosed">

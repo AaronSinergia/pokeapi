@@ -1,12 +1,9 @@
 import './NotFoundIMG.css';
 import React from 'react';
 import { styleButtons } from '../../utils/buttons/style/styleButtons.js';
+import { handleReload } from '../../function/handleFunctions.js';
 
 const NotFoundIMG = () => {
-  const handleReload = () => {
-    window.location.href = '/';
-  };
-
   return (
     <div>
       <img src="../../../public/pika404.jpg" alt="404" />

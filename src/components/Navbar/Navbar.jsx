@@ -5,6 +5,12 @@ import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import { styleInputs } from '../../utils/buttons/style/styleInputs';
 import { styleSbmtBtns } from '../../utils/buttons/style/styleSbmtBtns';
 import { pokeContext } from '../../context/pokeContext';
+import {
+  handleChange,
+  handleReload,
+  handleSubmit,
+  toggleInput,
+} from '../../function/handleFunctions.js';
 
 const Navbar = () => {
   const [showInput, setShowInput] = useState(false);
@@ -15,25 +21,6 @@ const Navbar = () => {
     showPokeApi,
     setShowPokeApi,
   } = useContext(pokeContext);
-
-  const toggleInput = () => {
-    setShowInput(!showInput);
-    const onBtnClicked = document.querySelector('.on_title');
-    onBtnClicked.innerHTML = 'ON';
-    setShowPokeApi(!showPokeApi);
-  };
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    setinputPkmID(inputValue.toLocaleLowerCase());
-  };
-
-  const handleReload = () => {
-    window.location.href = '/';
-  };
 
   return (
     <nav className="navbar">
@@ -56,12 +43,12 @@ const Navbar = () => {
                 style={styleInputs}
                 type="text"
                 className="poke_input"
-                onChange={handleChange}
+                onChange={(event) => handleChange(event, setInputValue)}
               />
               <button
                 style={styleSbmtBtns}
                 className="submit_btn"
-                onClick={handleSubmit}
+                onClick={() => handleSubmit(inputValue, setinputPkmID)}
               >
                 Submit
               </button>
@@ -70,7 +57,14 @@ const Navbar = () => {
             <button
               style={styleButtons}
               className="search_btn"
-              onClick={toggleInput}
+              onClick={() =>
+                toggleInput(
+                  showInput,
+                  setShowInput,
+                  showPokeApi,
+                  setShowPokeApi
+                )
+              }
             >
               PokeSearch
             </button>
