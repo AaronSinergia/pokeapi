@@ -18,6 +18,8 @@ const Navbar = () => {
 
   const toggleInput = () => {
     setShowInput(!showInput);
+    const onBtnClicked = document.querySelector('.on_title');
+    onBtnClicked.innerHTML = 'ON';
     setShowPokeApi(!showPokeApi);
   };
 
