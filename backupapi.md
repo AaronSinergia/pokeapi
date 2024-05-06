@@ -1,37 +1,86 @@
-poner todo bonito
+- revisar estilos de onoff y en general dejar bonito
 
-- cuando escribo onix en la url que tmb pase a ser on el botton
-- cuando la pokedex esta encendida y le doy a pokesearch se jode revisar
-- revisar los fetch de pokeapi
+import React, { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import PokemonChoosed from '../components/PokemonChoosed/PokemonChoosed';
+import { fetchFunction } from '../function/fetchFunction';
+import { pokeContext } from '../context/pokeContext';
+import { default_POKEAPI_Url } from '../config/urls';
 
-Entiendo, quieres que al presionar Enter en la barra de direcciones del navegador se ejecute esa acción. Desafortunadamente, no es posible controlar directamente el comportamiento del navegador desde tu aplicación web. El evento Enter en la barra de direcciones generalmente está destinado a navegar a una URL, y no puede ser manipulado por JavaScript en una página web.
+const PokeApi = () => {
+const { pokemonName } = useParams();
+const { pokemon, setPokemon, data, setData, inputPkmID } =
+useContext(pokeContext);
 
-Si necesitas ejecutar alguna acción específica al cargar la página, podrías considerar utilizar una ruta específica en tu aplicación que se active al cargar la página. Por ejemplo, podrías hacer que una página específica de tu aplicación se cargue cuando la URL coincida con cierto patrón, y luego ejecutar la acción que necesitas en el montaje de esa página.
+const default_API_URL = `${default_POKEAPI_Url}/${pokemon}`;
 
-Por ejemplo, podrías hacer algo como esto en tu archivo de enrutamiento:
+const input_API_URL = `${default_POKEAPI_Url}/${inputPkmID}`;
 
-javascript
-Copy code
-<Route path="/handle-enter-action" component={HandleEnterActionComponent} />
-Y en el componente HandleEnterActionComponent, podrías ejecutar la acción que necesitas en el useEffect cuando este componente se monte.
+const pokemonWritedInSEARCHBAR = pokemonName ? pokemonName.toLowerCase() : '';
 
-javascript
-Copy code
-const HandleEnterActionComponent = () => {
+const search_bar_API_URL = `${default_POKEAPI_Url}/${pokemonWritedInSEARCHBAR}`;
+
+const selectedURL = search_bar_API_URL
+? search_bar_API_URL
+: input_API_URL
+? input_API_URL
+: default_API_URL;
+
 useEffect(() => {
-const onBtnClicked = document.querySelector('.on_title');
-onBtnClicked.innerHTML = 'ON';
-// Aquí puedes agregar cualquier otra acción que necesites ejecutar
-}, []);
+fetchFunction(selectedURL, setData, setPokemon);
+}, [pokemon, default_API_URL, inputPkmID, pokemonWritedInSEARCHBAR]);
+
+// useEffect(() => {
+// if (inputPkmID) {
+// fetch(`${default_POKEAPI_Url}/${inputPkmID}`)
+// .then((response) => {
+// if (!response.ok) {
+// throw new Error('La consulta realizada no es válida');
+// }
+// return response.json();
+// })
+// .then((apiData) => {
+// setPokemon(apiData.id);
+// })
+// .catch((error) => {
+// console.log(error);
+// alert('No se ha encontrado ningún Pokemon con ese nombre');
+// });
+// }
+// }, [inputPkmID]);
+
+// useEffect(() => {
+// if (pokemonName) {
+// fetch(`${default_POKEAPI_Url}/${pokemonWritedInSEARCHBAR}`)
+// .then((response) => {
+// if (!response.ok) {
+// throw new Error('La consulta realizada no es válida');
+// }
+// return response.json();
+// })
+// .then((apiData) => {
+// setPokemon(apiData.id);
+// })
+// .catch((error) => {
+// console.log(error);
+// alert('No se ha encontrado ningún Pokemon con ese nombre');
+// });
+// }
+// }, [pokemonWritedInSEARCHBAR]);
 
 return (
-<div>
-{/_ Contenido de tu componente _/}
-</div>
+<>
+{data ? (
+<>
+<PokemonChoosed />
+</>
+) : (
+<>
+<p>Cargando...</p>
+</>
+)}
+</>
 );
 };
-Luego, al cargar tu aplicación, si el usuario navega a la URL que coincide con /handle-enter-action, se ejecutará la acción deseada. Sin embargo, esto requiere que el usuario manualmente navegue a esa URL, y no es posible activarlo automáticamente al presionar Enter en la barra de direcciones.
 
-Message ChatGPT
-
-ChatGPT can make mistakes. Consider checking important information.
+export default PokeApi;

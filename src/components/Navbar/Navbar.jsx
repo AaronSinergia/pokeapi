@@ -14,13 +14,7 @@ import {
 
 const Navbar = () => {
   const [showInput, setShowInput] = useState(false);
-  const {
-    setinputPkmID,
-    inputValue,
-    setInputValue,
-    showPokeApi,
-    setShowPokeApi,
-  } = useContext(pokeContext);
+  const { setinputPkmID, inputValue, setInputValue } = useContext(pokeContext);
 
   return (
     <nav className="navbar">
@@ -36,6 +30,7 @@ const Navbar = () => {
             </button>
           </Link>
         </li>
+
         <li>
           {showInput ? (
             <div>
@@ -57,14 +52,7 @@ const Navbar = () => {
             <button
               style={styleButtons}
               className="search_btn"
-              onClick={() =>
-                toggleInput(
-                  showInput,
-                  setShowInput,
-                  showPokeApi,
-                  setShowPokeApi
-                )
-              }
+              onClick={() => toggleInput(showInput, setShowInput)}
             >
               PokeSearch
             </button>
