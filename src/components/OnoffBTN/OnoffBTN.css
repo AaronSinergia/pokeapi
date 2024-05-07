@@ -1,24 +1,23 @@
 .onoff_div {
   position: relative;
   height: 30px;
-  bottom: 270px;
-  right: 143px;
-  cursor: pointer;
+  bottom: 278px;
+  right: 144px;
+  margin: 0 160px;
+}
+
+.on_off {
+  position: relative;
+  bottom: 4.5px;
+  font-size: 23px;
+  animation: intermitente 3s ease-in-out infinite;
 }
 
 .on_title {
   position: relative;
-  z-index: 2;
   font-size: 10px;
-  top: 7px;
-}
-
-.on_off {
-  z-index: 1;
-  position: relative;
-  bottom: 38px;
-  font-size: 23px;
-  animation: intermitente 3s ease-in-out infinite;
+  bottom: 47px;
+  cursor: pointer;
 }
 
 @keyframes intermitente {
@@ -35,52 +34,57 @@
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .onoff_div {
-    bottom: 395px;
-    right: 220px;
-  }
-
-  .on_title {
-    font-size: 13px;
-    top: 1px;
+    bottom: 421px;
+    height: 50px;
+    right: 221px;
+    margin: 0 47.5%;
   }
 
   .on_off {
-    bottom: 61px;
-    font-size: 32px;
+    font-size: 34px;
+    bottom: 7px;
+  }
+
+  .on_title {
+    bottom: 70px;
+    font-size: 14px;
   }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   .onoff_div {
-    bottom: 395px;
-    right: 220px;
-  }
-
-  .on_title {
-    font-size: 13px;
-    top: 1px;
+    bottom: 418px;
+    height: 46px;
+    right: 221px;
+    margin: 0 47%;
   }
 
   .on_off {
-    bottom: 61px;
     font-size: 32px;
+    bottom: 7px;
+  }
+
+  .on_title {
+    bottom: 68px;
+    font-size: 14px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
   .onoff_div {
-    bottom: 362px;
+    bottom: 377px;
     right: 200px;
-  }
-
-  .on_title {
-    font-size: 13px;
-    top: 1px;
+    margin: 0 47%;
   }
 
   .on_off {
-    bottom: 61px;
-    font-size: 32px;
+    font-size: 30px;
+    bottom: 11px;
+  }
+
+  .on_title {
+    bottom: 68px;
+    font-size: 14px;
   }
 }
 
@@ -88,7 +92,18 @@
   .onoff_div {
     position: relative;
     height: 30px;
-    bottom: 337px;
-    right: 184px;
+    bottom: 350px;
+    right: 183.8px;
+    margin: 0 45%;
+  }
+
+  .on_off {
+    font-size: 30px;
+    bottom: 11px;
+  }
+
+  .on_title {
+    bottom: 69px;
+    font-size: 14px;
   }
 }

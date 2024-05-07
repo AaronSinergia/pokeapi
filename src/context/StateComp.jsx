@@ -9,7 +9,7 @@ const StateComp = ({ children }) => {
   const [inputValue, setInputValue] = useState('');
 
   const increment = () => {
-    setPokemon((prevId) => (prevId < 1025 ? prevId + 1 : 1));
+    setPokemon((nextId) => (nextId < 1025 ? nextId + 1 : 1));
   };
 
   const decrement = () => {

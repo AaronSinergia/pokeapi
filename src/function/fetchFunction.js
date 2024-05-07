@@ -1,4 +1,4 @@
-export const fetchFunction = (url, setData) => {
+export const fetchFunction = (url, setData, setPokemon) => {
   fetch(url)
     .then((response) => {
       if (!response.ok) {
@@ -7,7 +7,12 @@ export const fetchFunction = (url, setData) => {
       return response.json();
     })
     .then((apiData) => {
-      setData(apiData);
+      if (setData) {
+        setData(apiData);
+      }
+      if (setPokemon) {
+        setPokemon(apiData.id);
+      }
     })
     .catch((error) => {
       console.log(error);

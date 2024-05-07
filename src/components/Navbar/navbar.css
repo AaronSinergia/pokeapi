@@ -1,6 +1,6 @@
 .ulnav {
   display: flex;
-  margin-bottom: 66px;
+  margin-bottom: 100px;
   list-style-type: none;
   padding: 15px;
   display: flex;
@@ -20,6 +20,7 @@ li {
 .search_btn {
   width: 140px;
   height: 50px;
+  cursor: pointer;
 }
 
 .search_btn {
@@ -42,8 +43,9 @@ li {
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .ulnav {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-bottom: 55px;
+    margin-left: 320px;
+    margin-right: 320px;
   }
   .poke_input {
     margin-right: 5px;
@@ -52,6 +54,7 @@ li {
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   .ulnav {
+    margin-bottom: 55px;
     margin-left: 190px;
     margin-right: 190px;
   }

@@ -31,11 +31,13 @@ const OnoffBTN = () => {
   };
 
   return (
-    <div onClick={handleTogglePokeApi} className="onoff_div">
-      <h3 className="on_title">{showPokeApi ? 'ON' : 'OFF'}</h3>
+    <div className="onoff_div">
       <h2 className="on_off" title="ON/OFF">
         🔵
       </h2>
+      <h3 onClick={handleTogglePokeApi} className="on_title">
+        {showPokeApi ? 'ON' : 'OFF'}
+      </h3>
     </div>
   );
 };
