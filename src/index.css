@@ -13,6 +13,6 @@
 }
 
 body {
-  background-image: url('./public/wallpapersden.com_pokemon-pikachu-art_1920x1080.jpg');
+  background-image: url('../public/wallpapersden.com_pokemon-pikachu-art_1920x1080.jpg');
   background-position: center;
 }
