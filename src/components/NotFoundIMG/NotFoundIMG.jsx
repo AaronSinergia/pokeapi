@@ -6,7 +6,7 @@ import { handleReload } from '../../function/handleFunctions.js';
 const NotFoundIMG = () => {
   return (
     <div>
-      <img src="../../../public/pika404.jpg" alt="404" />
+      <img src="./assets/pika404.jpg" alt="404" />
       <button style={styleButtons} onClick={handleReload}>
         Recargar
       </button>

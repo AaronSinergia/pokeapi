@@ -24,7 +24,7 @@ const PokemonChoosed = () => {
             />
           ) : (
             <img
-              src="../../../public/no-image-icon-4.png"
+              src="./assets/no-image-icon-4.png"
               alt={data.name}
               className="pokemon_img"
             />
