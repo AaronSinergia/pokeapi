@@ -1,22 +1,26 @@
 .onoff_div {
+  z-index: 1;
   position: relative;
-  height: 30px;
-  bottom: 278px;
+  height: 42px;
+  top: 45px;
   right: 144px;
-  margin: 0 160px;
+  margin: 0 158px;
+  cursor: pointer;
 }
 
 .on_off {
   position: relative;
-  bottom: 4.5px;
+  top: 1px;
   font-size: 23px;
   animation: intermitente 3s ease-in-out infinite;
+  cursor: pointer;
 }
 
 .on_title {
   position: relative;
+  height: 40px;
   font-size: 10px;
-  bottom: 47px;
+  bottom: 43px;
   cursor: pointer;
 }
 
@@ -72,28 +76,29 @@
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
   .onoff_div {
-    bottom: 377px;
-    right: 200px;
-    margin: 0 47%;
+    height: 65px;
+    width: 73px;
+    right: 294px;
+    top: 69px;
+    margin: 0 47.1%;
   }
 
   .on_off {
-    font-size: 30px;
-    bottom: 11px;
+    font-size: 47px;
+    bottom: 8px;
   }
 
   .on_title {
-    bottom: 68px;
-    font-size: 14px;
+    bottom: 87px;
+    font-size: 20px;
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .onoff_div {
     position: relative;
-    height: 30px;
-    bottom: 350px;
-    right: 183.8px;
+    bottom: 30px;
+    right: 181px;
     margin: 0 45%;
   }
 
@@ -103,7 +108,7 @@
   }
 
   .on_title {
-    bottom: 69px;
+    bottom: 56px;
     font-size: 14px;
   }
 }

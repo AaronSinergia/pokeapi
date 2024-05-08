@@ -1,14 +1,16 @@
 import './Backnextbtn.css';
-import React from 'react';
-import Backbtn from './Backbtn/Backbtn';
-import Nextbtn from './Nextbtn/Nextbtn';
+import React, { useContext } from 'react';
+import NextPrevBTN from './Nextbtn/NextPrevBTN';
+import { pokeContext } from '../../context/pokeContext';
 
 const Backnextbtn = () => {
+  const { decrement, increment } = useContext(pokeContext);
+
   return (
     <>
       <div className="pokenavigate_btns">
-        <Backbtn />
-        <Nextbtn />
+        <NextPrevBTN text={'⬅'} onClick={decrement} />
+        <NextPrevBTN text={'➡'} onClick={increment} />
       </div>
     </>
   );

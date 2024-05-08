@@ -3,6 +3,7 @@ import './PokemonChoosed.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import Backnextbtn from '../Backnextbtn/Backnextbtn';
 import { pokeContext } from '../../context/pokeContext';
+import Navbar from '../Navbar/Navbar';
 
 const PokemonChoosed = () => {
   const { data } = useContext(pokeContext);
@@ -10,7 +11,7 @@ const PokemonChoosed = () => {
     <>
       <div className="pkmn_choosed">
         <PokedexIMG />
-
+        <Navbar />
         <section className="text_info">
           <h3 className="pokemon_titlename">{data.name}</h3>
           <h3 className="pokemon_type"> TYPE: {data.types[0].type.name}</h3>

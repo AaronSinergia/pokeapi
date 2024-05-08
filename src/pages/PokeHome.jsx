@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from 'react';
-import Navbar from '../components/Navbar/Navbar';
+import React, { useContext } from 'react';
+import PokeTitle from '../components/PokeTitle/PokeTitle';
 import PokedexIMG from '../components/PokedexIMG/PokedexIMG';
-import PokeApi from '../api/PokeApi';
+import PokeApi from '../../src/components/api/PokeApi';
 import Footer from '../components/footer/Footer';
 import OnoffBTN from '../components/OnoffBTN/OnoffBTN';
 import { pokeContext } from '../context/pokeContext';
@@ -11,10 +11,10 @@ const PokeHome = () => {
 
   return (
     <>
-      <Navbar />
+      <PokeTitle />
+      <OnoffBTN />
       {!showPokeApi && <PokedexIMG />}
       {showPokeApi && <PokeApi />}
-      <OnoffBTN />
       <Footer />
     </>
   );

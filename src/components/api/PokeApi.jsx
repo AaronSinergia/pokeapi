@@ -75,10 +75,10 @@
 
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import PokemonChoosed from '../components/PokemonChoosed/PokemonChoosed';
-import { fetchFunction } from '../function/fetchFunction';
-import { pokeContext } from '../context/pokeContext';
-import { default_POKEAPI_Url } from '../config/urls';
+import PokemonChoosed from '../PokemonChoosed/PokemonChoosed';
+import { fetchFunction } from '../../function/fetchFunction';
+import { pokeContext } from '../../context/pokeContext';
+import { default_POKEAPI_Url } from '../../config/urls';
 
 const PokeApi = () => {
   const { pokemonName } = useParams();

@@ -15,26 +15,30 @@ img[alt='pokedex_photo'] {
   position: absolute;
   width: 143px;
   height: 118px;
-  margin: 10px 0 1px 193px;
+  margin: 0 0 0 193px;
 }
 
 .pokemon_titlename {
   color: rgb(255, 255, 255);
   text-transform: uppercase;
   position: relative;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .pokemon_type {
   color: rgb(255, 255, 255);
   text-transform: uppercase;
   position: relative;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .div_pkm_img {
   position: absolute;
   margin: 0 170px 30px 0;
+}
+
+.pokemon_img {
+  width: 100px;
 }
 
 img[src='./assets/no-image-icon-4.png'] {
@@ -44,7 +48,7 @@ img[src='./assets/no-image-icon-4.png'] {
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   img[alt='pokedex_photo'] {
-    width: 550px;
+    width: 710px;
   }
 
   .text_info {
@@ -79,7 +83,7 @@ img[src='./assets/no-image-icon-4.png'] {
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   img[alt='pokedex_photo'] {
-    width: 550px;
+    width: 710px;
   }
 
   .text_info {
@@ -89,20 +93,19 @@ img[src='./assets/no-image-icon-4.png'] {
   }
 
   .pokemon_titlename {
-    font-size: 15px;
-    padding: 10px;
+    font-size: 35px;
   }
 
   .pokemon_type {
-    font-size: 15px;
+    font-size: 25px;
   }
 
   .div_pkm_img {
-    margin: 0 250px 30px 0;
+    margin: 0 340px 50px 0;
   }
 
   .pokemon_img {
-    width: 170px;
+    width: 190px;
   }
 
   img[src='./assets/no-image-icon-4.png'] {
@@ -114,22 +117,21 @@ img[src='./assets/no-image-icon-4.png'] {
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
   img[alt='pokedex_photo'] {
-    width: 500px;
+    width: 700px;
   }
 
   .text_info {
     width: 200px;
     height: 160px;
-    margin: 0 0 3px 265px;
+    margin: 0 0 50px 380px;
   }
 
   .pokemon_titlename {
-    font-size: 15px;
-    padding: 10px;
+    font-size: 30px;
   }
 
   .pokemon_type {
-    font-size: 15px;
+    font-size: 30px;
   }
 
   .div_pkm_img {
@@ -137,8 +139,11 @@ img[src='./assets/no-image-icon-4.png'] {
   }
 
   .pokemon_img {
-    width: 170px;
+    width: 200px;
+    margin-bottom: 30px;
+    margin-right: 100px;
   }
+
   img[src='./assets/no-image-icon-4.png'] {
     width: 100px;
     margin-right: 9px;
@@ -148,7 +153,7 @@ img[src='./assets/no-image-icon-4.png'] {
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   img[alt='pokedex_photo'] {
-    width: 460px;
+    width: 450px;
   }
 
   .text_info {
@@ -158,12 +163,11 @@ img[src='./assets/no-image-icon-4.png'] {
   }
 
   .pokemon_titlename {
-    font-size: 15px;
-    padding: 10px;
+    font-size: 20px;
   }
 
   .pokemon_type {
-    font-size: 15px;
+    font-size: 20px;
   }
 
   .div_pkm_img {

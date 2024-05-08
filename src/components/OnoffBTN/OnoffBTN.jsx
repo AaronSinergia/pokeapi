@@ -22,17 +22,28 @@ const OnoffBTN = () => {
     if (pokeInputBTN && submitBTN) {
       pokeInputBTN.style.display = showPokeApi ? 'grid' : 'none';
       submitBTN.style.display = showPokeApi ? 'grid' : 'none';
-      submitBTN.style.marginLeft = showPokeApi ? '20px' : '0px';
     }
   }, [showPokeApi]);
 
   const handleTogglePokeApi = () => {
     setShowPokeApi(!showPokeApi);
+
+    const on_button = document.querySelector('.on_title');
+
+    if (on_button.innerHTML !== 'ON') {
+      const on_sound = document.getElementById('on_sound');
+      on_sound.play();
+    } else {
+      const off_sound = document.getElementById('off_sound');
+      off_sound.play();
+    }
   };
 
   return (
-    <div className="onoff_div">
-      <h2 className="on_off" title="ON/OFF">
+    <div onClick={handleTogglePokeApi} className="onoff_div">
+      <audio id="on_sound" src="../../../public/sounds/on_sound.mp3"></audio>
+      <audio id="off_sound" src="../../../public/sounds/off_sound.mp3"></audio>
+      <h2 onClick={handleTogglePokeApi} className="on_off" title="ON/OFF">
         🔵
       </h2>
       <h3 onClick={handleTogglePokeApi} className="on_title">

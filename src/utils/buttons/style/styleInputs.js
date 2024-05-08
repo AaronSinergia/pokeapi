@@ -1,8 +1,5 @@
 export const styleInputs = {
-  fontSize: '15px',
   fontFamily: 'Arial',
-  width: '140px',
-  height: '30px',
   borderWidth: '1px',
   borderColor: '#d02718',
   borderTopLeftRadius: '18px',
