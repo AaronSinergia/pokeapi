@@ -15,7 +15,7 @@ img[alt='pokedex_photo'] {
   position: absolute;
   width: 143px;
   height: 118px;
-  margin: 0 0 0 193px;
+  margin: 0 0 0 192px;
 }
 
 .pokemon_titlename {
@@ -34,7 +34,7 @@ img[alt='pokedex_photo'] {
 
 .div_pkm_img {
   position: absolute;
-  margin: 0 170px 30px 0;
+  margin: 0 175px 25px 0;
 }
 
 .pokemon_img {
@@ -48,30 +48,30 @@ img[src='./assets/no-image-icon-4.png'] {
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   img[alt='pokedex_photo'] {
-    width: 710px;
+    width: 760px;
   }
 
   .text_info {
-    width: 220px;
-    height: 178px;
-    margin: 0 0 3px 299px;
+    width: 200px;
+    height: 160px;
+    margin: 0 0 65px 405px;
   }
 
   .pokemon_titlename {
-    font-size: 15px;
-    padding: 10px;
+    font-size: 30px;
   }
 
   .pokemon_type {
-    font-size: 15px;
+    font-size: 30px;
+    white-space: nowrap;
   }
 
   .div_pkm_img {
-    margin: 0 250px 30px 0;
+    margin: 0 385px 60px 0;
   }
 
   .pokemon_img {
-    width: 170px;
+    width: 200px;
   }
 
   img[src='./assets/no-image-icon-4.png'] {
@@ -87,17 +87,18 @@ img[src='./assets/no-image-icon-4.png'] {
   }
 
   .text_info {
-    width: 220px;
-    height: 178px;
-    margin: 0 0 3px 299px;
+    width: 200px;
+    height: 160px;
+    margin: 0 0 60px 380px;
   }
 
   .pokemon_titlename {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .pokemon_type {
-    font-size: 25px;
+    font-size: 30px;
+    white-space: nowrap;
   }
 
   .div_pkm_img {
@@ -105,7 +106,7 @@ img[src='./assets/no-image-icon-4.png'] {
   }
 
   .pokemon_img {
-    width: 190px;
+    width: 200px;
   }
 
   img[src='./assets/no-image-icon-4.png'] {
@@ -123,7 +124,7 @@ img[src='./assets/no-image-icon-4.png'] {
   .text_info {
     width: 200px;
     height: 160px;
-    margin: 0 0 50px 380px;
+    margin: 0 0 66px 370px;
   }
 
   .pokemon_titlename {
@@ -132,6 +133,7 @@ img[src='./assets/no-image-icon-4.png'] {
 
   .pokemon_type {
     font-size: 30px;
+    white-space: nowrap;
   }
 
   .div_pkm_img {
@@ -159,7 +161,7 @@ img[src='./assets/no-image-icon-4.png'] {
   .text_info {
     width: 183px;
     height: 148px;
-    margin: 0 0 3px 245px;
+    margin: 0 0 3px 243px;
   }
 
   .pokemon_titlename {

@@ -36,41 +36,103 @@
   }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 3328px) {
+@media screen and (min-width: 1300px) and (max-width: 3328px) {
   .onoff_div {
-    bottom: 421px;
-    height: 50px;
-    right: 221px;
-    margin: 0 47.5%;
+    height: 0px;
+    width: 80px;
+    right: 305px;
+    margin-bottom: 40px;
+    margin-left: 46.9%;
   }
 
   .on_off {
-    font-size: 34px;
-    bottom: 7px;
+    font-size: 50px;
+    bottom: 10px;
   }
 
   .on_title {
-    bottom: 70px;
-    font-size: 14px;
+    bottom: 96px;
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+  .onoff_div {
+    height: 0px;
+    width: 80px;
+    right: 305px;
+    margin-bottom: 40px;
+    margin-left: 46.6%;
+  }
+
+  .on_off {
+    font-size: 50px;
+    bottom: 10px;
+  }
+
+  .on_title {
+    bottom: 96px;
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1200px) {
+  .onoff_div {
+    height: 0px;
+    width: 80px;
+    right: 306px;
+    margin-bottom: 40px;
+    margin-left: 46.4%;
+  }
+
+  .on_off {
+    font-size: 50px;
+    bottom: 10px;
+  }
+
+  .on_title {
+    bottom: 96px;
+    font-size: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1100px) {
+  .onoff_div {
+    height: 0px;
+    width: 80px;
+    right: 309px;
+    margin-bottom: 40px;
+    margin-left: 46.5%;
+  }
+
+  .on_off {
+    font-size: 50px;
+    bottom: 10px;
+  }
+
+  .on_title {
+    bottom: 96px;
+    font-size: 25px;
   }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   .onoff_div {
-    bottom: 418px;
-    height: 46px;
-    right: 221px;
-    margin: 0 47%;
+    height: 65px;
+    width: 73px;
+    right: 291px;
+    top: 69px;
+    margin-left: 46.8%;
   }
 
   .on_off {
-    font-size: 32px;
-    bottom: 7px;
+    font-size: 47px;
+    bottom: 8px;
   }
 
   .on_title {
-    bottom: 68px;
-    font-size: 14px;
+    bottom: 87px;
+    font-size: 20px;
   }
 }
 
@@ -78,9 +140,9 @@
   .onoff_div {
     height: 65px;
     width: 73px;
-    right: 294px;
+    right: 293px;
     top: 69px;
-    margin: 0 47.1%;
+    margin-left: 47%;
   }
 
   .on_off {

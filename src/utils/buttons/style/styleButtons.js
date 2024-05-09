@@ -2,7 +2,6 @@ export const styleButtons = {
   textDecoration: 'none',
   fontFamily: 'Arial',
   borderWidth: '1px',
-  color: '#fff',
   borderColor: '#d02718',
   fontWeight: 'bold',
   borderTopLeftRadius: '18px',
@@ -11,5 +10,5 @@ export const styleButtons = {
   borderBottomRightRadius: '18px',
   boxShadow: '3px 4px 0px 0px #8a2a21',
   textShadow: '0px 1px 0px #810e05',
-  background: 'linear-gradient(#c62d1f, #f24437)',
+  textAlign: 'center',
 };

@@ -7,8 +7,8 @@ img[alt='pokedex_title'] {
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   img[alt='pokedex_title'] {
     width: 350px;
-    margin-top: 5px;
-    margin-bottom: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
     margin-top: 0;
   }
 }
@@ -16,7 +16,7 @@ img[alt='pokedex_title'] {
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   img[alt='pokedex_title'] {
     width: 350px;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     margin-top: 0;
   }
 }

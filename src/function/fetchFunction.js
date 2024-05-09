@@ -1,5 +1,5 @@
-export const fetchFunction = (url, setData, setPokemon) => {
-  fetch(url)
+export const fetchFunction = (url) => {
+  return fetch(url)
     .then((response) => {
       if (!response.ok) {
         throw new Error('La consulta realizada no es válida');
@@ -7,15 +7,11 @@ export const fetchFunction = (url, setData, setPokemon) => {
       return response.json();
     })
     .then((apiData) => {
-      if (setData) {
-        setData(apiData);
-      }
-      if (setPokemon) {
-        setPokemon(apiData.id);
-      }
+      return apiData;
     })
     .catch((error) => {
       console.log(error);
       alert('No se ha encontrado ningún Pokemon');
+      return Promise.reject(error);
     });
 };
