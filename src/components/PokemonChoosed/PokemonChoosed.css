@@ -10,6 +10,7 @@ img[alt='pokedex_photo'] {
 }
 
 .text_info {
+  font-family: monospace;
   display: grid;
   grid-template-rows: 1fr 1fr;
   position: absolute;

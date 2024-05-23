@@ -7,6 +7,7 @@ const StateComp = ({ children }) => {
   const [showPokeApi, setShowPokeApi] = useState(false);
   const [data, setData] = useState(null);
   const [inputValue, setInputValue] = useState('');
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
 
   const increment = () => {
     setPokemon((nextId) => (nextId < 1025 ? nextId + 1 : 1));
@@ -31,6 +32,8 @@ const StateComp = ({ children }) => {
         setinputPkmID,
         increment,
         decrement,
+        currentMessageIndex,
+        setCurrentMessageIndex,
       }}
     >
       {children}

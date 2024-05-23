@@ -11,6 +11,7 @@ const OnoffBTN = () => {
       onClick={() => handleTogglePokeApi(showPokeApi, setShowPokeApi)}
       className="onoff_div"
     >
+      <audio id="start_sound" src="../sounds/pokemon_title_song.mp3"></audio>
       <audio id="on_sound" src="../sounds/on_sound.mp3"></audio>
       <audio id="off_sound" src="../sounds/off_sound.mp3"></audio>
       <h2 onClick={handleTogglePokeApi} className="on_off" title="ON/OFF">
