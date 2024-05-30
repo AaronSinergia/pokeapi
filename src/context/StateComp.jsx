@@ -36,6 +36,10 @@ const StateComp = ({ children }) => {
         setCurrentMessageIndex,
       }}
     >
+      <audio id="on_sound" src="../sounds/on_sound.mp3"></audio>
+      <audio id="off_sound" src="../sounds/off_sound.mp3"></audio>
+      <audio id="start_sound" src="../sounds/pokemon_title_song.mp3"></audio>
+      <audio id="fight_sound" src="../sounds/fight_sound.mp3"></audio>
       {children}
     </pokeContext.Provider>
   );
