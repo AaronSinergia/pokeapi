@@ -1,27 +1,30 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import './PokemonChoosed.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import Backnextbtn from '../Backnextbtn/Backnextbtn';
 import { pokeContext } from '../../context/pokeContext';
 import Navbar from '../Navbar/Navbar';
+import { pkmnChoosedToFight } from '../../function/pkmnChoosedToFight';
 
 const PokemonChoosed = () => {
-  const { data } = useContext(pokeContext);
+  const { data, pokemonFighter, setPokemonFighter } = useContext(pokeContext);
 
-  const pkmnChoosedToFight = (ev) => {
-    console.log('pelea wey');
-    console.log(ev.target.className); // classname actual
-    ev.target.className = 'pkmn_goto_fight';
-    console.log(data.types[0].type.name); // aqui seleccionamos el tipo del pokemon
-    const fight_sound = document.getElementById('fight_sound');
-    const start_sound = document.getElementById('start_sound');
-
-    start_sound.pause();
-    fight_sound.play();
-  };
+  const handleImageClick = useCallback(
+    (ev) => {
+      pkmnChoosedToFight(ev, data, setPokemonFighter);
+    },
+    [data, setPokemonFighter]
+  );
 
   return (
     <>
+      {pokemonFighter ? (
+        <img
+          src={pokemonFighter.sprites.front_default}
+          alt={pokemonFighter.name}
+          className="pokemon_fighterTwo_img"
+        />
+      ) : null}
       <div className="pkmn_choosed">
         <PokedexIMG />
         <Navbar />
@@ -32,7 +35,7 @@ const PokemonChoosed = () => {
         <div className="div_pkm_img">
           {data.sprites.front_default ? (
             <img
-              onClick={(ev) => pkmnChoosedToFight(ev)}
+              onClick={handleImageClick}
               src={data.sprites.front_default}
               alt={data.name}
               className="pokemon_img"
