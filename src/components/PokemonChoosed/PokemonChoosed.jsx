@@ -7,25 +7,27 @@ import Navbar from '../Navbar/Navbar';
 import { pkmnChoosedToFight } from '../../function/pkmnChoosedToFight';
 
 const PokemonChoosed = () => {
-  const { data, pokemonFighter, setPokemonFighter } = useContext(pokeContext);
+  const { data, pokemonFighterData, setPokemonFighter } =
+    useContext(pokeContext);
 
   const handleImageClick = useCallback(
     (ev) => {
-      pkmnChoosedToFight(ev, data, setPokemonFighter);
+      pkmnChoosedToFight(ev, setPokemonFighter);
     },
-    [data, setPokemonFighter]
+    [setPokemonFighter]
   );
 
   return (
     <>
-      {pokemonFighter ? (
-        <img
-          src={pokemonFighter.sprites.front_default}
-          alt={pokemonFighter.name}
-          className="pokemon_fighterTwo_img"
-        />
-      ) : null}
       <div className="pkmn_choosed">
+        {pokemonFighterData?.sprites ? (
+          <img
+            src={pokemonFighterData.sprites.front_default}
+            alt={pokemonFighterData.name}
+            className="pkmn_random_tofight"
+          />
+        ) : null}
+
         <PokedexIMG />
         <Navbar />
         <section className="text_info">

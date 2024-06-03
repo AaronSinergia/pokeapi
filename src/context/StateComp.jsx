@@ -8,7 +8,8 @@ const StateComp = ({ children }) => {
   const [data, setData] = useState(null);
   const [inputValue, setInputValue] = useState('');
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
-  const [pokemonFighter, setPokemonFighter] = useState('');
+  const [pokemonFighter, setPokemonFighter] = useState(false);
+  const [pokemonFighterData, setPokemonFighterData] = useState(null);
 
   const increment = () => {
     setPokemon((nextId) => (nextId < 1025 ? nextId + 1 : 1));
@@ -37,6 +38,8 @@ const StateComp = ({ children }) => {
         setCurrentMessageIndex,
         pokemonFighter,
         setPokemonFighter,
+        pokemonFighterData,
+        setPokemonFighterData,
       }}
     >
       <audio id="on_sound" src="../sounds/on_sound.mp3"></audio>

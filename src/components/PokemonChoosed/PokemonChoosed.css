@@ -51,7 +51,13 @@ img[src='./assets/no-image-icon-4.png'] {
 .pkmn_goto_fight {
   width: 60px;
   transform: scaleX(-1);
-  margin: 0 70px 10px 0;
+  margin: 20px 80px 0 0;
+}
+
+.pkmn_random_tofight {
+  position: absolute;
+  width: 60px;
+  margin: 0 130px 70px 0;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {

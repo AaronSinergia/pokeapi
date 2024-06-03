@@ -1,4 +1,4 @@
-export const pkmnChoosedToFight = (ev, data, setPokemonFighter) => {
+export const pkmnChoosedToFight = (ev, setPokemonFighter) => {
   setPokemonFighter(true);
   ev.target.className = 'pkmn_goto_fight';
 

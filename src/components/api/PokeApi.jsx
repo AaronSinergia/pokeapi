@@ -14,7 +14,7 @@ const PokeApi = () => {
     setPokemon,
     inputPkmID,
     pokemonFighter,
-    setPokemonFighter,
+    setPokemonFighterData,
   } = useContext(pokeContext);
 
   const defaultAPI_URL = `${default_POKEAPI_Url}/${pokemon}`;
@@ -57,16 +57,17 @@ const PokeApi = () => {
     if (pokemonFighter) {
       const randomPkmnID = Math.floor(Math.random() * 1025);
       const pokemonFightURL = `${default_POKEAPI_Url}/${randomPkmnID}`;
+
       fetchFunction(pokemonFightURL)
         .then((apiData) => {
-          setPokemonFighter(apiData);
+          setPokemonFighterData(apiData);
         })
         .catch((error) => {
           console.log(error);
           alert('No se ha encontrado ningún Pokemon para luchar');
         });
     }
-  }, [pokemonFighter]);
+  }, [pokemonFighter, setPokemonFighterData]);
 
   return (
     <>
