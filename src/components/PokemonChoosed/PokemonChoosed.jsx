@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import './PokemonChoosed.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import Backnextbtn from '../Backnextbtn/Backnextbtn';
@@ -7,27 +7,25 @@ import Navbar from '../Navbar/Navbar';
 import { pkmnChoosedToFight } from '../../function/pkmnChoosedToFight';
 
 const PokemonChoosed = () => {
-  const { data, pokemonFighterData, setPokemonFighter } =
+  const { data, pokemonFighterData, setPokemonFighter, randomID, setRandomID } =
     useContext(pokeContext);
 
   const handleImageClick = useCallback(
     (ev) => {
-      pkmnChoosedToFight(ev, setPokemonFighter);
+      pkmnChoosedToFight(
+        ev,
+        setPokemonFighter,
+        setRandomID,
+        data,
+        pokemonFighterData
+      );
     },
-    [setPokemonFighter]
+    [setPokemonFighter, randomID, data, pokemonFighterData]
   );
 
   return (
     <>
       <div className="pkmn_choosed">
-        {pokemonFighterData?.sprites ? (
-          <img
-            src={pokemonFighterData.sprites.front_default}
-            alt={pokemonFighterData.name}
-            className="pkmn_random_tofight"
-          />
-        ) : null}
-
         <PokedexIMG />
         <Navbar />
         <section className="text_info">
@@ -35,6 +33,14 @@ const PokemonChoosed = () => {
           <h3 className="pokemon_type"> TYPE: {data.types[0].type.name}</h3>
         </section>
         <div className="div_pkm_img">
+          {pokemonFighterData?.sprites ? (
+            <img
+              src={pokemonFighterData.sprites.front_default}
+              alt={pokemonFighterData.name}
+              className="pkmn_random_enemy"
+            />
+          ) : null}
+
           {data.sprites.front_default ? (
             <img
               onClick={handleImageClick}

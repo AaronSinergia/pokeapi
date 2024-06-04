@@ -38,9 +38,43 @@ img[alt='pokedex_photo'] {
   margin: 0 175px 25px 0;
 }
 
+.pkmn_goto_fight {
+  width: 60px;
+  transform: scaleX(-1);
+  margin: 30px 85px 0 0;
+}
+
 .pokemon_img {
   width: 100px;
   cursor: pointer;
+}
+
+.pokemon_img:hover {
+  animation: blink 1s infinite alternate, zoom 1s infinite alternate;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 img[src='./assets/no-image-icon-4.png'] {
@@ -48,16 +82,12 @@ img[src='./assets/no-image-icon-4.png'] {
   margin-right: 8px;
 }
 
-.pkmn_goto_fight {
-  width: 60px;
-  transform: scaleX(-1);
-  margin: 20px 80px 0 0;
-}
-
-.pkmn_random_tofight {
+.pkmn_random_enemy {
+  display: none;
   position: absolute;
   width: 60px;
-  margin: 0 130px 70px 0;
+  bottom: 35px;
+  left: 70px;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {

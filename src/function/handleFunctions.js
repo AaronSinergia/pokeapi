@@ -29,22 +29,18 @@ export const handleTogglePokeApi = (showPokeApi, setShowPokeApi) => {
     popup.style.display = 'flex';
     const on_sound = document.getElementById('on_sound');
     const start_sound = document.getElementById('start_sound');
-    const fight_sound = document.getElementById('fight_sound');
 
     on_sound.play();
     start_sound.loop = true;
     start_sound.play();
-
-    fight_sound.addEventListener('ended', () => {
-      const pokemonImg = document.querySelector('.pkmn_goto_fight');
-      pokemonImg.className = 'pokemon_img';
-      start_sound.loop = true;
-      start_sound.play();
-    });
   } else {
     const off_sound = document.getElementById('off_sound');
     off_sound.play();
     start_sound.pause();
+
+    const fight_sound = document.getElementById('fight_sound');
+    fight_sound.pause();
+
     const popup = document.querySelector('.div_popup');
     popup.style.display = 'none';
   }

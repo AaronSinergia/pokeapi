@@ -10,6 +10,7 @@ const StateComp = ({ children }) => {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [pokemonFighter, setPokemonFighter] = useState(false);
   const [pokemonFighterData, setPokemonFighterData] = useState(null);
+  const [randomID, setRandomID] = useState('');
 
   const increment = () => {
     setPokemon((nextId) => (nextId < 1025 ? nextId + 1 : 1));
@@ -40,12 +41,16 @@ const StateComp = ({ children }) => {
         setPokemonFighter,
         pokemonFighterData,
         setPokemonFighterData,
+        randomID,
+        setRandomID,
       }}
     >
       <audio id="on_sound" src="../sounds/on_sound.mp3"></audio>
       <audio id="off_sound" src="../sounds/off_sound.mp3"></audio>
       <audio id="start_sound" src="../sounds/pokemon_title_song.mp3"></audio>
-      <audio id="fight_sound" src="../sounds/fight_sound.mp3"></audio>
+      {/* <audio id="fight_sound" src="../sounds/fight_sound.mp3"></audio> */}
+      <audio id="fight_sound" src="../sounds/on_sound.mp3"></audio>
+      {/* borrar este clickinbuttron */}
       {children}
     </pokeContext.Provider>
   );

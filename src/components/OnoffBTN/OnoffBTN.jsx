@@ -11,10 +11,17 @@ const OnoffBTN = () => {
       onClick={() => handleTogglePokeApi(showPokeApi, setShowPokeApi)}
       className="onoff_div"
     >
-      <h2 onClick={handleTogglePokeApi} className="on_off" title="ON/OFF">
+      <h2
+        onClick={() => handleTogglePokeApi(showPokeApi, setShowPokeApi)}
+        className="on_off"
+        title="ON/OFF"
+      >
         🔵
       </h2>
-      <h3 onClick={handleTogglePokeApi} className="on_title">
+      <h3
+        onClick={() => handleTogglePokeApi(showPokeApi, setShowPokeApi)}
+        className="on_title"
+      >
         {showPokeApi ? 'ON' : 'OFF'}
       </h3>
     </div>
