@@ -4,24 +4,111 @@ import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import Backnextbtn from '../Backnextbtn/Backnextbtn';
 import { pokeContext } from '../../context/pokeContext';
 import Navbar from '../Navbar/Navbar';
-import { pkmnChoosedToFight } from '../../function/pkmnChoosedToFight';
+import { styleButtons } from '../../utils/buttons/style/styleButtons';
+import { handleClickAndSound } from '../../function/handleFunctions';
+import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 const PokemonChoosed = () => {
-  const { data, pokemonFighterData, setPokemonFighter, randomID, setRandomID } =
-    useContext(pokeContext);
+  const {
+    data,
+    pokemonFighterData,
+    setPokemonFighter,
+    setRandomID,
+    setPokemonFighterData,
+  } = useContext(pokeContext);
 
   const handleImageClick = useCallback(
     (ev) => {
-      pkmnChoosedToFight(
-        ev,
-        setPokemonFighter,
-        setRandomID,
-        data,
-        pokemonFighterData
-      );
+      const lol = comparePokemonTypes('fire', 'water');
+      console.log(lol);
+      setPokemonFighter(true);
+
+      const randomPkmnID = Math.floor(Math.random() * 1025);
+      setRandomID(randomPkmnID);
+
+      ev.target.className = 'pkmn_goto_fight';
     },
-    [setPokemonFighter, randomID, data, pokemonFighterData]
+    [setPokemonFighter, setRandomID]
   );
+
+  useEffect(() => {
+    if (pokemonFighterData) {
+      // console.log(data.types[0].type.name);
+      // console.log(pokemonFighterData.types[0].type.name);
+
+      const onoffButtonDisabled = document.querySelector('.onoff_div');
+      onoffButtonDisabled.style.zIndex = -1;
+
+      const fight_sound = document.getElementById('fight_sound');
+      const start_sound = document.getElementById('start_sound');
+      let navigateButtons = document.querySelector('.pokenavigate_btns');
+      let navbar = document.querySelector('.navbar');
+
+      fight_sound.play();
+      start_sound.pause();
+
+      const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
+      if (pokemonRandomEnemy) {
+        pokemonRandomEnemy.style.display = 'flex';
+      }
+
+      if (navigateButtons) {
+        navigateButtons.style.display = 'none';
+      }
+      if (navbar) {
+        navbar.style.display = 'none';
+      }
+
+      fight_sound.addEventListener('ended', () => {
+        const pokemonImg = document.querySelector('.pkmn_goto_fight');
+        if (pokemonImg) {
+          pokemonImg.className = 'pokemon_img';
+        }
+        const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
+        pokemonRandomEnemy.style.display = 'none';
+
+        navigateButtons.style.display = 'flex';
+        navbar.style.display = 'flex';
+
+        start_sound.loop = true;
+        start_sound.play();
+      });
+    }
+  }, [pokemonFighterData, data]);
+
+  const handleStopFight = useCallback(() => {
+    setPokemonFighter(false);
+    setPokemonFighterData(null);
+
+    const onoffButtonDisabled = document.querySelector('.onoff_div');
+    onoffButtonDisabled.style.zIndex = 1;
+
+    const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
+    pokemonGoToFight.className = 'pokemon_img';
+
+    const fight_sound = document.getElementById('fight_sound');
+    const start_sound = document.getElementById('start_sound');
+    let navigateButtons = document.querySelector('.pokenavigate_btns');
+    let navbar = document.querySelector('.navbar');
+
+    if (fight_sound) fight_sound.pause();
+    if (start_sound) {
+      start_sound.loop = true;
+      start_sound.play();
+    }
+
+    const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
+    if (pokemonRandomEnemy) {
+      pokemonRandomEnemy.style.display = 'none';
+    }
+
+    if (navigateButtons) {
+      navigateButtons.style.display = 'flex';
+    }
+    if (navbar) {
+      navbar.style.display = 'flex';
+    }
+  }, [setPokemonFighter, setPokemonFighterData]);
 
   return (
     <>
@@ -34,11 +121,23 @@ const PokemonChoosed = () => {
         </section>
         <div className="div_pkm_img">
           {pokemonFighterData?.sprites ? (
-            <img
-              src={pokemonFighterData.sprites.front_default}
-              alt={pokemonFighterData.name}
-              className="pkmn_random_enemy"
-            />
+            <>
+              <img
+                src={pokemonFighterData.sprites.front_default}
+                alt={pokemonFighterData.name}
+                className="pkmn_random_enemy"
+              />
+              <button
+                onClick={() => {
+                  handleStopFight();
+                  handleClickAndSound();
+                }}
+                className="stop_fight"
+                style={styleButtons}
+              >
+                STOP FIGHT
+              </button>
+            </>
           ) : null}
 
           {data.sprites.front_default ? (

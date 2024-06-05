@@ -90,6 +90,14 @@ img[src='./assets/no-image-icon-4.png'] {
   left: 70px;
 }
 
+.stop_fight {
+  position: absolute;
+  font-size: 9px;
+  bottom: 114px;
+  left: 81px;
+  padding: 5px 3px;
+}
+
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   img[alt='pokedex_photo'] {
     width: 760px;
