@@ -8,6 +8,8 @@ import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import { handleClickAndSound } from '../../function/handleFunctions';
 import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
+import PokemonWinner from '../PokemonWinner/PokemonWinner';
+
 const PokemonChoosed = () => {
   const {
     data,
@@ -15,12 +17,11 @@ const PokemonChoosed = () => {
     setPokemonFighter,
     setRandomID,
     setPokemonFighterData,
+    setComparisionResult,
   } = useContext(pokeContext);
 
   const handleImageClick = useCallback(
     (ev) => {
-      const lol = comparePokemonTypes('fire', 'water');
-      console.log(lol);
       setPokemonFighter(true);
 
       const randomPkmnID = Math.floor(Math.random() * 1025);
@@ -33,8 +34,16 @@ const PokemonChoosed = () => {
 
   useEffect(() => {
     if (pokemonFighterData) {
-      // console.log(data.types[0].type.name);
-      // console.log(pokemonFighterData.types[0].type.name);
+      const pokemonChoosedToFight = data.types[0].type.name;
+      const pokemonRandomToFight = pokemonFighterData.types[0].type.name;
+
+      comparePokemonTypes(pokemonChoosedToFight, pokemonRandomToFight)
+        .then((comparisionResult) => {
+          setComparisionResult(comparisionResult);
+        })
+        .catch((error) => {
+          console.error('Error with comparision:', error);
+        });
 
       const onoffButtonDisabled = document.querySelector('.onoff_div');
       onoffButtonDisabled.style.zIndex = -1;
@@ -59,13 +68,28 @@ const PokemonChoosed = () => {
         navbar.style.display = 'none';
       }
 
+      const textWinnerPkmn = document.querySelector('.title_winner');
+      textWinnerPkmn.style.display = 'flex';
+
       fight_sound.addEventListener('ended', () => {
+        setPokemonFighter(false);
+        setPokemonFighterData(null);
+
+        const onoffButtonDisabled = document.querySelector('.onoff_div');
+        onoffButtonDisabled.style.zIndex = 1;
+
+        const textWinnerPkmn = document.querySelector('.title_winner');
+        textWinnerPkmn.style.display = 'none';
+
         const pokemonImg = document.querySelector('.pkmn_goto_fight');
         if (pokemonImg) {
           pokemonImg.className = 'pokemon_img';
         }
+
         const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
-        pokemonRandomEnemy.style.display = 'none';
+        if (pokemonRandomEnemy) {
+          pokemonRandomEnemy.style.display = 'none';
+        }
 
         navigateButtons.style.display = 'flex';
         navbar.style.display = 'flex';
@@ -82,6 +106,9 @@ const PokemonChoosed = () => {
 
     const onoffButtonDisabled = document.querySelector('.onoff_div');
     onoffButtonDisabled.style.zIndex = 1;
+
+    const textWinnerPkmn = document.querySelector('.title_winner');
+    textWinnerPkmn.style.display = 'none';
 
     const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
     pokemonGoToFight.className = 'pokemon_img';
@@ -155,6 +182,7 @@ const PokemonChoosed = () => {
             />
           )}
         </div>
+        <PokemonWinner />
         <Backnextbtn />
       </div>
     </>

@@ -1,0 +1,8 @@
+.title_winner {
+  position: absolute;
+  color: white;
+  left: 20px;
+  top: 190px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
