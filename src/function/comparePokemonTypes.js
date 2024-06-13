@@ -40,48 +40,42 @@ export async function comparePokemonTypes(type1, type2) {
       type2HalfDamageToType1 ||
       type2NoDamageToType1
     ) {
-      return `${type1} IS WINNER TYPE`;
+      const pokemonType = document.querySelector('.pokemon_type');
+      if (pokemonType) {
+        pokemonType.style.position = 'absolute';
+        pokemonType.style.marginTop = '30px';
+        pokemonType.style.marginLeft = '25px';
+      }
+
+      const pokemonRandom = document.querySelector('.pkmn_random_enemy');
+      pokemonRandom.style.filter = 'sepia(100%)';
+
+      return `YOU WIN!!! 😎`;
     } else if (
       type2DoubleDamageToType1 ||
       type1HalfDamageToType2 ||
       type1NoDamageToType2
     ) {
-      return `${type2} IS WINNER TYPE`;
-    } else if (
-      type1HalfDamageToType2 ||
-      type1NoDamageToType2 ||
-      type2HalfDamageToType1 ||
-      type2NoDamageToType1
-    ) {
-      return 'Both types are less effective against each other.';
-    } else {
-      return 'Both types are less effective against each other.';
-    }
+      const pokemonType = document.querySelector('.pokemon_type');
+      if (pokemonType) {
+        pokemonType.style.position = 'absolute';
+        pokemonType.style.marginTop = '30px';
+        pokemonType.style.marginLeft = '25px';
+      }
 
-    // if (
-    //   type1DoubleDamageToType2 ||
-    //   type2HalfDamageToType1 ||
-    //   type2NoDamageToType1
-    // ) {
-    //   console.log(`${type1} tiene ventaja sobre ${type2}`);
-    //   // const type1Wins = `${type1} tiene ventaja sobre ${type2}`;
-    //   // return type1Wins;
-    // } else if (
-    //   type2DoubleDamageToType1 ||
-    //   type1HalfDamageToType2 ||
-    //   type1NoDamageToType2
-    // ) {
-    //   console.log(`${type2} tiene ventaja sobre ${type1}`);
-    // } else if (
-    //   type1HalfDamageToType2 ||
-    //   type1NoDamageToType2 ||
-    //   type2HalfDamageToType1 ||
-    //   type2NoDamageToType1
-    // ) {
-    //   console.log('Ambos tipos son menos efectivos entre sí.');
-    // } else {
-    //   console.log('Ambos tipos son igualmente efectivos entre sí.');
-    // }
+      const pokemonChoosed = document.querySelector('.pkmn_goto_fight');
+      pokemonChoosed.style.filter = 'sepia(100%)';
+
+      return `ENEMY WINS! 😫`;
+    } else {
+      const pokemonType = document.querySelector('.pokemon_type');
+      if (pokemonType) {
+        pokemonType.style.position = 'absolute';
+        pokemonType.style.marginTop = '30px';
+        pokemonType.style.marginLeft = '25px';
+      }
+      return 'TIED MATCH! 😱';
+    }
   } catch (error) {
     console.error('Error al comparar los tipos de Pokémon:', error);
   }

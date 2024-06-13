@@ -17,20 +17,26 @@ img[alt='pokedex_photo'] {
   width: 143px;
   height: 118px;
   margin: 0 0 0 192px;
+  text-transform: uppercase;
 }
 
 .pokemon_titlename {
   color: rgb(255, 255, 255);
-  text-transform: uppercase;
   position: relative;
   font-size: 15px;
 }
 
 .pokemon_type {
   color: rgb(255, 255, 255);
-  text-transform: uppercase;
   position: relative;
   font-size: 15px;
+}
+
+.pokemon_vs_title {
+  position: absolute;
+  animation: blink 1s infinite alternate, zoom 1s infinite alternate;
+  margin-top: 45px;
+  margin-left: 245px;
 }
 
 .div_pkm_img {

@@ -2,10 +2,6 @@ export const handleReload = () => {
   window.location.href = '/';
 };
 
-export const toggleInput = (showInput, setShowInput) => {
-  setShowInput(!showInput);
-};
-
 export const handleChange = (event, setInputValue) => {
   setInputValue(event.target.value);
 };
@@ -17,6 +13,21 @@ export const handleSubmit = (inputValue, setinputPkmID) => {
 export const handleClickAndSound = () => {
   const click_sound = document.getElementById('click_sound');
   click_sound.play();
+};
+
+export const handleStopMusic = (musicOff, setMusicOff) => {
+  setMusicOff(!musicOff);
+
+  const start_sound = document.getElementById('start_sound');
+  let musicOffLogo = document.querySelector('.mute_btn');
+
+  if (musicOff) {
+    musicOffLogo.src = './assets/mute_logo.png';
+    start_sound.pause();
+  } else {
+    musicOffLogo.src = './assets/onSound_logo.png';
+    start_sound.play();
+  }
 };
 
 export const handleTogglePokeApi = (showPokeApi, setShowPokeApi) => {

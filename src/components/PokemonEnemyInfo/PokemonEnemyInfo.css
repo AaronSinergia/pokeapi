@@ -1,0 +1,18 @@
+.text_info_enemy {
+  font-family: monospace;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  position: absolute;
+  width: 143px;
+  margin: 50px 0 0 184px;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.pokemon_titlename_enemy {
+  margin-top: 20px;
+}
+
+.pokemon_type_enemy {
+  margin-top: -24px;
+}

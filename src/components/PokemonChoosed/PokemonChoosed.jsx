@@ -9,6 +9,7 @@ import { handleClickAndSound } from '../../function/handleFunctions';
 import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 import PokemonWinner from '../PokemonWinner/PokemonWinner';
+import PokemonEnemyInfo from '../PokemonEnemyInfo/PokemonEnemyInfo';
 
 const PokemonChoosed = () => {
   const {
@@ -28,6 +29,9 @@ const PokemonChoosed = () => {
       setRandomID(randomPkmnID);
 
       ev.target.className = 'pkmn_goto_fight';
+
+      const pokemonWinnerTitle = document.querySelector('.title_winner');
+      pokemonWinnerTitle.style.zIndex = 1;
     },
     [setPokemonFighter, setRandomID]
   );
@@ -52,6 +56,7 @@ const PokemonChoosed = () => {
       const start_sound = document.getElementById('start_sound');
       let navigateButtons = document.querySelector('.pokenavigate_btns');
       let navbar = document.querySelector('.navbar');
+      let musicOffLogo = document.querySelector('.mute_btn');
 
       fight_sound.play();
       start_sound.pause();
@@ -61,6 +66,9 @@ const PokemonChoosed = () => {
         pokemonRandomEnemy.style.display = 'flex';
       }
 
+      if (musicOffLogo) {
+        musicOffLogo.style.display = 'none';
+      }
       if (navigateButtons) {
         navigateButtons.style.display = 'none';
       }
@@ -71,12 +79,16 @@ const PokemonChoosed = () => {
       const textWinnerPkmn = document.querySelector('.title_winner');
       textWinnerPkmn.style.display = 'flex';
 
+      // WHEN FIGHT SOUND FINISHED
       fight_sound.addEventListener('ended', () => {
         setPokemonFighter(false);
         setPokemonFighterData(null);
 
         const onoffButtonDisabled = document.querySelector('.onoff_div');
         onoffButtonDisabled.style.zIndex = 1;
+
+        const pokemonChoosed = document.querySelector('.pokemon_img');
+        pokemonChoosed.style.filter = 'sepia(0%)';
 
         const textWinnerPkmn = document.querySelector('.title_winner');
         textWinnerPkmn.style.display = 'none';
@@ -91,6 +103,7 @@ const PokemonChoosed = () => {
           pokemonRandomEnemy.style.display = 'none';
         }
 
+        musicOffLogo.style.display = 'flex';
         navigateButtons.style.display = 'flex';
         navbar.style.display = 'flex';
 
@@ -113,10 +126,18 @@ const PokemonChoosed = () => {
     const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
     pokemonGoToFight.className = 'pokemon_img';
 
+    let musicOffLogo = document.querySelector('.mute_btn');
+    musicOffLogo.style.display = 'flex';
+
+    const pokemonType = document.querySelector('.pokemon_type');
+    if (pokemonType) {
+      pokemonType.style.position = 'relative';
+      pokemonType.style.marginTop = '15px';
+      pokemonType.style.marginLeft = '0px';
+    }
+
     const fight_sound = document.getElementById('fight_sound');
     const start_sound = document.getElementById('start_sound');
-    let navigateButtons = document.querySelector('.pokenavigate_btns');
-    let navbar = document.querySelector('.navbar');
 
     if (fight_sound) fight_sound.pause();
     if (start_sound) {
@@ -129,9 +150,15 @@ const PokemonChoosed = () => {
       pokemonRandomEnemy.style.display = 'none';
     }
 
+    const pokemonChoosed = document.querySelector('.pokemon_img');
+    pokemonChoosed.style.filter = 'sepia(0%)';
+
+    let navigateButtons = document.querySelector('.pokenavigate_btns');
     if (navigateButtons) {
       navigateButtons.style.display = 'flex';
     }
+
+    let navbar = document.querySelector('.navbar');
     if (navbar) {
       navbar.style.display = 'flex';
     }
@@ -144,7 +171,7 @@ const PokemonChoosed = () => {
         <Navbar />
         <section className="text_info">
           <h3 className="pokemon_titlename">{data.name}</h3>
-          <h3 className="pokemon_type"> TYPE: {data.types[0].type.name}</h3>
+          <h3 className="pokemon_type">TYPE: {data.types[0].type.name}</h3>
         </section>
         <div className="div_pkm_img">
           {pokemonFighterData?.sprites ? (
@@ -154,6 +181,8 @@ const PokemonChoosed = () => {
                 alt={pokemonFighterData.name}
                 className="pkmn_random_enemy"
               />
+              <h3 className="pokemon_vs_title">vs</h3>
+              <PokemonEnemyInfo />
               <button
                 onClick={() => {
                   handleStopFight();
