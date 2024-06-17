@@ -16,7 +16,7 @@ img[alt='pokedex_photo'] {
   position: absolute;
   width: 143px;
   height: 118px;
-  margin: 0 0 0 192px;
+  margin: 0 0 10px 192px;
   text-transform: uppercase;
 }
 
@@ -24,12 +24,15 @@ img[alt='pokedex_photo'] {
   color: rgb(255, 255, 255);
   position: relative;
   font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .pokemon_type {
   color: rgb(255, 255, 255);
   position: relative;
   font-size: 15px;
+  margin-top: 35px;
 }
 
 .pokemon_vs_title {
@@ -48,6 +51,7 @@ img[alt='pokedex_photo'] {
   width: 60px;
   transform: scaleX(-1);
   margin: 30px 85px 0 0;
+  cursor: pointer;
 }
 
 .pokemon_img {
@@ -97,11 +101,21 @@ img[src='./assets/no-image-icon-4.png'] {
 }
 
 .stop_fight {
+  background-color: rgba(114, 29, 29, 0.251);
+  color: white;
   position: absolute;
   font-size: 9px;
-  bottom: 114px;
-  left: 81px;
-  padding: 5px 3px;
+  top: 128px;
+  left: 202px;
+  padding: 7px 40px;
+  cursor: pointer;
+}
+
+.stop_fight:hover,
+.stop_fight:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  -webkit-transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
 }
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {

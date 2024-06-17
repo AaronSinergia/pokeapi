@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import './PokemonWinner.css';
 import { pokeContext } from '../../context/pokeContext';
+import { styleButtons } from '../../utils/buttons/style/styleButtons';
 
 const PokemonWinner = () => {
   const { comparisionResult } = useContext(pokeContext);
@@ -10,7 +11,7 @@ const PokemonWinner = () => {
     setShowWinner(false);
     const timerId = setTimeout(() => {
       setShowWinner(comparisionResult);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timerId);
   }, [comparisionResult]);
@@ -18,9 +19,13 @@ const PokemonWinner = () => {
   return (
     <div>
       {showWinner ? (
-        <h3 className="title_winner">{showWinner}</h3>
+        <h3 style={styleButtons} className="title_winner">
+          {showWinner}
+        </h3>
       ) : (
-        <h3 className="title_winner">Waiting.............</h3>
+        <h3 style={styleButtons} className="title_winner">
+          Waiting.............
+        </h3>
       )}
     </div>
   );

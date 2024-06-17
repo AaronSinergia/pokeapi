@@ -50,7 +50,7 @@ export async function comparePokemonTypes(type1, type2) {
       const pokemonRandom = document.querySelector('.pkmn_random_enemy');
       pokemonRandom.style.filter = 'sepia(100%)';
 
-      return `YOU WIN!!! 😎`;
+      return `YOU WIN!!!!! 😎`;
     } else if (
       type2DoubleDamageToType1 ||
       type1HalfDamageToType2 ||

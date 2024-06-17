@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './Mutebttn.css';
 import { pokeContext } from '../../context/pokeContext';
 import { handleStopMusic } from '../../function/handleFunctions';

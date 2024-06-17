@@ -11,6 +11,8 @@
 
 .pokemon_titlename_enemy {
   margin-top: 20px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .pokemon_type_enemy {

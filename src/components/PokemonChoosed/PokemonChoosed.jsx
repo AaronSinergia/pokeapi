@@ -32,6 +32,13 @@ const PokemonChoosed = () => {
 
       const pokemonWinnerTitle = document.querySelector('.title_winner');
       pokemonWinnerTitle.style.zIndex = 1;
+
+      const pokemonImg = document.querySelector('.pkmn_goto_fight');
+      const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
+      if (pokemonImg) {
+        pokemonImg.style.filter = 'sepia(0%)';
+        pokemonRandomEnemy.style.filter = 'sepia(0%)';
+      }
     },
     [setPokemonFighter, setRandomID]
   );
@@ -56,7 +63,6 @@ const PokemonChoosed = () => {
       const start_sound = document.getElementById('start_sound');
       let navigateButtons = document.querySelector('.pokenavigate_btns');
       let navbar = document.querySelector('.navbar');
-      let musicOffLogo = document.querySelector('.mute_btn');
 
       fight_sound.play();
       start_sound.pause();
@@ -66,9 +72,6 @@ const PokemonChoosed = () => {
         pokemonRandomEnemy.style.display = 'flex';
       }
 
-      if (musicOffLogo) {
-        musicOffLogo.style.display = 'none';
-      }
       if (navigateButtons) {
         navigateButtons.style.display = 'none';
       }
@@ -84,11 +87,11 @@ const PokemonChoosed = () => {
         setPokemonFighter(false);
         setPokemonFighterData(null);
 
+        const yourPokemonType = document.querySelector('.pokemon_type');
+        yourPokemonType.style.marginTop = '90px';
+
         const onoffButtonDisabled = document.querySelector('.onoff_div');
         onoffButtonDisabled.style.zIndex = 1;
-
-        const pokemonChoosed = document.querySelector('.pokemon_img');
-        pokemonChoosed.style.filter = 'sepia(0%)';
 
         const textWinnerPkmn = document.querySelector('.title_winner');
         textWinnerPkmn.style.display = 'none';
@@ -96,14 +99,13 @@ const PokemonChoosed = () => {
         const pokemonImg = document.querySelector('.pkmn_goto_fight');
         if (pokemonImg) {
           pokemonImg.className = 'pokemon_img';
+          pokemonImg.style.filter = 'sepia(0%)';
         }
 
         const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
         if (pokemonRandomEnemy) {
           pokemonRandomEnemy.style.display = 'none';
         }
-
-        musicOffLogo.style.display = 'flex';
         navigateButtons.style.display = 'flex';
         navbar.style.display = 'flex';
 

@@ -21,12 +21,26 @@ export const handleStopMusic = (musicOff, setMusicOff) => {
   const start_sound = document.getElementById('start_sound');
   let musicOffLogo = document.querySelector('.mute_btn');
 
+  let allAudioElements = document.querySelectorAll('audio');
+
+  console.log(allAudioElements);
+
+  let pokemonEnemy = document.querySelector('.pkmn_random_enemy');
+
   if (musicOff) {
     musicOffLogo.src = './assets/mute_logo.png';
-    start_sound.pause();
+    allAudioElements.forEach((audio) => {
+      audio.pause();
+    });
   } else {
     musicOffLogo.src = './assets/onSound_logo.png';
-    start_sound.play();
+
+    if (pokemonEnemy) {
+      const fight_sound = document.getElementById('fight_sound');
+      fight_sound.play();
+    } else {
+      start_sound.play();
+    }
   }
 };
 
