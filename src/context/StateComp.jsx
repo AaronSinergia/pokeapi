@@ -58,6 +58,8 @@ const StateComp = ({ children }) => {
       <audio id="off_sound" src="../sounds/off_sound.mp3"></audio>
       <audio id="start_sound" src="../sounds/pokemon_title_song.mp3"></audio>
       <audio id="fight_sound" src="../sounds/fight_sound.mp3"></audio>
+      <audio id="defeat_sound" src="../sounds/defeat.wav"></audio>
+      <audio id="win_sound" src="../sounds/youwin.mp3"></audio>
       {/* <audio id="fight_sound" src="../sounds/click_in_button.mp3"></audio> */}
       {children}
     </pokeContext.Provider>

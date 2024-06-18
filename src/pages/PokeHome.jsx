@@ -6,7 +6,6 @@ import PokeApi from '../../src/components/api/PokeApi';
 import Footer from '../components/footer/Footer';
 import OnoffBTN from '../components/OnoffBTN/OnoffBTN';
 import { pokeContext } from '../context/pokeContext';
-import Mutebttn from '../components/Mutebttn/Mutebttn';
 
 const PokeHome = () => {
   const { showPokeApi } = useContext(pokeContext);
@@ -18,7 +17,6 @@ const PokeHome = () => {
       <OnoffBTN />
       {!showPokeApi && <PokedexIMG />}
       {showPokeApi && <PokeApi />}
-      {showPokeApi && <Mutebttn />}
       <Footer />
     </>
   );

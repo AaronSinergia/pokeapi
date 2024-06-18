@@ -47,13 +47,6 @@ img[alt='pokedex_photo'] {
   margin: 0 175px 25px 0;
 }
 
-.pkmn_goto_fight {
-  width: 60px;
-  transform: scaleX(-1);
-  margin: 30px 85px 0 0;
-  cursor: pointer;
-}
-
 .pokemon_img {
   width: 100px;
   cursor: pointer;
@@ -61,6 +54,31 @@ img[alt='pokedex_photo'] {
 
 .pokemon_img:hover {
   animation: blink 1s infinite alternate, zoom 1s infinite alternate;
+}
+
+.pkmn_goto_fight {
+  width: 60px;
+  transform: scaleX(-1);
+  margin: 30px 85px 0 0;
+  cursor: pointer;
+}
+
+.pkmn_random_enemy {
+  display: none;
+  position: absolute;
+  width: 60px;
+  bottom: 35px;
+  left: 70px;
+}
+
+@keyframes zoom-effect {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
 }
 
 @keyframes blink {
@@ -92,14 +110,6 @@ img[src='./assets/no-image-icon-4.png'] {
   margin-right: 8px;
 }
 
-.pkmn_random_enemy {
-  display: none;
-  position: absolute;
-  width: 60px;
-  bottom: 35px;
-  left: 70px;
-}
-
 .stop_fight {
   background-color: rgba(114, 29, 29, 0.251);
   color: white;
@@ -109,13 +119,6 @@ img[src='./assets/no-image-icon-4.png'] {
   left: 202px;
   padding: 7px 40px;
   cursor: pointer;
-}
-
-.stop_fight:hover,
-.stop_fight:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  -webkit-transform: translateY(-0.25em);
-  transform: translateY(-0.25em);
 }
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {

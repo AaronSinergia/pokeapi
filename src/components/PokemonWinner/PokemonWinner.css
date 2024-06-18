@@ -1,5 +1,5 @@
 .title_winner {
-  z-index: -1;
+  z-index: -2;
   position: absolute;
   color: rgb(219, 53, 53);
   border: 4px solid black;

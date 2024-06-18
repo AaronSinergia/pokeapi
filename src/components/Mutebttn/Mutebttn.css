@@ -1,9 +1,11 @@
 .mute_btn {
+  display: flex;
   position: absolute;
-  top: 298px;
-  left: 146px;
+  bottom: 216px;
   width: 28px;
   height: 23px;
+  margin-right: 177px;
+  margin-left: 100px;
   z-index: 1;
   animation: blink 5s infinite alternate, zoom 5s infinite alternate;
   cursor: pointer;
@@ -30,5 +32,33 @@
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 3328px) {
+  .mute_btn {
+    top: 317px;
+    margin: 0 390px 0 0;
+  }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1024px) {
+  .mute_btn {
+    top: 290px;
+    margin: 0 365px 0 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 960px) {
+  .mute_btn {
+    top: 385px;
+    margin: 0 360px 0 0;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 768px) {
+  .mute_btn {
+    top: 24px;
+    margin-right: 100px;
   }
 }

@@ -5,11 +5,16 @@ import Backnextbtn from '../Backnextbtn/Backnextbtn';
 import { pokeContext } from '../../context/pokeContext';
 import Navbar from '../Navbar/Navbar';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
-import { handleClickAndSound } from '../../function/handleFunctions';
+import {
+  handleClickAndSound,
+  handleImageClick,
+  handleStopFight,
+} from '../../function/handleFunctions';
 import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 import PokemonWinner from '../PokemonWinner/PokemonWinner';
 import PokemonEnemyInfo from '../PokemonEnemyInfo/PokemonEnemyInfo';
+import Mutebttn from '../Mutebttn/Mutebttn';
 
 const PokemonChoosed = () => {
   const {
@@ -19,29 +24,19 @@ const PokemonChoosed = () => {
     setRandomID,
     setPokemonFighterData,
     setComparisionResult,
+    musicOff,
   } = useContext(pokeContext);
 
-  const handleImageClick = useCallback(
+  const clickInIMG = useCallback(
     (ev) => {
-      setPokemonFighter(true);
-
-      const randomPkmnID = Math.floor(Math.random() * 1025);
-      setRandomID(randomPkmnID);
-
-      ev.target.className = 'pkmn_goto_fight';
-
-      const pokemonWinnerTitle = document.querySelector('.title_winner');
-      pokemonWinnerTitle.style.zIndex = 1;
-
-      const pokemonImg = document.querySelector('.pkmn_goto_fight');
-      const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
-      if (pokemonImg) {
-        pokemonImg.style.filter = 'sepia(0%)';
-        pokemonRandomEnemy.style.filter = 'sepia(0%)';
-      }
+      handleImageClick(ev, setPokemonFighter, setRandomID, musicOff);
     },
     [setPokemonFighter, setRandomID]
   );
+
+  const clickInSTOPBTN = useCallback(() => {
+    handleStopFight(setPokemonFighter, setPokemonFighterData);
+  }, [setPokemonFighter, setPokemonFighterData]);
 
   useEffect(() => {
     if (pokemonFighterData) {
@@ -96,10 +91,10 @@ const PokemonChoosed = () => {
         const textWinnerPkmn = document.querySelector('.title_winner');
         textWinnerPkmn.style.display = 'none';
 
-        const pokemonImg = document.querySelector('.pkmn_goto_fight');
-        if (pokemonImg) {
-          pokemonImg.className = 'pokemon_img';
-          pokemonImg.style.filter = 'sepia(0%)';
+        const pkmnGoToFight = document.querySelector('.pkmn_goto_fight');
+        if (pkmnGoToFight) {
+          pkmnGoToFight.className = 'pokemon_img';
+          pkmnGoToFight.style.filter = 'sepia(0%)';
         }
 
         const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
@@ -115,60 +110,10 @@ const PokemonChoosed = () => {
     }
   }, [pokemonFighterData, data]);
 
-  const handleStopFight = useCallback(() => {
-    setPokemonFighter(false);
-    setPokemonFighterData(null);
-
-    const onoffButtonDisabled = document.querySelector('.onoff_div');
-    onoffButtonDisabled.style.zIndex = 1;
-
-    const textWinnerPkmn = document.querySelector('.title_winner');
-    textWinnerPkmn.style.display = 'none';
-
-    const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
-    pokemonGoToFight.className = 'pokemon_img';
-
-    let musicOffLogo = document.querySelector('.mute_btn');
-    musicOffLogo.style.display = 'flex';
-
-    const pokemonType = document.querySelector('.pokemon_type');
-    if (pokemonType) {
-      pokemonType.style.position = 'relative';
-      pokemonType.style.marginTop = '15px';
-      pokemonType.style.marginLeft = '0px';
-    }
-
-    const fight_sound = document.getElementById('fight_sound');
-    const start_sound = document.getElementById('start_sound');
-
-    if (fight_sound) fight_sound.pause();
-    if (start_sound) {
-      start_sound.loop = true;
-      start_sound.play();
-    }
-
-    const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
-    if (pokemonRandomEnemy) {
-      pokemonRandomEnemy.style.display = 'none';
-    }
-
-    const pokemonChoosed = document.querySelector('.pokemon_img');
-    pokemonChoosed.style.filter = 'sepia(0%)';
-
-    let navigateButtons = document.querySelector('.pokenavigate_btns');
-    if (navigateButtons) {
-      navigateButtons.style.display = 'flex';
-    }
-
-    let navbar = document.querySelector('.navbar');
-    if (navbar) {
-      navbar.style.display = 'flex';
-    }
-  }, [setPokemonFighter, setPokemonFighterData]);
-
   return (
     <>
       <div className="pkmn_choosed">
+        <Mutebttn />
         <PokedexIMG />
         <Navbar />
         <section className="text_info">
@@ -187,7 +132,7 @@ const PokemonChoosed = () => {
               <PokemonEnemyInfo />
               <button
                 onClick={() => {
-                  handleStopFight();
+                  clickInSTOPBTN();
                   handleClickAndSound();
                 }}
                 className="stop_fight"
@@ -200,7 +145,7 @@ const PokemonChoosed = () => {
 
           {data.sprites.front_default ? (
             <img
-              onClick={handleImageClick}
+              onClick={clickInIMG}
               src={data.sprites.front_default}
               alt={data.name}
               className="pokemon_img"

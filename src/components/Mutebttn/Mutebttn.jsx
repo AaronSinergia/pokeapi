@@ -7,12 +7,14 @@ const Mutebttn = () => {
   const { musicOff, setMusicOff } = useContext(pokeContext);
 
   return (
-    <img
-      onClick={() => handleStopMusic(musicOff, setMusicOff)}
-      className="mute_btn"
-      src="./assets/onSound_logo.png"
-      alt="mute_btn"
-    />
+    <>
+      <img
+        onClick={() => handleStopMusic(musicOff, setMusicOff)}
+        className="mute_btn"
+        src="./assets/onSound_logo.png"
+        alt="mute_btn"
+      />
+    </>
   );
 };
 
