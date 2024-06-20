@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import './PokemonEnemyInfo.css';
 import { pokeContext } from '../../context/pokeContext';
+import PokemonTitleName from '../PokemonTitleName/PokemonTitleName';
 
 const PokemonEnemyInfo = () => {
   const { pokemonFighterData } = useContext(pokeContext);
@@ -8,7 +9,10 @@ const PokemonEnemyInfo = () => {
   return (
     <>
       <section className="text_info_enemy">
-        <h3 className="pokemon_titlename_enemy">{pokemonFighterData.name}</h3>
+        <PokemonTitleName
+          className={'pokemon_titlename_enemy'}
+          titleName={pokemonFighterData.name}
+        />
         <h3 className="pokemon_type_enemy">
           TYPE: {pokemonFighterData.types[0].type.name}
         </h3>

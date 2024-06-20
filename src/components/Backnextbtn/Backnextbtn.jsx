@@ -1,8 +1,9 @@
 import './Backnextbtn.css';
 import React, { useContext } from 'react';
-import NextPrevBTN from './NextPrevBTN/NextPrevBTN';
 import { pokeContext } from '../../context/pokeContext';
 import { handleClickAndSound } from '../../function/handleFunctions';
+import Button from '../Button/Button';
+import { styleButtons } from '../../utils/buttons/style/styleButtons';
 
 const Backnextbtn = () => {
   const { decrement, increment } = useContext(pokeContext);
@@ -10,15 +11,18 @@ const Backnextbtn = () => {
   return (
     <>
       <div className="pokenavigate_btns">
-        <audio id="click_sound" src="../sounds/click_in_button.mp3"></audio>
-        <NextPrevBTN
+        <Button
+          className={'nextandprev_btns'}
+          style={styleButtons}
           text={'⬅'}
           onClick={() => {
             decrement();
             handleClickAndSound();
           }}
         />
-        <NextPrevBTN
+        <Button
+          className={'nextandprev_btns'}
+          style={styleButtons}
           text={'➡'}
           onClick={() => {
             increment();

@@ -1,8 +1,11 @@
 HACER:
 
-2 - Revisar cada parte del codigo para componetizarla y usar react hooks a tope, por ejemplo cuando aparecen o desaparecen cosas, controlarlas con hooks en lugar de remove() --> puedes ver ejemplos buscando remove en el codigo.
+1 - Revisar cada parte del codigo para componetizarla y usar react hooks a tope, por ejemplo cuando aparecen o desaparecen cosas, controlarlas con hooks en lugar de remove() --> puedes ver ejemplos buscando remove en el codigo.
 
-3 - Hacerlo todo lo nuevo responsive:
+- Creación y uso de un custom hook como mínimo.
+- Uso de un hook useReducer como mínimo.
+
+2 - Hacerlo todo lo nuevo responsive:
 
 - mensajes de quien ha ganado
 - pokemons

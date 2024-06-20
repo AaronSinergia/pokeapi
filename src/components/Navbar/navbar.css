@@ -5,15 +5,6 @@
   margin: 168px 0 0 189px;
 }
 
-.submit_btn {
-  align-items: center;
-  margin-top: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  background: linear-gradient(#c62d1f, #f24437);
-  color: #fff;
-}
-
 .poke_input {
   width: 75px;
   height: 30px;
@@ -21,8 +12,13 @@
   color: rgb(175, 76, 48);
 }
 
-.search_btn:hover {
-  background: linear-gradient(#f24437, #c62d1f);
+.submit_btn {
+  align-items: center;
+  margin-top: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  background: linear-gradient(#c62d1f, #f24437);
+  color: #fff;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
@@ -36,7 +32,6 @@
     margin-right: 5px;
     font-size: 25px;
   }
-
   .submit_btn {
     width: 80px;
     font-size: 17px;
@@ -54,7 +49,6 @@
     margin-right: 5px;
     font-size: 25px;
   }
-
   .submit_btn {
     width: 80px;
     font-size: 17px;
@@ -72,7 +66,6 @@
     margin-right: 5px;
     font-size: 25px;
   }
-
   .submit_btn {
     width: 80px;
     font-size: 17px;
@@ -88,7 +81,6 @@
     width: 100px;
     margin-right: 5px;
   }
-
   .submit_btn {
     font-size: 15px;
   }

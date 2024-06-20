@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { pokeContext } from './pokeContext';
+import SoundEffects from '../components/SoundEffects/SoundEffects';
 
 const StateComp = ({ children }) => {
   const [pokemon, setPokemon] = useState(1);
@@ -54,13 +55,7 @@ const StateComp = ({ children }) => {
         setMusicOff,
       }}
     >
-      <audio id="on_sound" src="../sounds/on_sound.mp3"></audio>
-      <audio id="off_sound" src="../sounds/off_sound.mp3"></audio>
-      <audio id="start_sound" src="../sounds/pokemon_title_song.mp3"></audio>
-      <audio id="fight_sound" src="../sounds/fight_sound.mp3"></audio>
-      <audio id="defeat_sound" src="../sounds/defeat.wav"></audio>
-      <audio id="win_sound" src="../sounds/youwin.mp3"></audio>
-      {/* <audio id="fight_sound" src="../sounds/click_in_button.mp3"></audio> */}
+      <SoundEffects />
       {children}
     </pokeContext.Provider>
   );

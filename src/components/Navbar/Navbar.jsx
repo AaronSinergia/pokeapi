@@ -7,6 +7,7 @@ import {
   handleSubmit,
 } from '../../function/handleFunctions.js';
 import { styleButtons } from '../../utils/buttons/style/styleButtons.js';
+import Button from '../Button/Button.jsx';
 
 const Navbar = () => {
   const { setinputPkmID, inputValue, setInputValue } = useContext(pokeContext);
@@ -19,16 +20,15 @@ const Navbar = () => {
         className="poke_input"
         onChange={(event) => handleChange(event, setInputValue)}
       />
-      <button
+      <Button
         style={styleButtons}
-        className="submit_btn"
+        className={'submit_btn'}
         onClick={() => {
           handleSubmit(inputValue, setinputPkmID);
           handleClickAndSound();
         }}
-      >
-        Submit
-      </button>
+        text={'Submit'}
+      />
     </nav>
   );
 };
