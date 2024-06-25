@@ -12,15 +12,6 @@
   color: rgb(175, 76, 48);
 }
 
-.submit_btn {
-  align-items: center;
-  margin-top: 6px;
-  font-size: 14px;
-  cursor: pointer;
-  background: linear-gradient(#c62d1f, #f24437);
-  color: #fff;
-}
-
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .navbar {
     margin: 365px 0 0 400px;
@@ -31,10 +22,6 @@
     height: 40px;
     margin-right: 5px;
     font-size: 25px;
-  }
-  .submit_btn {
-    width: 80px;
-    font-size: 17px;
   }
 }
 
@@ -49,10 +36,6 @@
     margin-right: 5px;
     font-size: 25px;
   }
-  .submit_btn {
-    width: 80px;
-    font-size: 17px;
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
@@ -66,10 +49,6 @@
     margin-right: 5px;
     font-size: 25px;
   }
-  .submit_btn {
-    width: 80px;
-    font-size: 17px;
-  }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
@@ -80,8 +59,5 @@
   .poke_input {
     width: 100px;
     margin-right: 5px;
-  }
-  .submit_btn {
-    font-size: 15px;
   }
 }

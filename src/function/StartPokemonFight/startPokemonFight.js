@@ -46,37 +46,6 @@ const startPokemonFight = (
 
       const textWinnerPkmn = document.querySelector('.title_winner');
       textWinnerPkmn.style.display = 'flex';
-
-      // WHEN FIGHT SOUND FINISHED
-      fight_sound.addEventListener('ended', () => {
-        setPokemonFighter(false);
-        setPokemonFighterData(null);
-
-        const yourPokemonType = document.querySelector('.pokemon_type');
-        yourPokemonType.style.marginTop = '90px';
-
-        const onoffButtonDisabled = document.querySelector('.onoff_div');
-        onoffButtonDisabled.style.zIndex = 1;
-
-        const textWinnerPkmn = document.querySelector('.title_winner');
-        textWinnerPkmn.style.display = 'none';
-
-        const pkmnGoToFight = document.querySelector('.pkmn_goto_fight');
-        if (pkmnGoToFight) {
-          pkmnGoToFight.className = 'pokemon_img';
-          pkmnGoToFight.style.filter = 'sepia(0%)';
-        }
-
-        const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
-        if (pokemonRandomEnemy) {
-          pokemonRandomEnemy.style.display = 'none';
-        }
-        navigateButtons.style.display = 'flex';
-        navbar.style.display = 'flex';
-
-        start_sound.loop = true;
-        start_sound.play();
-      });
     }
   }, [
     pokemonFighterData,

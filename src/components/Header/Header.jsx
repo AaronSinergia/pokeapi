@@ -1,7 +1,7 @@
 import React from 'react';
-import './PokeTitle.css';
+import './Header.css';
 
-const PokeTitle = () => {
+const Header = () => {
   return (
     <>
       <div className="poke_title_div">
@@ -12,4 +12,4 @@ const PokeTitle = () => {
   );
 };
 
-export default PokeTitle;
+export default Header;

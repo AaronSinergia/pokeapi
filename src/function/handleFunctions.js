@@ -79,6 +79,8 @@ export const handleImageClick = (
 ) => {
   setPokemonFighter(true);
 
+  ev.target.className = 'pkmn_goto_fight';
+
   let musicOffLogo = document.querySelector('.mute_btn');
 
   if (!musicOff) {
@@ -88,7 +90,10 @@ export const handleImageClick = (
   const randomPkmnID = Math.floor(Math.random() * 1025);
   setRandomID(randomPkmnID);
 
-  ev.target.className = 'pkmn_goto_fight';
+  const yourFighterSection = document.querySelector('.your_fighter_info');
+  if (yourFighterSection) {
+    yourFighterSection.className = 'active_fighter_info';
+  }
 
   const pokemonWinnerTitle = document.querySelector('.title_winner');
   if (pokemonWinnerTitle) {
@@ -102,13 +107,13 @@ export const handleImageClick = (
 
   const pkmnGoToFight = document.querySelector('.pkmn_goto_fight');
   const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
+  if (pokemonRandomEnemy) {
+    pokemonRandomEnemy.style.filter = 'grayscale(0%)';
+    pokemonRandomEnemy.style.animation = 'none';
+  }
   if (pkmnGoToFight) {
     pkmnGoToFight.style.filter = 'grayscale(0%)';
     pkmnGoToFight.style.animation = 'none';
-    if (pokemonRandomEnemy) {
-      pokemonRandomEnemy.style.filter = 'grayscale(0%)';
-      pokemonRandomEnemy.style.animation = 'none';
-    }
   }
 };
 
@@ -119,27 +124,21 @@ export const handleStopFight = (setPokemonFighter, setPokemonFighterData) => {
   const onoffButtonDisabled = document.querySelector('.onoff_div');
   onoffButtonDisabled.style.zIndex = 1;
 
+  const yourFighterSection = document.querySelector('.active_fighter_info');
+  yourFighterSection.className = 'your_fighter_info';
+
   const textWinnerPkmn = document.querySelector('.title_winner');
   textWinnerPkmn.style.display = 'none';
 
   const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
   pokemonGoToFight.className = 'pokemon_img';
+  pokemonGoToFight.style.filter = 'grayscale(0%)';
+  pokemonGoToFight.style.animation = 'none';
 
-  const pokemonType = document.querySelector('.pokemon_type');
-  if (pokemonType) {
-    pokemonType.style.position = 'relative';
-    pokemonType.style.marginTop = '15px';
-    pokemonType.style.marginLeft = '0px';
-  }
-
-  const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
-  if (pokemonRandomEnemy) {
-    pokemonRandomEnemy.style.display = 'none';
-  }
-
-  const pokemonChoosed = document.querySelector('.pokemon_img');
-  pokemonChoosed.style.filter = 'grayscale(0%)';
-  pokemonChoosed.style.animation = 'none';
+  const choosedPokemonTitleName = document.querySelector('.titlename_pkmn_h3');
+  const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
+  choosedPokemonTitleName.style.display = 'grid';
+  choosedPokemonTypeName.style.display = 'grid';
 
   let musicOffLogo = document.querySelector('.mute_btn');
   musicOffLogo.style.display = 'flex';

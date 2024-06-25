@@ -1,6 +1,6 @@
 import React from 'react';
-import './PokemonSpriteIMG.css';
+import './SpriteIMG.css';
 
-export const PokemonSpriteIMG = ({ className, onClick, src, alt }) => {
+export const SpriteIMG = ({ className, onClick, src, alt }) => {
   return <img className={className} onClick={onClick} src={src} alt={alt} />;
 };

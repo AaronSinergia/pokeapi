@@ -16,14 +16,6 @@
   cursor: pointer;
 }
 
-.on_title {
-  position: relative;
-  height: 40px;
-  font-size: 10px;
-  bottom: 43px;
-  cursor: pointer;
-}
-
 @keyframes intermitente {
   0% {
     opacity: 1;
@@ -49,11 +41,6 @@
     font-size: 50px;
     bottom: 10px;
   }
-
-  .on_title {
-    bottom: 96px;
-    font-size: 25px;
-  }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1300px) {
@@ -68,11 +55,6 @@
   .on_off {
     font-size: 50px;
     bottom: 10px;
-  }
-
-  .on_title {
-    bottom: 96px;
-    font-size: 25px;
   }
 }
 
@@ -89,11 +71,6 @@
     font-size: 50px;
     bottom: 10px;
   }
-
-  .on_title {
-    bottom: 96px;
-    font-size: 25px;
-  }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1100px) {
@@ -108,11 +85,6 @@
   .on_off {
     font-size: 50px;
     bottom: 10px;
-  }
-
-  .on_title {
-    bottom: 96px;
-    font-size: 25px;
   }
 }
 
@@ -129,11 +101,6 @@
     font-size: 47px;
     bottom: 8px;
   }
-
-  .on_title {
-    bottom: 87px;
-    font-size: 20px;
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
@@ -149,11 +116,6 @@
     font-size: 47px;
     bottom: 8px;
   }
-
-  .on_title {
-    bottom: 87px;
-    font-size: 20px;
-  }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
@@ -167,10 +129,5 @@
   .on_off {
     font-size: 30px;
     bottom: 11px;
-  }
-
-  .on_title {
-    bottom: 56px;
-    font-size: 14px;
   }
 }

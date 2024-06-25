@@ -1,4 +1,5 @@
-import './footer.css';
+import H3Comp from '../H3Comp/H3Comp';
+import './Footer.css';
 import FootLogos from './FooterLogos/FootLogos';
 
 const Footer = () => {
@@ -6,9 +7,10 @@ const Footer = () => {
     <>
       <footer className="footer">
         <FootLogos />
-        <h3 className="footer_title">
-          © Creado por Aaron Carrasco Romero - 2024
-        </h3>
+        <H3Comp
+          className={'footer_title'}
+          text={'© Creado por Aaron Carrasco Romero - 2024'}
+        />
       </footer>
     </>
   );

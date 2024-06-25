@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './OnoffBTN.css';
 import { pokeContext } from '../../context/pokeContext';
 import { handleTogglePokeApi } from '../../function/handleFunctions';
+import H3Comp from '../H3Comp/H3Comp';
 
 const OnoffBTN = () => {
   const { showPokeApi, setShowPokeApi } = useContext(pokeContext);
@@ -14,7 +15,7 @@ const OnoffBTN = () => {
       <h2 className="on_off" title="ON/OFF">
         🔵
       </h2>
-      <h3 className="on_title">{showPokeApi ? 'ON' : 'OFF'}</h3>
+      <H3Comp className={'on_title'} text={showPokeApi ? 'ON' : 'OFF'} />
     </div>
   );
 };

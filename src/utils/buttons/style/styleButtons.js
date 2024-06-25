@@ -11,4 +11,5 @@ export const styleButtons = {
   boxShadow: '3px 4px 0px 0px #8a2a21',
   textShadow: '0px 1px 0px #810e05',
   textAlign: 'center',
+  border: 'none',
 };

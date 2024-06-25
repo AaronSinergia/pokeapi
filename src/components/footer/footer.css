@@ -8,11 +8,6 @@ footer {
   margin-top: 170px;
 }
 
-.footer_title {
-  font-size: 11px;
-  color: rgb(164, 159, 159);
-}
-
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   footer {
     margin-top: 10px;

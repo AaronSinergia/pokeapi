@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import PokeTitle from '../components/PokeTitle/PokeTitle';
+import Header from '../components/Header/Header';
 import PokedexIMG from '../components/PokedexIMG/PokedexIMG';
 import InfoPopup from '../components/InfoPopup/InfoPopup';
 import PokeApi from '../../src/components/api/PokeApi';
@@ -12,7 +12,7 @@ const PokeHome = () => {
 
   return (
     <>
-      <PokeTitle />
+      <Header />
       <InfoPopup />
       <OnoffBTN />
       {!showPokeApi && <PokedexIMG />}
