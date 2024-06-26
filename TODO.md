@@ -1,11 +1,12 @@
-HACER:
+1 - problemas intervalo de tiempo con popup y musica
 
-1 - Revisar cada parte del codigo para componetizarla y usar react hooks a tope, por ejemplo cuando aparecen o desaparecen cosas, controlarlas con hooks en lugar de remove() --> puedes ver ejemplos buscando remove en el codigo.
+2 - mirar que más puedo hacer con customhooks o use reducer
 
-- Creación y uso de un custom hook como mínimo.
-- Uso de un hook useReducer como mínimo.
+3 - Mirar de hacer que el mute button , muttee siempre, y hasta que no le de, da= lo que haga siga muteado
 
-2 - Hacerlo todo lo nuevo responsive:
+4 - Mirar que mute button no necesite dos clics la primera vez para que cambie a muteado
+
+5 - Hacerlo todo lo nuevo responsive:
 
 - mensajes de quien ha ganado
 - pokemons

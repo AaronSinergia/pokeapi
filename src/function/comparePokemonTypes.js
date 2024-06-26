@@ -1,4 +1,4 @@
-export async function comparePokemonTypes(type1, type2) {
+export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
   try {
     async function getTypeData(typeName) {
       const response = await fetch(
@@ -11,16 +11,22 @@ export async function comparePokemonTypes(type1, type2) {
     const type1Data = await getTypeData(type1);
     const type2Data = await getTypeData(type2);
 
-    // const enemyTitleName = document.querySelector('.titlename_enemy_h3');
-    // const enemyTypeName = document.querySelector('.type_enemy_h3');
-    // enemyTitleName.style.display = 'block';
-    // enemyTypeName.style.display = 'block';
-
+    const pokemonChoosed = document.querySelector('.pkmn_goto_fight');
+    const pokemonRandom = document.querySelector('.pkmn_random_enemy');
     const choosedPokemonTitleName =
       document.querySelector('.titlename_pkmn_h3');
     const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
+    const enemyTitleName = document.querySelector('.titlename_enemy_h3');
+    const enemyTypeName = document.querySelector('.type_enemy_h3');
+
+    pokemonChoosed.style.animation = 'none';
+    pokemonRandom.style.animation = 'none';
+    pokemonChoosed.style.filter = 'none';
+    pokemonRandom.style.filter = 'none';
     choosedPokemonTitleName.style.display = 'block';
     choosedPokemonTypeName.style.display = 'block';
+    enemyTitleName.style.display = 'block';
+    enemyTypeName.style.display = 'block';
 
     const type1DoubleDamageToType2 =
       type1Data.damage_relations.double_damage_to.some(
@@ -51,20 +57,14 @@ export async function comparePokemonTypes(type1, type2) {
       type2HalfDamageToType1 ||
       type2NoDamageToType1
     ) {
-      const pokemonChoosed = document.querySelector('.pkmn_goto_fight');
-      const pokemonRandom = document.querySelector('.pkmn_random_enemy');
-      const youWinSound = document.getElementById('win_sound');
-      const fight_sound = document.getElementById('fight_sound');
-      const enemyTitleName = document.querySelector('.titlename_enemy_h3');
-      const enemyTypeName = document.querySelector('.type_enemy_h3');
       setTimeout(() => {
         pokemonChoosed.style.animation = 'zoom-effect 2s infinite';
         pokemonRandom.style.filter = 'grayscale(100%)';
         enemyTitleName.style.display = 'none';
         enemyTypeName.style.display = 'none';
-        fight_sound.pause();
-        youWinSound.play();
-      }, 1100);
+        pauseAudio('fight_sound');
+        playAudio('win_sound');
+      }, 1200);
 
       return `YOU WIN!!!!! 😎`;
     } else if (
@@ -72,29 +72,22 @@ export async function comparePokemonTypes(type1, type2) {
       type1HalfDamageToType2 ||
       type1NoDamageToType2
     ) {
-      const defeatSound = document.getElementById('defeat_sound');
-      const fight_sound = document.getElementById('fight_sound');
-      const pokemonRandom = document.querySelector('.pkmn_random_enemy');
-      const pokemonChoosed = document.querySelector('.pkmn_goto_fight');
-      const choosedPokemonTitleName =
-        document.querySelector('.titlename_pkmn_h3');
-      const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
       setTimeout(() => {
+        pauseAudio('win_sound');
+
         pokemonRandom.style.animation = 'zoom-effect 2s infinite';
         pokemonChoosed.style.filter = 'grayscale(100%)';
         choosedPokemonTitleName.style.display = 'none';
         choosedPokemonTypeName.style.display = 'none';
-        fight_sound.pause();
-        defeatSound.play();
-      }, 1100);
+
+        playAudio('defeat_sound');
+      }, 1200);
       return `ENEMY WINS! 😫`;
     } else {
       setTimeout(() => {
-        const defeatSound = document.getElementById('defeat_sound');
-        defeatSound.play();
-        const fight_sound = document.getElementById('fight_sound');
-        fight_sound.pause();
-      }, 1100);
+        pauseAudio('win_sound');
+        playAudio('defeat_sound');
+      }, 1200);
       return 'TIED MATCH! 😱';
     }
   } catch (error) {

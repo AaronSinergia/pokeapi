@@ -2,12 +2,11 @@ import React, { useCallback, useContext } from 'react';
 import './FightersInfo.css';
 import { SpriteIMG } from '../SpriteIMG/SpriteIMG';
 import {
-  handleClickAndSound,
   handleImageClick,
   handleStopFight,
 } from '../../function/handleFunctions';
 import Button from '../Button/Button';
-import { pokeContext } from '../../context/pokeContext';
+import { pokeContext } from '../../hooks/context/pokeContext';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import H3Comp from '../H3Comp/H3Comp';
 
@@ -18,19 +17,28 @@ const FightersInfo = () => {
     setPokemonFighter,
     setRandomID,
     setPokemonFighterData,
-    musicOff,
+    playAudio,
+    pauseAudio,
   } = useContext(pokeContext);
 
   const clickInIMG = useCallback(
     (ev) => {
-      handleImageClick(ev, setPokemonFighter, setRandomID, musicOff);
+      handleImageClick(ev, setPokemonFighter, setRandomID, playAudio);
     },
     [setPokemonFighter, setRandomID]
   );
 
-  const clickInSTOPBTN = useCallback(() => {
-    handleStopFight(setPokemonFighter, setPokemonFighterData);
-  }, [setPokemonFighter, setPokemonFighterData]);
+  const clickInSTOPBTN = useCallback(
+    (playAudio, pauseAudio) => {
+      handleStopFight(
+        setPokemonFighter,
+        setPokemonFighterData,
+        playAudio,
+        pauseAudio
+      );
+    },
+    [setPokemonFighter, setPokemonFighterData]
+  );
 
   return (
     <>
@@ -78,8 +86,7 @@ const FightersInfo = () => {
               className={'stop_fight'}
               text={'STOP FIGHT'}
               onClick={() => {
-                clickInSTOPBTN();
-                handleClickAndSound();
+                clickInSTOPBTN(playAudio, pauseAudio);
               }}
               style={styleButtons}
             />

@@ -1,16 +1,13 @@
 import './navbar.css';
 import React, { useContext } from 'react';
-import { pokeContext } from '../../context/pokeContext';
-import {
-  handleChange,
-  handleClickAndSound,
-  handleSubmit,
-} from '../../function/handleFunctions.js';
+import { pokeContext } from '../../hooks/context/pokeContext';
+import { handleChange, handleSubmit } from '../../function/handleFunctions.js';
 import { styleButtons } from '../../utils/buttons/style/styleButtons.js';
 import Button from '../Button/Button.jsx';
 
 const Navbar = () => {
-  const { setinputPkmID, inputValue, setInputValue } = useContext(pokeContext);
+  const { setinputPkmID, inputValue, setInputValue, playAudio } =
+    useContext(pokeContext);
 
   return (
     <nav className="navbar">
@@ -24,8 +21,7 @@ const Navbar = () => {
         style={styleButtons}
         className={'submit_btn'}
         onClick={() => {
-          handleSubmit(inputValue, setinputPkmID);
-          handleClickAndSound();
+          handleSubmit(inputValue, setinputPkmID, playAudio);
         }}
         text={'Submit'}
       />

@@ -6,45 +6,49 @@ export const handleChange = (event, setInputValue) => {
   setInputValue(event.target.value);
 };
 
-export const handleSubmit = (inputValue, setinputPkmID) => {
+export const handleSubmit = (inputValue, setinputPkmID, playAudio) => {
   setinputPkmID(inputValue.toLowerCase());
+  playAudio('click_sound');
 };
 
-export const handleClickAndSound = () => {
-  const click_sound = document.getElementById('click_sound');
-  click_sound.play();
-};
-
-export const handleStopMusic = (musicOff, setMusicOff) => {
+export const handleStopMusic = (
+  musicOff,
+  setMusicOff,
+  playAudio,
+  pauseAudio
+) => {
   setMusicOff(!musicOff);
 
-  const start_sound = document.getElementById('start_sound');
+  playAudio('click_sound');
+
   let musicOffLogo = document.querySelector('.mute_btn');
-
-  let allAudioElements = document.querySelectorAll('audio');
-
   let pokemonEnemy = document.querySelector('.pkmn_random_enemy');
 
   if (musicOff) {
     console.log('musica off');
     musicOffLogo.src = './assets/mute_logo.png';
-    allAudioElements.forEach((audio) => {
-      audio.pause();
-    });
+    pauseAudio('start_sound');
+    pauseAudio('fight_sound');
+    pauseAudio('win_sound');
   } else {
     console.log('musica sonando!!');
     musicOffLogo.src = './assets/onSound_logo.png';
 
     if (pokemonEnemy) {
-      const fight_sound = document.getElementById('fight_sound');
-      fight_sound.play();
+      playAudio('fight_sound');
     } else {
-      start_sound.play();
+      playAudio('start_sound');
     }
   }
 };
 
-export const handleTogglePokeApi = (showPokeApi, setShowPokeApi) => {
+export const handleTogglePokeApi = (
+  showPokeApi,
+  setShowPokeApi,
+  playAudio,
+  pauseAudio,
+  setLoop
+) => {
   setShowPokeApi(!showPokeApi);
 
   const on_button = document.querySelector('.on_title');
@@ -52,19 +56,14 @@ export const handleTogglePokeApi = (showPokeApi, setShowPokeApi) => {
   if (on_button.innerHTML !== 'ON') {
     const popup = document.querySelector('.div_popup');
     popup.style.display = 'flex';
-    const on_sound = document.getElementById('on_sound');
-    const start_sound = document.getElementById('start_sound');
 
-    on_sound.play();
-    start_sound.loop = true;
-    start_sound.play();
+    playAudio('on_sound');
+    playAudio('start_sound');
+    setLoop('start_sound', true);
   } else {
-    const off_sound = document.getElementById('off_sound');
-    off_sound.play();
-    start_sound.pause();
-
-    const fight_sound = document.getElementById('fight_sound');
-    fight_sound.pause();
+    playAudio('off_sound');
+    pauseAudio('start_sound');
+    pauseAudio('fight_sound');
 
     const popup = document.querySelector('.div_popup');
     popup.style.display = 'none';
@@ -75,17 +74,13 @@ export const handleImageClick = (
   ev,
   setPokemonFighter,
   setRandomID,
-  musicOff
+  playAudio
 ) => {
   setPokemonFighter(true);
 
   ev.target.className = 'pkmn_goto_fight';
 
-  let musicOffLogo = document.querySelector('.mute_btn');
-
-  if (!musicOff) {
-    musicOffLogo.src = './assets/onSound_logo.png';
-  }
+  playAudio('click_sound');
 
   const randomPkmnID = Math.floor(Math.random() * 1025);
   setRandomID(randomPkmnID);
@@ -97,29 +92,25 @@ export const handleImageClick = (
 
   const pokemonWinnerTitle = document.querySelector('.title_winner');
   if (pokemonWinnerTitle) {
-    pokemonWinnerTitle.style.zIndex = 1;
-  }
-
-  const youWinSound = document.getElementById('win_sound');
-  if (youWinSound) {
-    youWinSound.pause();
-  }
-
-  const pkmnGoToFight = document.querySelector('.pkmn_goto_fight');
-  const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
-  if (pokemonRandomEnemy) {
-    pokemonRandomEnemy.style.filter = 'grayscale(0%)';
-    pokemonRandomEnemy.style.animation = 'none';
-  }
-  if (pkmnGoToFight) {
-    pkmnGoToFight.style.filter = 'grayscale(0%)';
-    pkmnGoToFight.style.animation = 'none';
+    setTimeout(() => {
+      pokemonWinnerTitle.style.zIndex = 1;
+    }, 800);
   }
 };
 
-export const handleStopFight = (setPokemonFighter, setPokemonFighterData) => {
+export const handleStopFight = (
+  setPokemonFighter,
+  setPokemonFighterData,
+  playAudio,
+  pauseAudio
+) => {
   setPokemonFighter(false);
   setPokemonFighterData(null);
+
+  playAudio('click_sound');
+  pauseAudio('win_sound');
+  pauseAudio('fight_sound');
+  playAudio('start_sound');
 
   const onoffButtonDisabled = document.querySelector('.onoff_div');
   onoffButtonDisabled.style.zIndex = 1;
@@ -139,21 +130,6 @@ export const handleStopFight = (setPokemonFighter, setPokemonFighterData) => {
   const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
   choosedPokemonTitleName.style.display = 'grid';
   choosedPokemonTypeName.style.display = 'grid';
-
-  let musicOffLogo = document.querySelector('.mute_btn');
-  musicOffLogo.style.display = 'flex';
-
-  const fight_sound = document.getElementById('fight_sound');
-  const start_sound = document.getElementById('start_sound');
-
-  if (fight_sound) fight_sound.pause();
-  if (start_sound) {
-    start_sound.loop = true;
-    start_sound.play();
-  }
-
-  const youWinSound = document.getElementById('win_sound');
-  youWinSound.pause();
 
   let navigateButtons = document.querySelector('.pokenavigate_btns');
   if (navigateButtons) {

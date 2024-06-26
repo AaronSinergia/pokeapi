@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import PokemonChoosed from '../PokemonChoosed/PokemonChoosed';
 import { fetchFunction } from '../../function/fetchFunction';
-import { pokeContext } from '../../context/pokeContext';
+import { pokeContext } from '../../hooks/context/pokeContext';
 import { default_POKEAPI_Url } from '../../config/urls';
 
 const PokeApi = () => {

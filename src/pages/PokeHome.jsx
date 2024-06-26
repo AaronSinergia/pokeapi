@@ -5,7 +5,7 @@ import InfoPopup from '../components/InfoPopup/InfoPopup';
 import PokeApi from '../../src/components/api/PokeApi';
 import Footer from '../components/footer/Footer';
 import OnoffBTN from '../components/OnoffBTN/OnoffBTN';
-import { pokeContext } from '../context/pokeContext';
+import { pokeContext } from '../hooks/context/pokeContext';
 
 const PokeHome = () => {
   const { showPokeApi } = useContext(pokeContext);

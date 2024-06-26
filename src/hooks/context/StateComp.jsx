@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { pokeContext } from './pokeContext';
-import SoundEffects from '../components/SoundEffects/SoundEffects';
+
+import useMultiAudio from '../../hooks/custom/useMultiAudio';
+import { audioFiles } from '../../utils/audio/audioFiles';
 
 const StateComp = ({ children }) => {
   const [pokemon, setPokemon] = useState(1);
@@ -23,6 +25,8 @@ const StateComp = ({ children }) => {
   const decrement = () => {
     setPokemon((prevId) => (prevId > 1 ? prevId - 1 : 1025));
   };
+
+  const { playAudio, pauseAudio, setLoop } = useMultiAudio(audioFiles);
 
   return (
     <pokeContext.Provider
@@ -53,9 +57,11 @@ const StateComp = ({ children }) => {
         setShowWinner,
         musicOff,
         setMusicOff,
+        playAudio,
+        pauseAudio,
+        setLoop,
       }}
     >
-      <SoundEffects />
       {children}
     </pokeContext.Provider>
   );
