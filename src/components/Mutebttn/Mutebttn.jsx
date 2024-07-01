@@ -4,17 +4,14 @@ import { pokeContext } from '../../hooks/context/pokeContext';
 import { handleStopMusic } from '../../function/handleFunctions';
 
 const Mutebttn = () => {
-  const { musicOff, setMusicOff, playAudio, pauseAudio } =
-    useContext(pokeContext);
+  const { toggleMusic, musicOff } = useContext(pokeContext);
 
   return (
     <>
       <img
-        onClick={() =>
-          handleStopMusic(musicOff, setMusicOff, playAudio, pauseAudio)
-        }
+        onClick={() => handleStopMusic(toggleMusic)}
         className="mute_btn"
-        src="./assets/onSound_logo.png"
+        src={musicOff ? './assets/mute_logo.png' : './assets/onSound_logo.png'}
         alt="mute_btn"
       />
     </>

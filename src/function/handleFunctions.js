@@ -6,40 +6,8 @@ export const handleChange = (event, setInputValue) => {
   setInputValue(event.target.value);
 };
 
-export const handleSubmit = (inputValue, setinputPkmID, playAudio) => {
+export const handleSubmit = (inputValue, setinputPkmID) => {
   setinputPkmID(inputValue.toLowerCase());
-  playAudio('click_sound');
-};
-
-export const handleStopMusic = (
-  musicOff,
-  setMusicOff,
-  playAudio,
-  pauseAudio
-) => {
-  setMusicOff(!musicOff);
-
-  playAudio('click_sound');
-
-  let musicOffLogo = document.querySelector('.mute_btn');
-  let pokemonEnemy = document.querySelector('.pkmn_random_enemy');
-
-  if (musicOff) {
-    console.log('musica off');
-    musicOffLogo.src = './assets/mute_logo.png';
-    pauseAudio('start_sound');
-    pauseAudio('fight_sound');
-    pauseAudio('win_sound');
-  } else {
-    console.log('musica sonando!!');
-    musicOffLogo.src = './assets/onSound_logo.png';
-
-    if (pokemonEnemy) {
-      playAudio('fight_sound');
-    } else {
-      playAudio('start_sound');
-    }
-  }
 };
 
 export const handleTogglePokeApi = (
@@ -107,7 +75,6 @@ export const handleStopFight = (
   setPokemonFighter(false);
   setPokemonFighterData(null);
 
-  playAudio('click_sound');
   pauseAudio('win_sound');
   pauseAudio('fight_sound');
   playAudio('start_sound');
@@ -128,8 +95,8 @@ export const handleStopFight = (
 
   const choosedPokemonTitleName = document.querySelector('.titlename_pkmn_h3');
   const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
-  choosedPokemonTitleName.style.display = 'grid';
-  choosedPokemonTypeName.style.display = 'grid';
+  choosedPokemonTitleName.style.color = 'white';
+  choosedPokemonTypeName.style.color = 'white';
 
   let navigateButtons = document.querySelector('.pokenavigate_btns');
   if (navigateButtons) {
@@ -139,5 +106,57 @@ export const handleStopFight = (
   let navbar = document.querySelector('.navbar');
   if (navbar) {
     navbar.style.display = 'flex';
+  }
+};
+
+export const handleStopMusic = (toggleMusic) => {
+  toggleMusic();
+};
+
+export const handleStartFight = (playAudio, pauseAudio) => {
+  pauseAudio('start_sound');
+  playAudio('fight_sound');
+
+  const onoffButtonDisabled = document.querySelector('.onoff_div');
+  if (onoffButtonDisabled) {
+    onoffButtonDisabled.style.zIndex = -1;
+  }
+
+  let navigateButtons = document.querySelector('.pokenavigate_btns');
+  let navbar = document.querySelector('.navbar');
+
+  const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
+  if (pokemonRandomEnemy) {
+    pokemonRandomEnemy.style.display = 'flex';
+  }
+
+  if (navigateButtons) {
+    navigateButtons.style.display = 'none';
+  }
+  if (navbar) {
+    navbar.style.display = 'none';
+  }
+
+  const textWinnerPkmn = document.querySelector('.title_winner');
+  if (textWinnerPkmn) {
+    textWinnerPkmn.style.display = 'flex';
+  }
+
+  const choosedPokemonTitleName = document.querySelector('.titlename_pkmn_h3');
+  const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
+  if (choosedPokemonTitleName) {
+    choosedPokemonTitleName.style.display = 'block';
+  }
+  if (choosedPokemonTypeName) {
+    choosedPokemonTypeName.style.display = 'block';
+  }
+
+  const enemyTitleName = document.querySelector('.titlename_enemy_h3');
+  const enemyTypeName = document.querySelector('.type_enemy_h3');
+  if (enemyTitleName) {
+    enemyTitleName.style.display = 'block';
+  }
+  if (enemyTypeName) {
+    enemyTypeName.style.display = 'block';
   }
 };

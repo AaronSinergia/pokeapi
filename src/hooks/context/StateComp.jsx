@@ -16,7 +16,6 @@ const StateComp = ({ children }) => {
   const [randomID, setRandomID] = useState('');
   const [comparisionResult, setComparisionResult] = useState('');
   const [showWinner, setShowWinner] = useState('');
-  const [musicOff, setMusicOff] = useState(false);
 
   const increment = () => {
     setPokemon((nextId) => (nextId < 1025 ? nextId + 1 : 1));
@@ -26,7 +25,8 @@ const StateComp = ({ children }) => {
     setPokemon((prevId) => (prevId > 1 ? prevId - 1 : 1025));
   };
 
-  const { playAudio, pauseAudio, setLoop } = useMultiAudio(audioFiles);
+  const { playAudio, pauseAudio, setLoop, toggleMusic, musicOff } =
+    useMultiAudio(audioFiles);
 
   return (
     <pokeContext.Provider
@@ -55,11 +55,11 @@ const StateComp = ({ children }) => {
         setComparisionResult,
         showWinner,
         setShowWinner,
-        musicOff,
-        setMusicOff,
         playAudio,
         pauseAudio,
         setLoop,
+        toggleMusic,
+        musicOff,
       }}
     >
       {children}

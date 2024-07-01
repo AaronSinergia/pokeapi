@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './PokemonChoosed.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import Navbar from '../Navbar/Navbar';
 import WinnerResult from '../WinnerResult/WinnerResult';
 import Mutebttn from '../Mutebttn/Mutebttn';
-import startPokemonFight from '../../components/StartPokemonFight/startPokemonFight';
 import FightersInfo from '../FightersInfo/FigthersInfo';
 import Button from '../Button/Button';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
+import { handleStartFight } from '../../function/handleFunctions';
+import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 const PokemonChoosed = () => {
   const {
@@ -20,15 +21,36 @@ const PokemonChoosed = () => {
     decrement,
     increment,
     playAudio,
+    pauseAudio,
   } = useContext(pokeContext);
 
-  startPokemonFight(
+  useEffect(() => {
+    if (pokemonFighterData) {
+      handleStartFight(playAudio, pauseAudio);
+
+      const pokemonChoosedToFight = data.types[0].type.name;
+      const pokemonRandomToFight = pokemonFighterData.types[0].type.name;
+
+      comparePokemonTypes(
+        pokemonChoosedToFight,
+        pokemonRandomToFight,
+        playAudio,
+        pauseAudio
+      )
+        .then((comparisionResult) => {
+          setComparisionResult(comparisionResult);
+        })
+        .catch((error) => {
+          console.error('Error with comparision:', error);
+        });
+    }
+  }, [
     pokemonFighterData,
     data,
     setComparisionResult,
     setPokemonFighter,
-    setPokemonFighterData
-  );
+    setPokemonFighterData,
+  ]);
 
   const prevNextBttns = (text, onClickHandler) => (
     <Button
@@ -36,7 +58,7 @@ const PokemonChoosed = () => {
       style={styleButtons}
       text={text}
       onClick={() => {
-        onClickHandler(playAudio('click_sound'));
+        onClickHandler();
       }}
     />
   );

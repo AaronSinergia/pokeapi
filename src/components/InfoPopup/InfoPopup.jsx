@@ -9,11 +9,11 @@ const InfoPopup = () => {
     useContext(pokeContext);
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    setCurrentMessageIndex(
-      (prevIndex) => (prevIndex + 1) % helpMessages.length
-    );
-    // }, 9000);
+    const interval = setInterval(() => {
+      setCurrentMessageIndex(
+        (prevIndex) => (prevIndex + 1) % helpMessages.length
+      );
+    }, 9000);
 
     return () => clearInterval(interval);
   }, [helpMessages.length, setCurrentMessageIndex]);

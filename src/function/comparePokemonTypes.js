@@ -23,10 +23,10 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
     pokemonRandom.style.animation = 'none';
     pokemonChoosed.style.filter = 'none';
     pokemonRandom.style.filter = 'none';
-    choosedPokemonTitleName.style.display = 'block';
-    choosedPokemonTypeName.style.display = 'block';
-    enemyTitleName.style.display = 'block';
-    enemyTypeName.style.display = 'block';
+    choosedPokemonTitleName.style.color = 'white';
+    choosedPokemonTypeName.style.color = 'white';
+    enemyTitleName.style.color = 'white';
+    enemyTypeName.style.color = 'white';
 
     const type1DoubleDamageToType2 =
       type1Data.damage_relations.double_damage_to.some(
@@ -60,8 +60,8 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
       setTimeout(() => {
         pokemonChoosed.style.animation = 'zoom-effect 2s infinite';
         pokemonRandom.style.filter = 'grayscale(100%)';
-        enemyTitleName.style.display = 'none';
-        enemyTypeName.style.display = 'none';
+        enemyTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
+        enemyTypeName.style.color = 'rgba(223, 53, 53, 0.203)';
         pauseAudio('fight_sound');
         playAudio('win_sound');
       }, 1200);
@@ -77,8 +77,8 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
 
         pokemonRandom.style.animation = 'zoom-effect 2s infinite';
         pokemonChoosed.style.filter = 'grayscale(100%)';
-        choosedPokemonTitleName.style.display = 'none';
-        choosedPokemonTypeName.style.display = 'none';
+        choosedPokemonTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
+        choosedPokemonTypeName.style.color = 'rgba(223, 53, 53, 0.203)';
 
         playAudio('defeat_sound');
       }, 1200);

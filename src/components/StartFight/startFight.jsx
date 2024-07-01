@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 import { pokeContext } from '../../hooks/context/pokeContext';
 
-const startPokemonFight = (
+const startFight = (
   pokemonFighterData,
   data,
   setComparisionResult,
@@ -75,4 +75,4 @@ const startPokemonFight = (
   ]);
 };
 
-export default startPokemonFight;
+export default startFight;
