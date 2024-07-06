@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import './WinnerResult.css';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import H3Comp from '../H3Comp/H3Comp';

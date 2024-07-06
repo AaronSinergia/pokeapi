@@ -1,6 +1,6 @@
 .pokemon_img {
   width: 100px;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
   margin-left: 35px;
   cursor: pointer;
   grid-column: 1 / 2;
@@ -36,6 +36,7 @@
 }
 
 .pkmn_goto_fight {
+  z-index: 12;
   position: absolute;
   width: 60px;
   transform: scaleX(-1);
@@ -47,6 +48,7 @@
 }
 
 .pkmn_random_enemy {
+  z-index: 12;
   position: absolute;
   width: 60px;
   margin-left: 85px;
@@ -67,25 +69,77 @@
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .pokemon_img {
     width: 200px;
+    margin-bottom: 50px;
+    margin-left: 35px;
+  }
+
+  .pkmn_goto_fight {
+    width: 140px;
+    margin-bottom: 140px;
+    right: 310px;
+  }
+
+  .pkmn_random_enemy {
+    width: 140px;
+    margin-bottom: 20px;
+    right: 170px;
   }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   .pokemon_img {
     width: 200px;
+    margin-bottom: 40px;
+    margin-left: 35px;
+  }
+
+  .pkmn_goto_fight {
+    width: 140px;
+    margin-bottom: 140px;
+    right: 265px;
+  }
+
+  .pkmn_random_enemy {
+    width: 140px;
+    margin-bottom: 40px;
+    right: 110px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
   .pokemon_img {
     width: 200px;
-    margin-bottom: 30px;
-    margin-right: 100px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+  }
+
+  .pkmn_goto_fight {
+    width: 140px;
+    margin-bottom: 140px;
+    right: 265px;
+  }
+
+  .pkmn_random_enemy {
+    width: 140px;
+    margin-bottom: 40px;
+    right: 110px;
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .pokemon_img {
     width: 150px;
+  }
+
+  .pkmn_goto_fight {
+    width: 80px;
+    margin-bottom: 80px;
+    right: 155px;
+  }
+
+  .pkmn_random_enemy {
+    width: 80px;
+    margin-bottom: 20px;
+    margin-left: 50px;
   }
 }
