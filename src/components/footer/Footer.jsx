@@ -1,5 +1,5 @@
 import H3Comp from '../H3Comp/H3Comp';
-import './Footer.css';
+import './footer.css';
 import FootLogos from './FooterLogos/FootLogos';
 
 const Footer = () => {
