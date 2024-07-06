@@ -15,7 +15,14 @@ const Navbar = () => {
         style={styleButtons}
         type="text"
         className="poke_input"
-        onChange={(event) => handleChange(event, setInputValue)}
+        onChange={(event) => {
+          handleChange(event, setInputValue);
+        }}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter') {
+            handleSubmit(inputValue, setinputPkmID, playAudio);
+          }
+        }}
       />
       <Button
         style={styleButtons}

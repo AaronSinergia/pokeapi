@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import './PokemonChoosed.css';
+import './PokedexON.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import Navbar from '../Navbar/Navbar';
@@ -11,7 +11,7 @@ import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import { handleStartFight } from '../../function/handleFunctions';
 import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
-const PokemonChoosed = () => {
+const PokedexON = () => {
   const {
     data,
     pokemonFighterData,
@@ -78,4 +78,4 @@ const PokemonChoosed = () => {
   );
 };
 
-export default PokemonChoosed;
+export default PokedexON;

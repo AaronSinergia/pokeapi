@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import PokemonChoosed from '../PokemonChoosed/PokemonChoosed';
+import PokedexON from '../PokedexON/PokedexON';
 import { fetchFunction } from '../../function/fetchFunction';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import { default_POKEAPI_Url } from '../../config/urls';
@@ -73,7 +73,7 @@ const PokeApi = () => {
     <>
       {data ? (
         <>
-          <PokemonChoosed />
+          <PokedexON />
         </>
       ) : (
         <>

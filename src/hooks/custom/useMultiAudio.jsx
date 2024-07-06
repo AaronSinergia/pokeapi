@@ -47,16 +47,6 @@ const useMultiAudio = (audioFiles) => {
     });
   }, [audioFiles]);
 
-  // useEffect(() => {
-  //   if (musicOff) {
-  //     audioFiles.forEach((file) => {
-  //       if (file.id !== 'click_sound') {
-  //         pauseAudio(file.id);
-  //       }
-  //     });
-  //   }
-  // }, [musicOff, audioFiles, pauseAudio]);
-
   return { playAudio, pauseAudio, setLoop, toggleMusic, musicOff };
 };
 
