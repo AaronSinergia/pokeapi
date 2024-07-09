@@ -29,7 +29,7 @@
   position: absolute;
   top: 78px;
   grid-template-columns: minmax(min-content, 195px) minmax(min-content, 160px);
-  grid-template-rows: minmax(min-content, 20px) minmax(min-content, 20px);
+  grid-template-rows: minmax(min-content, 20px);
   text-transform: uppercase;
   justify-content: center;
   align-items: center;
@@ -66,6 +66,7 @@
   }
 
   .enemy_fighter_info {
+    grid-template-columns: minmax(min-content, 190px) minmax(min-content, 300px);
     top: 160px;
     margin-left: 250px;
   }
@@ -73,7 +74,7 @@
   .pokemon_vs_title {
     font-size: 30px;
     margin-top: 180px;
-    margin-left: 278px;
+    margin-left: 310px;
   }
 
   .active_fighter_info {
@@ -82,12 +83,13 @@
   }
 }
 
-@media screen and (min-width: 960px) and (max-width: 1024px) {
+@media screen and (min-width: 960px) and (max-width: 1023px) {
   .your_fighter_info {
     grid-template-columns: minmax(min-content, 410px) minmax(min-content, 200px);
   }
 
   .enemy_fighter_info {
+    grid-template-columns: minmax(min-content, 190px) minmax(min-content, 300px);
     top: 150px;
     margin-left: 210px;
   }
@@ -95,7 +97,7 @@
   .pokemon_vs_title {
     font-size: 30px;
     margin-top: 160px;
-    margin-left: 280px;
+    margin-left: 310px;
   }
 
   .active_fighter_info {
@@ -110,6 +112,7 @@
   }
 
   .enemy_fighter_info {
+    grid-template-columns: minmax(min-content, 190px) minmax(min-content, 300px);
     top: 150px;
     margin-left: 210px;
   }
@@ -117,7 +120,7 @@
   .pokemon_vs_title {
     font-size: 30px;
     margin-top: 160px;
-    margin-left: 280px;
+    margin-left: 310px;
   }
 
   .active_fighter_info {

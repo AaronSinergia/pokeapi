@@ -28,6 +28,9 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
     enemyTitleName.style.color = 'white';
     enemyTypeName.style.color = 'white';
 
+    const winnerTitleEnabled = document.querySelector('.winner_div');
+    winnerTitleEnabled.style.zIndex = 1;
+
     const type1DoubleDamageToType2 =
       type1Data.damage_relations.double_damage_to.some(
         (type) => type.name === type2

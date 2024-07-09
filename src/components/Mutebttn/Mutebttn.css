@@ -6,7 +6,7 @@
   height: 23px;
   margin-right: 177px;
   margin-left: 100px;
-  z-index: 1;
+  z-index: 12;
   animation: blink 5s infinite alternate, zoom 5s infinite alternate;
   cursor: pointer;
 }

@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback, useEffect } from 'react';
+import { useRef, useState, useCallback } from 'react';
 
 const useMultiAudio = (audioFiles) => {
   const [musicOff, setMusicOff] = useState(false);
