@@ -14,6 +14,7 @@ const FightersInfo = () => {
   const {
     data,
     pokemonFighterData,
+    pokemonFighter,
     setPokemonFighter,
     setRandomID,
     setPokemonFighterData,
@@ -42,7 +43,11 @@ const FightersInfo = () => {
 
   return (
     <>
-      <section className={'your_fighter_info'}>
+      <section
+        className={
+          !pokemonFighter ? 'your_fighter_info' : 'active_fighter_info'
+        }
+      >
         {data.sprites.front_default ? (
           <SpriteIMG
             className={'pokemon_img'}

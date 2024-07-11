@@ -19,12 +19,7 @@ export const handleTogglePokeApi = (
 ) => {
   setShowPokeApi(!showPokeApi);
 
-  const on_button = document.querySelector('.on_title');
-
-  if (on_button.innerHTML !== 'ON') {
-    const popup = document.querySelector('.div_popup');
-    popup.style.display = 'flex';
-
+  if (!showPokeApi) {
     playAudio('on_sound');
     playAudio('start_sound');
     setLoop('start_sound', true);
@@ -32,9 +27,6 @@ export const handleTogglePokeApi = (
     playAudio('off_sound');
     pauseAudio('start_sound');
     pauseAudio('fight_sound');
-
-    const popup = document.querySelector('.div_popup');
-    popup.style.display = 'none';
   }
 };
 
@@ -52,18 +44,6 @@ export const handleImageClick = (
 
   const randomPkmnID = Math.floor(Math.random() * 1025);
   setRandomID(randomPkmnID);
-
-  const yourFighterSection = document.querySelector('.your_fighter_info');
-  if (yourFighterSection) {
-    yourFighterSection.className = 'active_fighter_info';
-  }
-
-  const pokemonWinnerTitle = document.querySelector('.title_winner');
-  if (pokemonWinnerTitle) {
-    setTimeout(() => {
-      pokemonWinnerTitle.style.zIndex = 1;
-    }, 800);
-  }
 };
 
 export const handleStopFight = (

@@ -1,4 +1,4 @@
-export const fetchFunction = (url) => {
+export const fetchFunction = async (url) => {
   return fetch(url)
     .then((response) => {
       if (!response.ok) {

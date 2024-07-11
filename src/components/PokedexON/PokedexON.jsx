@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import './PokedexON.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import { pokeContext } from '../../hooks/context/pokeContext';

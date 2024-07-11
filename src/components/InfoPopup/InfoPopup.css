@@ -1,8 +1,12 @@
 .div_popup {
   position: relative;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.nodisplayed_div_popup {
+  display: none;
 }
 
 .info_popup {
