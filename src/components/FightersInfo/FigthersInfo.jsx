@@ -22,12 +22,9 @@ const FightersInfo = () => {
     pauseAudio,
   } = useContext(pokeContext);
 
-  const clickInIMG = useCallback(
-    (ev) => {
-      handleImageClick(ev, setPokemonFighter, setRandomID, playAudio);
-    },
-    [setPokemonFighter, setRandomID]
-  );
+  const clickInIMG = useCallback(() => {
+    handleImageClick(setPokemonFighter, setRandomID, playAudio);
+  }, [setPokemonFighter, setRandomID]);
 
   const clickInSTOPBTN = useCallback(
     (playAudio, pauseAudio) => {
@@ -50,7 +47,7 @@ const FightersInfo = () => {
       >
         {data.sprites.front_default ? (
           <SpriteIMG
-            className={'pokemon_img'}
+            className={pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'}
             onClick={clickInIMG}
             src={data.sprites.front_default}
             alt={data.name}
@@ -62,8 +59,21 @@ const FightersInfo = () => {
             alt={data.name}
           />
         )}
-        <H3Comp className={'titlename_pkmn_h3'} text={data.name} />
         <H3Comp
+          style={
+            pokemonFighterData
+              ? { color: 'rgba(223, 53, 53, 0.203)' }
+              : { color: 'white' }
+          }
+          className={'titlename_pkmn_h3'}
+          text={data.name}
+        />
+        <H3Comp
+          style={
+            pokemonFighterData
+              ? { color: 'rgba(223, 53, 53, 0.203)' }
+              : { color: 'white' }
+          }
           className={'type_pkmn_h3'}
           text={`TYPE: ${data.types[0].type.name}`}
         />
@@ -80,10 +90,16 @@ const FightersInfo = () => {
 
             <H3Comp className={'pokemon_vs_title'} text={'vs'} />
             <H3Comp
+              style={
+                pokemonFighterData ? { display: 'block' } : { display: 'none' }
+              }
               className={'titlename_pkmn_h3 titlename_enemy_h3'}
               text={pokemonFighterData.name}
             />
             <H3Comp
+              style={
+                pokemonFighterData ? { display: 'block' } : { display: 'none' }
+              }
               className={'type_pkmn_h3 type_enemy_h3'}
               text={`TYPE: ${pokemonFighterData.types[0].type.name}`}
             />

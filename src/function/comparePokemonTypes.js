@@ -16,17 +16,11 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
     const choosedPokemonTitleName =
       document.querySelector('.titlename_pkmn_h3');
     const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
-    const enemyTitleName = document.querySelector('.titlename_enemy_h3');
-    const enemyTypeName = document.querySelector('.type_enemy_h3');
 
     pokemonChoosed.style.animation = 'none';
     pokemonRandom.style.animation = 'none';
     pokemonChoosed.style.filter = 'none';
     pokemonRandom.style.filter = 'none';
-    choosedPokemonTitleName.style.color = 'white';
-    choosedPokemonTypeName.style.color = 'white';
-    enemyTitleName.style.color = 'white';
-    enemyTypeName.style.color = 'white';
 
     const winnerTitleEnabled = document.querySelector('.winner_div');
     winnerTitleEnabled.style.zIndex = 1;
@@ -63,8 +57,8 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
       setTimeout(() => {
         pokemonChoosed.style.animation = 'zoom-effect 2s infinite';
         pokemonRandom.style.filter = 'grayscale(100%)';
-        enemyTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
-        enemyTypeName.style.color = 'rgba(223, 53, 53, 0.203)';
+        // enemyTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
+        // enemyTypeName.style.color = 'rgba(223, 53, 53, 0.203)'; --->> aqui seguir
         pauseAudio('fight_sound');
         playAudio('win_sound');
       }, 1200);
@@ -80,8 +74,8 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
 
         pokemonRandom.style.animation = 'zoom-effect 2s infinite';
         pokemonChoosed.style.filter = 'grayscale(100%)';
-        choosedPokemonTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
-        choosedPokemonTypeName.style.color = 'rgba(223, 53, 53, 0.203)';
+        // choosedPokemonTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
+        // choosedPokemonTypeName.style.color = 'rgba(223, 53, 53, 0.203)';
 
         playAudio('defeat_sound');
       }, 1200);

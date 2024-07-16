@@ -70,7 +70,10 @@ const PokedexON = () => {
       <Navbar />
       <FightersInfo />
       <WinnerResult />
-      <div className="pokenavigate_btns">
+      <div
+        style={pokemonFighterData ? { display: 'none' } : { display: 'flex' }}
+        className="pokenavigate_btns"
+      >
         {prevNextBttns('⬅', decrement)}
         {prevNextBttns('➡', increment)}
       </div>

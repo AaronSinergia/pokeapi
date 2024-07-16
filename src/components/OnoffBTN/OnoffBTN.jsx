@@ -5,8 +5,14 @@ import { handleTogglePokeApi } from '../../function/handleFunctions';
 import H3Comp from '../H3Comp/H3Comp';
 
 const OnoffBTN = () => {
-  const { showPokeApi, setShowPokeApi, playAudio, pauseAudio, setLoop } =
-    useContext(pokeContext);
+  const {
+    pokemonFighterData,
+    showPokeApi,
+    setShowPokeApi,
+    playAudio,
+    pauseAudio,
+    setLoop,
+  } = useContext(pokeContext);
 
   return (
     <div
@@ -21,7 +27,11 @@ const OnoffBTN = () => {
       }
       className="onoff_div"
     >
-      <h2 className="on_off" title="ON/OFF">
+      <h2
+        style={pokemonFighterData ? { zIndex: 1 } : { zIndex: -1 }}
+        className="on_off"
+        title="ON/OFF"
+      >
         🔵
       </h2>
       <H3Comp className={'on_title'} text={showPokeApi ? 'ON' : 'OFF'} />

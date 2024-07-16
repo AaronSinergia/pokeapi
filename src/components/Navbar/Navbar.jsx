@@ -6,11 +6,19 @@ import { styleButtons } from '../../utils/buttons/style/styleButtons.js';
 import Button from '../Button/Button.jsx';
 
 const Navbar = () => {
-  const { setinputPkmID, inputValue, setInputValue, playAudio } =
-    useContext(pokeContext);
+  const {
+    pokemonFighterData,
+    setinputPkmID,
+    inputValue,
+    setInputValue,
+    playAudio,
+  } = useContext(pokeContext);
 
   return (
-    <nav className="navbar">
+    <nav
+      style={pokemonFighterData ? { display: 'none' } : { display: 'flex' }}
+      className="navbar"
+    >
       <input
         style={styleButtons}
         type="text"

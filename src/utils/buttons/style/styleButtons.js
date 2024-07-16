@@ -1,4 +1,5 @@
 export const styleButtons = {
+  display: 'block',
   textDecoration: 'none',
   fontFamily: 'Arial',
   borderWidth: '1px',

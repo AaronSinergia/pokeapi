@@ -30,20 +30,21 @@ export const handleTogglePokeApi = (
   }
 };
 
-export const handleImageClick = (
-  ev,
-  setPokemonFighter,
-  setRandomID,
-  playAudio
-) => {
+export const handleImageClick = (setPokemonFighter, setRandomID, playAudio) => {
   setPokemonFighter(true);
-
-  ev.target.className = 'pkmn_goto_fight';
-
   playAudio('click_sound');
 
   const randomPkmnID = Math.floor(Math.random() * 1025);
   setRandomID(randomPkmnID);
+};
+
+export const handleStopMusic = (toggleMusic) => {
+  toggleMusic();
+};
+
+export const handleStartFight = (playAudio, pauseAudio) => {
+  pauseAudio('start_sound');
+  playAudio('fight_sound');
 };
 
 export const handleStopFight = (
@@ -59,84 +60,7 @@ export const handleStopFight = (
   pauseAudio('fight_sound');
   playAudio('start_sound');
 
-  const onoffButtonDisabled = document.querySelector('.onoff_div');
-  onoffButtonDisabled.style.zIndex = 1;
-
-  const yourFighterSection = document.querySelector('.active_fighter_info');
-  yourFighterSection.className = 'your_fighter_info';
-
-  const textWinnerPkmn = document.querySelector('.title_winner');
-  textWinnerPkmn.style.display = 'none';
-
-  const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
-  pokemonGoToFight.className = 'pokemon_img';
-  pokemonGoToFight.style.filter = 'grayscale(0%)';
-  pokemonGoToFight.style.animation = 'none';
-
-  const choosedPokemonTitleName = document.querySelector('.titlename_pkmn_h3');
-  const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
-  choosedPokemonTitleName.style.color = 'white';
-  choosedPokemonTypeName.style.color = 'white';
-
-  let navigateButtons = document.querySelector('.pokenavigate_btns');
-  if (navigateButtons) {
-    navigateButtons.style.display = 'flex';
-  }
-
-  let navbar = document.querySelector('.navbar');
-  if (navbar) {
-    navbar.style.display = 'flex';
-  }
-};
-
-export const handleStopMusic = (toggleMusic) => {
-  toggleMusic();
-};
-
-export const handleStartFight = (playAudio, pauseAudio) => {
-  pauseAudio('start_sound');
-  playAudio('fight_sound');
-
-  const onoffButtonDisabled = document.querySelector('.onoff_div');
-  if (onoffButtonDisabled) {
-    onoffButtonDisabled.style.zIndex = -1;
-  }
-
-  let navigateButtons = document.querySelector('.pokenavigate_btns');
-  let navbar = document.querySelector('.navbar');
-
-  const pokemonRandomEnemy = document.querySelector('.pkmn_random_enemy');
-  if (pokemonRandomEnemy) {
-    pokemonRandomEnemy.style.display = 'flex';
-  }
-
-  if (navigateButtons) {
-    navigateButtons.style.display = 'none';
-  }
-  if (navbar) {
-    navbar.style.display = 'none';
-  }
-
-  const textWinnerPkmn = document.querySelector('.title_winner');
-  if (textWinnerPkmn) {
-    textWinnerPkmn.style.display = 'flex';
-  }
-
-  const choosedPokemonTitleName = document.querySelector('.titlename_pkmn_h3');
-  const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
-  if (choosedPokemonTitleName) {
-    choosedPokemonTitleName.style.display = 'block';
-  }
-  if (choosedPokemonTypeName) {
-    choosedPokemonTypeName.style.display = 'block';
-  }
-
-  const enemyTitleName = document.querySelector('.titlename_enemy_h3');
-  const enemyTypeName = document.querySelector('.type_enemy_h3');
-  if (enemyTitleName) {
-    enemyTitleName.style.display = 'block';
-  }
-  if (enemyTypeName) {
-    enemyTypeName.style.display = 'block';
-  }
+  // const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
+  // pokemonGoToFight.style.filter = 'grayscale(0%)';
+  // pokemonGoToFight.style.animation = 'none';
 };
