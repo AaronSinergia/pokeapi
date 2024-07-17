@@ -20,26 +20,86 @@ const FightersInfo = () => {
     setPokemonFighterData,
     playAudio,
     pauseAudio,
+    comparisionResult,
+    setComparisionResult,
+    showGif,
+    setShowGif,
   } = useContext(pokeContext);
 
   const clickInIMG = useCallback(() => {
-    handleImageClick(setPokemonFighter, setRandomID, playAudio);
+    handleImageClick(
+      setComparisionResult,
+      setPokemonFighter,
+      setRandomID,
+      playAudio,
+      showGif,
+      setShowGif
+    );
   }, [setPokemonFighter, setRandomID]);
 
-  const clickInSTOPBTN = useCallback(
-    (playAudio, pauseAudio) => {
-      handleStopFight(
-        setPokemonFighter,
-        setPokemonFighterData,
-        playAudio,
-        pauseAudio
-      );
-    },
-    [setPokemonFighter, setPokemonFighterData]
-  );
+  const clickInSTOPBTN = useCallback(() => {
+    handleStopFight(
+      setComparisionResult,
+      setPokemonFighter,
+      setPokemonFighterData,
+      playAudio,
+      pauseAudio
+    );
+  }, [setPokemonFighter, setPokemonFighterData]);
+
+  const handleMainPkmnClicked = {
+    animation:
+      pokemonFighterData && comparisionResult === 'YOU WIN!!!!! 😎'
+        ? 'zoom-effect 2s infinite'
+        : 'none',
+    filter:
+      pokemonFighterData && comparisionResult === 'ENEMY WINS! 😫'
+        ? 'grayscale(100%)'
+        : 'grayscale(0%)',
+  };
+
+  const handleOponentPkmnClicked = {
+    animation:
+      comparisionResult === 'ENEMY WINS! 😫'
+        ? 'zoom-effect 2s infinite'
+        : 'none',
+    filter:
+      comparisionResult === 'YOU WIN!!!!! 😎'
+        ? 'grayscale(100%)'
+        : 'grayscale(0%)',
+  };
+
+  const styleTextMainPKMN = {
+    color:
+      !comparisionResult || comparisionResult === 'YOU WIN!!!!! 😎'
+        ? 'white'
+        : 'rgba(223, 53, 53, 0.203)',
+    filter:
+      comparisionResult === 'YOU WIN!!!!! 😎'
+        ? 'grayscale(0%)'
+        : 'grayscale(100%)',
+  };
+
+  const styleTextOponentPKMN = {
+    color:
+      !comparisionResult || comparisionResult === 'ENEMY WINS! 😫'
+        ? 'white'
+        : 'rgba(223, 53, 53, 0.203)',
+    filter:
+      comparisionResult === 'ENEMY WINS! 😫'
+        ? 'grayscale(0%)'
+        : 'grayscale(100%)',
+  };
 
   return (
     <>
+      {showGif && (
+        <img
+          className="loading_gif"
+          src="../../../public/assets/gifs/gif_fight.gif"
+          alt="Loading"
+        />
+      )}
       <section
         className={
           !pokemonFighter ? 'your_fighter_info' : 'active_fighter_info'
@@ -47,6 +107,7 @@ const FightersInfo = () => {
       >
         {data.sprites.front_default ? (
           <SpriteIMG
+            style={handleMainPkmnClicked}
             className={pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'}
             onClick={clickInIMG}
             src={data.sprites.front_default}
@@ -54,26 +115,23 @@ const FightersInfo = () => {
           />
         ) : (
           <SpriteIMG
-            className={'pokemon_img'}
+            style={
+              comparisionResult === 'YOU WIN!!!!! 😎'
+                ? { animation: 'zoom-effect 2s infinite' }
+                : { animation: 'none' }
+            }
+            className={pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'}
             src={'./assets/no-image-icon-4.png'}
             alt={data.name}
           />
         )}
         <H3Comp
-          style={
-            pokemonFighterData
-              ? { color: 'rgba(223, 53, 53, 0.203)' }
-              : { color: 'white' }
-          }
+          style={styleTextMainPKMN}
           className={'titlename_pkmn_h3'}
           text={data.name}
         />
         <H3Comp
-          style={
-            pokemonFighterData
-              ? { color: 'rgba(223, 53, 53, 0.203)' }
-              : { color: 'white' }
-          }
+          style={styleTextMainPKMN}
           className={'type_pkmn_h3'}
           text={`TYPE: ${data.types[0].type.name}`}
         />
@@ -83,23 +141,19 @@ const FightersInfo = () => {
         {pokemonFighterData?.sprites ? (
           <>
             <SpriteIMG
+              style={handleOponentPkmnClicked}
               className={'pkmn_random_enemy'}
               src={pokemonFighterData.sprites.front_default}
               alt={pokemonFighterData.name}
             />
-
             <H3Comp className={'pokemon_vs_title'} text={'vs'} />
             <H3Comp
-              style={
-                pokemonFighterData ? { display: 'block' } : { display: 'none' }
-              }
+              style={styleTextOponentPKMN}
               className={'titlename_pkmn_h3 titlename_enemy_h3'}
               text={pokemonFighterData.name}
             />
             <H3Comp
-              style={
-                pokemonFighterData ? { display: 'block' } : { display: 'none' }
-              }
+              style={styleTextOponentPKMN}
               className={'type_pkmn_h3 type_enemy_h3'}
               text={`TYPE: ${pokemonFighterData.types[0].type.name}`}
             />

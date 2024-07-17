@@ -60,6 +60,15 @@
   }
 }
 
+.loading_gif {
+  position: absolute;
+  z-index: 19;
+  width: 122px;
+  top: 67px;
+  left: 28px;
+  clip-path: polygon(0% 10%, 100% 10%, 100% 70%, 0% 70%);
+}
+
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .your_fighter_info {
     grid-template-columns: minmax(min-content, 440px) minmax(min-content, 200px);

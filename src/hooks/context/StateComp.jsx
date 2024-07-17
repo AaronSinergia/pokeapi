@@ -15,7 +15,7 @@ const StateComp = ({ children }) => {
   const [pokemonFighterData, setPokemonFighterData] = useState(null);
   const [randomID, setRandomID] = useState('');
   const [comparisionResult, setComparisionResult] = useState('');
-  const [showWinner, setShowWinner] = useState('');
+  const [showGif, setShowGif] = useState(false);
 
   const increment = () => {
     setPokemon((nextId) => (nextId < 1025 ? nextId + 1 : 1));
@@ -53,13 +53,13 @@ const StateComp = ({ children }) => {
         setRandomID,
         comparisionResult,
         setComparisionResult,
-        showWinner,
-        setShowWinner,
         playAudio,
         pauseAudio,
         setLoop,
         toggleMusic,
         musicOff,
+        showGif,
+        setShowGif,
       }}
     >
       {children}

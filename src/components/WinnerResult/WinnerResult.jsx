@@ -5,37 +5,15 @@ import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import H3Comp from '../H3Comp/H3Comp';
 
 const WinnerResult = () => {
-  const {
-    pokemonFighterData,
-    comparisionResult,
-    showWinner,
-    setShowWinner,
-    setPokemonFighter,
-  } = useContext(pokeContext);
-
-  useEffect(() => {
-    setShowWinner(false);
-    const timerId = setTimeout(() => {
-      setShowWinner(comparisionResult);
-    }, 1000);
-
-    return () => clearTimeout(timerId);
-  }, [comparisionResult]);
-
-  const winnerStyle = {
-    ...styleButtons,
-    zIndex: setPokemonFighter ? 1 : styleButtons.zIndex || 12,
-    display: pokemonFighterData ? 'flex' : 'none',
-  };
+  const { pokemonFighterData, comparisionResult } = useContext(pokeContext);
 
   return (
-    <div className="winner_div">
-      {showWinner ? (
-        <H3Comp
-          className={'title_winner'}
-          style={winnerStyle}
-          text={showWinner}
-        />
+    <div
+      style={comparisionResult ? { zIndex: 1 } : { zIndex: -1 }}
+      className="winner_div"
+    >
+      {pokemonFighterData ? (
+        <H3Comp className={'title_winner'} text={comparisionResult} />
       ) : (
         <H3Comp
           className={'title_winner'}

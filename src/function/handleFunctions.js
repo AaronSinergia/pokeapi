@@ -30,9 +30,25 @@ export const handleTogglePokeApi = (
   }
 };
 
-export const handleImageClick = (setPokemonFighter, setRandomID, playAudio) => {
+export const handleImageClick = (
+  setComparisionResult,
+  setPokemonFighter,
+  setRandomID,
+  playAudio,
+  showGif,
+  setShowGif
+) => {
+  setComparisionResult('');
   setPokemonFighter(true);
   playAudio('click_sound');
+
+  setShowGif(true);
+
+  console.log(showGif);
+
+  setTimeout(() => {
+    setShowGif(false);
+  }, 2500);
 
   const randomPkmnID = Math.floor(Math.random() * 1025);
   setRandomID(randomPkmnID);
@@ -48,6 +64,7 @@ export const handleStartFight = (playAudio, pauseAudio) => {
 };
 
 export const handleStopFight = (
+  setComparisionResult,
   setPokemonFighter,
   setPokemonFighterData,
   playAudio,
@@ -55,12 +72,9 @@ export const handleStopFight = (
 ) => {
   setPokemonFighter(false);
   setPokemonFighterData(null);
+  setComparisionResult(false);
 
   pauseAudio('win_sound');
   pauseAudio('fight_sound');
   playAudio('start_sound');
-
-  // const pokemonGoToFight = document.querySelector('.pkmn_goto_fight');
-  // pokemonGoToFight.style.filter = 'grayscale(0%)';
-  // pokemonGoToFight.style.animation = 'none';
 };

@@ -11,20 +11,6 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
     const type1Data = await getTypeData(type1);
     const type2Data = await getTypeData(type2);
 
-    const pokemonChoosed = document.querySelector('.pkmn_goto_fight');
-    const pokemonRandom = document.querySelector('.pkmn_random_enemy');
-    const choosedPokemonTitleName =
-      document.querySelector('.titlename_pkmn_h3');
-    const choosedPokemonTypeName = document.querySelector('.type_pkmn_h3');
-
-    pokemonChoosed.style.animation = 'none';
-    pokemonRandom.style.animation = 'none';
-    pokemonChoosed.style.filter = 'none';
-    pokemonRandom.style.filter = 'none';
-
-    const winnerTitleEnabled = document.querySelector('.winner_div');
-    winnerTitleEnabled.style.zIndex = 1;
-
     const type1DoubleDamageToType2 =
       type1Data.damage_relations.double_damage_to.some(
         (type) => type.name === type2
@@ -55,10 +41,6 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
       type2NoDamageToType1
     ) {
       setTimeout(() => {
-        pokemonChoosed.style.animation = 'zoom-effect 2s infinite';
-        pokemonRandom.style.filter = 'grayscale(100%)';
-        // enemyTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
-        // enemyTypeName.style.color = 'rgba(223, 53, 53, 0.203)'; --->> aqui seguir
         pauseAudio('fight_sound');
         playAudio('win_sound');
       }, 1200);
@@ -71,12 +53,6 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
     ) {
       setTimeout(() => {
         pauseAudio('win_sound');
-
-        pokemonRandom.style.animation = 'zoom-effect 2s infinite';
-        pokemonChoosed.style.filter = 'grayscale(100%)';
-        // choosedPokemonTitleName.style.color = 'rgba(223, 53, 53, 0.203)';
-        // choosedPokemonTypeName.style.color = 'rgba(223, 53, 53, 0.203)';
-
         playAudio('defeat_sound');
       }, 1200);
       return `ENEMY WINS! 😫`;
