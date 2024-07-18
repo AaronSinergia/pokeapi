@@ -35,20 +35,21 @@ export const handleImageClick = (
   setPokemonFighter,
   setRandomID,
   playAudio,
-  showGif,
+  pauseAudio,
   setShowGif
 ) => {
-  setComparisionResult('');
-  setPokemonFighter(true);
   playAudio('click_sound');
+  pauseAudio('start_sound');
+  pauseAudio('fight_sound');
+  playAudio('fight_sound');
 
   setShowGif(true);
 
-  console.log(showGif);
-
   setTimeout(() => {
+    setPokemonFighter(true);
+    setComparisionResult('');
     setShowGif(false);
-  }, 2500);
+  }, 2800);
 
   const randomPkmnID = Math.floor(Math.random() * 1025);
   setRandomID(randomPkmnID);
@@ -56,11 +57,6 @@ export const handleImageClick = (
 
 export const handleStopMusic = (toggleMusic) => {
   toggleMusic();
-};
-
-export const handleStartFight = (playAudio, pauseAudio) => {
-  pauseAudio('start_sound');
-  playAudio('fight_sound');
 };
 
 export const handleStopFight = (

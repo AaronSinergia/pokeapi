@@ -40,10 +40,8 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
       type2HalfDamageToType1 ||
       type2NoDamageToType1
     ) {
-      setTimeout(() => {
-        pauseAudio('fight_sound');
-        playAudio('win_sound');
-      }, 1200);
+      pauseAudio('fight_sound');
+      playAudio('win_sound');
 
       return `YOU WIN!!!!! 😎`;
     } else if (
@@ -51,16 +49,14 @@ export async function comparePokemonTypes(type1, type2, playAudio, pauseAudio) {
       type1HalfDamageToType2 ||
       type1NoDamageToType2
     ) {
-      setTimeout(() => {
-        pauseAudio('win_sound');
-        playAudio('defeat_sound');
-      }, 1200);
+      pauseAudio('win_sound');
+      playAudio('defeat_sound');
+
       return `ENEMY WINS! 😫`;
     } else {
-      setTimeout(() => {
-        pauseAudio('win_sound');
-        playAudio('defeat_sound');
-      }, 1200);
+      pauseAudio('win_sound');
+      playAudio('defeat_sound');
+
       return 'TIED MATCH! 😱';
     }
   } catch (error) {

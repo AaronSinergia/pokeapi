@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './PokedexON.css';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import { pokeContext } from '../../hooks/context/pokeContext';
@@ -8,49 +8,9 @@ import Mutebttn from '../Mutebttn/Mutebttn';
 import FightersInfo from '../FightersInfo/FigthersInfo';
 import Button from '../Button/Button';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
-import { handleStartFight } from '../../function/handleFunctions';
-import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 const PokedexON = () => {
-  const {
-    data,
-    pokemonFighterData,
-    setPokemonFighter,
-    setPokemonFighterData,
-    setComparisionResult,
-    decrement,
-    increment,
-    playAudio,
-    pauseAudio,
-  } = useContext(pokeContext);
-
-  useEffect(() => {
-    if (pokemonFighterData) {
-      handleStartFight(playAudio, pauseAudio);
-
-      const pokemonChoosedToFight = data.types[0].type.name;
-      const pokemonRandomToFight = pokemonFighterData.types[0].type.name;
-
-      comparePokemonTypes(
-        pokemonChoosedToFight,
-        pokemonRandomToFight,
-        playAudio,
-        pauseAudio
-      )
-        .then((comparisionResult) => {
-          setComparisionResult(comparisionResult);
-        })
-        .catch((error) => {
-          console.error('Error with comparision:', error);
-        });
-    }
-  }, [
-    pokemonFighterData,
-    data,
-    setComparisionResult,
-    setPokemonFighter,
-    setPokemonFighterData,
-  ]);
+  const { pokemonFighterData, decrement, increment } = useContext(pokeContext);
 
   const prevNextBttns = (text, onClickHandler) => (
     <Button

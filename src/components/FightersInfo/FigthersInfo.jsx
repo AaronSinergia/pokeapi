@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import './FightersInfo.css';
 import { SpriteIMG } from '../SpriteIMG/SpriteIMG';
 import {
@@ -9,6 +9,8 @@ import Button from '../Button/Button';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import H3Comp from '../H3Comp/H3Comp';
+
+import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 const FightersInfo = () => {
   const {
@@ -32,10 +34,36 @@ const FightersInfo = () => {
       setPokemonFighter,
       setRandomID,
       playAudio,
-      showGif,
+      pauseAudio,
       setShowGif
     );
-  }, [setPokemonFighter, setRandomID]);
+  }, [setRandomID, setComparisionResult]);
+
+  useEffect(() => {
+    if (pokemonFighterData) {
+      const pokemonChoosedToFight = data.types[0].type.name;
+      const pokemonRandomToFight = pokemonFighterData.types[0].type.name;
+
+      comparePokemonTypes(
+        pokemonChoosedToFight,
+        pokemonRandomToFight,
+        playAudio,
+        pauseAudio
+      )
+        .then((comparisionResult) => {
+          setComparisionResult(comparisionResult);
+        })
+        .catch((error) => {
+          console.error('Error with comparision:', error);
+        });
+    }
+  }, [
+    pokemonFighterData,
+    data,
+    setComparisionResult,
+    setPokemonFighter,
+    setPokemonFighterData,
+  ]);
 
   const clickInSTOPBTN = useCallback(() => {
     handleStopFight(
@@ -109,7 +137,7 @@ const FightersInfo = () => {
           <SpriteIMG
             style={handleMainPkmnClicked}
             className={pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'}
-            onClick={clickInIMG}
+            onClick={pokemonFighterData ? null : clickInIMG}
             src={data.sprites.front_default}
             alt={data.name}
           />

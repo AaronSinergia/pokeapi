@@ -1,4 +1,6 @@
-1 - Hacer que el pokemon enemigo y el resultado se atrase en salir
+1 - revisar fightersinfo y exportar todo lo poisible las funciones
+
+2 - revisar codigo css porque se va para abajar y hace cosas raras cuando entra en pelea
 
 
 
