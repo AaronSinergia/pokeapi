@@ -43,7 +43,6 @@
   transform: scaleX(-1);
   margin-bottom: 55px;
   margin-left: 20px;
-  cursor: pointer;
   grid-column: 1 / 2;
   grid-row: 1 / 3;
 }

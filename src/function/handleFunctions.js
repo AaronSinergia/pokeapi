@@ -74,3 +74,48 @@ export const handleStopFight = (
   pauseAudio('fight_sound');
   playAudio('start_sound');
 };
+
+export const handleMainPkmnClicked = (
+  pokemonFighterData,
+  comparisionResult
+) => ({
+  animation:
+    pokemonFighterData && comparisionResult === 'YOU WIN!!!!! 😎'
+      ? 'zoom-effect 2s infinite'
+      : 'none',
+  filter:
+    pokemonFighterData && comparisionResult === 'ENEMY WINS! 😫'
+      ? 'grayscale(100%)'
+      : 'grayscale(0%)',
+});
+
+export const handleStyleOponentPkmnClicked = (comparisionResult) => ({
+  animation:
+    comparisionResult === 'ENEMY WINS! 😫' ? 'zoom-effect 2s infinite' : 'none',
+  filter:
+    comparisionResult === 'YOU WIN!!!!! 😎'
+      ? 'grayscale(100%)'
+      : 'grayscale(0%)',
+});
+
+export const styleTextMainPKMN = (comparisionResult) => ({
+  color:
+    !comparisionResult || comparisionResult === 'YOU WIN!!!!! 😎'
+      ? 'white'
+      : 'rgba(223, 53, 53, 0.203)',
+  filter:
+    comparisionResult === 'YOU WIN!!!!! 😎'
+      ? 'grayscale(0%)'
+      : 'grayscale(100%)',
+});
+
+export const styleTextOponentPKMN = (comparisionResult) => ({
+  color:
+    !comparisionResult || comparisionResult === 'ENEMY WINS! 😫'
+      ? 'white'
+      : 'rgba(223, 53, 53, 0.203)',
+  filter:
+    comparisionResult === 'ENEMY WINS! 😫'
+      ? 'grayscale(0%)'
+      : 'grayscale(100%)',
+});

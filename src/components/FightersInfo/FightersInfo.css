@@ -65,7 +65,7 @@
   z-index: 19;
   width: 122px;
   top: 67px;
-  left: 28px;
+  margin-right: 180px;
   clip-path: polygon(0% 10%, 100% 10%, 100% 80%, 0% 80%);
 }
 
@@ -90,6 +90,12 @@
     top: 305px;
     margin-left: 250px;
   }
+
+  .loading_gif {
+    width: 257px;
+    top: 138px;
+    margin-right: 379px;
+  }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1023px) {
@@ -112,6 +118,12 @@
   .active_fighter_info {
     top: 280px;
     margin-left: 210px;
+  }
+
+  .loading_gif {
+    width: 242px;
+    top: 128px;
+    margin-right: 355px;
   }
 }
 
@@ -136,6 +148,12 @@
     top: 280px;
     margin-left: 210px;
   }
+
+  .loading_gif {
+    width: 242px;
+    top: 125px;
+    margin-right: 350px;
+  }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
@@ -156,5 +174,11 @@
   .active_fighter_info {
     top: 175px;
     margin-left: 40px;
+  }
+
+  .loading_gif {
+    width: 152px;
+    top: 83px;
+    margin-right: 225px;
   }
 }

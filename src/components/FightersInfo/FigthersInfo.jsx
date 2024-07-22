@@ -4,12 +4,15 @@ import { SpriteIMG } from '../SpriteIMG/SpriteIMG';
 import {
   handleImageClick,
   handleStopFight,
+  handleMainPkmnClicked,
+  handleStyleOponentPkmnClicked,
+  styleTextMainPKMN,
+  styleTextOponentPKMN,
 } from '../../function/handleFunctions';
 import Button from '../Button/Button';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
 import H3Comp from '../H3Comp/H3Comp';
-
 import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 const FightersInfo = () => {
@@ -37,7 +40,14 @@ const FightersInfo = () => {
       pauseAudio,
       setShowGif
     );
-  }, [setRandomID, setComparisionResult]);
+  }, [
+    setRandomID,
+    setComparisionResult,
+    playAudio,
+    pauseAudio,
+    setShowGif,
+    setPokemonFighter,
+  ]);
 
   useEffect(() => {
     if (pokemonFighterData) {
@@ -63,6 +73,8 @@ const FightersInfo = () => {
     setComparisionResult,
     setPokemonFighter,
     setPokemonFighterData,
+    playAudio,
+    pauseAudio,
   ]);
 
   const clickInSTOPBTN = useCallback(() => {
@@ -73,51 +85,13 @@ const FightersInfo = () => {
       playAudio,
       pauseAudio
     );
-  }, [setPokemonFighter, setPokemonFighterData]);
-
-  const handleMainPkmnClicked = {
-    animation:
-      pokemonFighterData && comparisionResult === 'YOU WIN!!!!! 😎'
-        ? 'zoom-effect 2s infinite'
-        : 'none',
-    filter:
-      pokemonFighterData && comparisionResult === 'ENEMY WINS! 😫'
-        ? 'grayscale(100%)'
-        : 'grayscale(0%)',
-  };
-
-  const handleOponentPkmnClicked = {
-    animation:
-      comparisionResult === 'ENEMY WINS! 😫'
-        ? 'zoom-effect 2s infinite'
-        : 'none',
-    filter:
-      comparisionResult === 'YOU WIN!!!!! 😎'
-        ? 'grayscale(100%)'
-        : 'grayscale(0%)',
-  };
-
-  const styleTextMainPKMN = {
-    color:
-      !comparisionResult || comparisionResult === 'YOU WIN!!!!! 😎'
-        ? 'white'
-        : 'rgba(223, 53, 53, 0.203)',
-    filter:
-      comparisionResult === 'YOU WIN!!!!! 😎'
-        ? 'grayscale(0%)'
-        : 'grayscale(100%)',
-  };
-
-  const styleTextOponentPKMN = {
-    color:
-      !comparisionResult || comparisionResult === 'ENEMY WINS! 😫'
-        ? 'white'
-        : 'rgba(223, 53, 53, 0.203)',
-    filter:
-      comparisionResult === 'ENEMY WINS! 😫'
-        ? 'grayscale(0%)'
-        : 'grayscale(100%)',
-  };
+  }, [
+    setComparisionResult,
+    setPokemonFighter,
+    setPokemonFighterData,
+    playAudio,
+    pauseAudio,
+  ]);
 
   return (
     <>
@@ -135,7 +109,7 @@ const FightersInfo = () => {
       >
         {data.sprites.front_default ? (
           <SpriteIMG
-            style={handleMainPkmnClicked}
+            style={handleMainPkmnClicked(pokemonFighterData, comparisionResult)}
             className={pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'}
             onClick={pokemonFighterData ? null : clickInIMG}
             src={data.sprites.front_default}
@@ -154,12 +128,12 @@ const FightersInfo = () => {
           />
         )}
         <H3Comp
-          style={styleTextMainPKMN}
+          style={styleTextMainPKMN(comparisionResult)}
           className={'titlename_pkmn_h3'}
           text={data.name}
         />
         <H3Comp
-          style={styleTextMainPKMN}
+          style={styleTextMainPKMN(comparisionResult)}
           className={'type_pkmn_h3'}
           text={`TYPE: ${data.types[0].type.name}`}
         />
@@ -169,28 +143,26 @@ const FightersInfo = () => {
         {pokemonFighterData?.sprites ? (
           <>
             <SpriteIMG
-              style={handleOponentPkmnClicked}
+              style={handleStyleOponentPkmnClicked(comparisionResult)}
               className={'pkmn_random_enemy'}
               src={pokemonFighterData.sprites.front_default}
               alt={pokemonFighterData.name}
             />
             <H3Comp className={'pokemon_vs_title'} text={'vs'} />
             <H3Comp
-              style={styleTextOponentPKMN}
+              style={styleTextOponentPKMN(comparisionResult)}
               className={'titlename_pkmn_h3 titlename_enemy_h3'}
               text={pokemonFighterData.name}
             />
             <H3Comp
-              style={styleTextOponentPKMN}
+              style={styleTextOponentPKMN(comparisionResult)}
               className={'type_pkmn_h3 type_enemy_h3'}
               text={`TYPE: ${pokemonFighterData.types[0].type.name}`}
             />
             <Button
               className={'stop_fight'}
               text={'STOP FIGHT'}
-              onClick={() => {
-                clickInSTOPBTN(playAudio, pauseAudio);
-              }}
+              onClick={clickInSTOPBTN}
               style={styleButtons}
             />
           </>

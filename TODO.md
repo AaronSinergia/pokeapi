@@ -1,6 +1,6 @@
-1 - revisar fightersinfo y exportar todo lo poisible las funciones
+1 - revisar codigo css porque se va para abajar y hace cosas raras cuando entra en pelea
 
-2 - revisar codigo css porque se va para abajar y hace cosas raras cuando entra en pelea
+2 - MEJORAR TEMA STATECOMP
 
 
 
