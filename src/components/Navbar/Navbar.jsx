@@ -1,4 +1,4 @@
-import './navbar.css';
+import './navbar.scss';
 import React, { useContext } from 'react';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import { handleChange, handleSubmit } from '../../function/handleFunctions.js';
@@ -6,17 +6,13 @@ import { styleButtons } from '../../utils/buttons/style/styleButtons.js';
 import Button from '../Button/Button.jsx';
 
 const Navbar = () => {
-  const {
-    pokemonFighterData,
-    setinputPkmID,
-    inputValue,
-    setInputValue,
-    playAudio,
-  } = useContext(pokeContext);
+  const { state, dispatch } = useContext(pokeContext);
 
   return (
     <nav
-      style={pokemonFighterData ? { display: 'none' } : { display: 'flex' }}
+      style={
+        state.pokemonFighterData ? { display: 'none' } : { display: 'flex' }
+      }
       className="navbar"
     >
       <input
@@ -24,11 +20,15 @@ const Navbar = () => {
         type="text"
         className="poke_input"
         onChange={(event) => {
-          handleChange(event, setInputValue);
+          handleChange(event, (value) =>
+            dispatch({ type: 'SET_INPUT_VALUE', payload: value })
+          );
         }}
         onKeyDown={(event) => {
           if (event.key === 'Enter') {
-            handleSubmit(inputValue, setinputPkmID, playAudio);
+            handleSubmit(state.inputValue, (value) =>
+              dispatch({ type: 'SET_INPUT_PKM_ID', payload: value })
+            );
           }
         }}
       />
@@ -36,7 +36,9 @@ const Navbar = () => {
         style={styleButtons}
         className={'submit_btn'}
         onClick={() => {
-          handleSubmit(inputValue, setinputPkmID, playAudio);
+          handleSubmit(state.inputValue, (value) =>
+            dispatch({ type: 'SET_INPUT_PKM_ID', payload: value })
+          );
         }}
         text={'Submit'}
       />

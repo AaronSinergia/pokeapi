@@ -1,4 +1,4 @@
-import './NotFoundIMG.css';
+import './NotFoundIMG.scss';
 import React from 'react';
 import { styleButtons } from '../../utils/buttons/style/styleButtons.js';
 import { handleReload } from '../../function/handleFunctions.js';

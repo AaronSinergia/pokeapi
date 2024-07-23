@@ -31,12 +31,11 @@ export const handleTogglePokeApi = (
 };
 
 export const handleImageClick = (
-  setComparisionResult,
   setPokemonFighter,
   setRandomID,
+  setShowGif,
   playAudio,
-  pauseAudio,
-  setShowGif
+  pauseAudio
 ) => {
   playAudio('click_sound');
   pauseAudio('start_sound');
@@ -47,15 +46,15 @@ export const handleImageClick = (
 
   setTimeout(() => {
     setPokemonFighter(true);
-    setComparisionResult('');
     setShowGif(false);
-  }, 2800);
+  }, 3100);
 
   const randomPkmnID = Math.floor(Math.random() * 1025);
   setRandomID(randomPkmnID);
 };
 
-export const handleStopMusic = (toggleMusic) => {
+export const handleStopMusic = (playAudio, toggleMusic) => {
+  playAudio('click_sound');
   toggleMusic();
 };
 

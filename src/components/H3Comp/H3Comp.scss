@@ -1,3 +1,11 @@
+$font-size-default: 10px;
+$font-size-large: 25px;
+$font-size-medium: 30px;
+$font-size-small: 14px;
+$margin-right-large: 30px;
+$margin-right-medium: 25px;
+$margin-left-small: 8px;
+
 .titlename_pkmn_h3 {
   margin: 0;
   padding: 0;
@@ -21,7 +29,7 @@
 .on_title {
   position: relative;
   height: 40px;
-  font-size: 10px;
+  font-size: $font-size-default;
   bottom: 43px;
   cursor: pointer;
 }
@@ -31,54 +39,68 @@
   color: rgb(164, 159, 159);
 }
 
+// Animaciones
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Media Queries
 @media screen and (min-width: 1200px) and (max-width: 2300px) {
   .on_title {
     bottom: 96px;
-    font-size: 25px;
+    font-size: $font-size-large;
   }
 
-  .titlename_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 25px;
-  }
-
+  .titlename_pkmn_h3,
   .type_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 25px;
+    font-size: $font-size-medium;
+    margin-right: $margin-right-large;
   }
 }
 
 @media screen and (min-width: 1100px) and (max-width: 1200px) {
   .on_title {
     bottom: 96px;
-    font-size: 25px;
+    font-size: $font-size-large;
   }
 
-  .titlename_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 30px;
-  }
-
+  .titlename_pkmn_h3,
   .type_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 30px;
+    font-size: $font-size-medium;
+    margin-right: $margin-right-large;
   }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1100px) {
   .on_title {
     bottom: 96px;
-    font-size: 25px;
+    font-size: $font-size-large;
   }
 
-  .titlename_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 30px;
-  }
-
+  .titlename_pkmn_h3,
   .type_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 30px;
+    font-size: $font-size-medium;
+    margin-right: $margin-right-large;
   }
 }
 
@@ -88,14 +110,10 @@
     font-size: 20px;
   }
 
-  .titlename_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 25px;
-  }
-
+  .titlename_pkmn_h3,
   .type_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 25px;
+    font-size: $font-size-medium;
+    margin-right: $margin-right-medium;
   }
 }
 
@@ -105,30 +123,22 @@
     font-size: 20px;
   }
 
-  .titlename_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 30px;
-  }
-
+  .titlename_pkmn_h3,
   .type_pkmn_h3 {
-    font-size: 30px;
-    margin-right: 30px;
+    font-size: $font-size-medium;
+    margin-right: $margin-right-medium;
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .on_title {
     bottom: 56px;
-    font-size: 14px;
+    font-size: $font-size-small;
   }
 
-  .titlename_pkmn_h3 {
-    font-size: 20px;
-    margin-left: 8px;
-  }
-
+  .titlename_pkmn_h3,
   .type_pkmn_h3 {
     font-size: 20px;
-    margin-left: 8px;
+    margin-left: $margin-left-small;
   }
 }

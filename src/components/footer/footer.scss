@@ -1,3 +1,8 @@
+$margin-top-large: 170px;
+$margin-top-medium: 32px;
+$margin-top-small: 25px;
+$margin-top-xsmall: 10px;
+
 footer {
   display: flex;
   flex-direction: column;
@@ -5,29 +10,29 @@ footer {
   justify-content: center;
   align-items: center;
   bottom: 0;
-  margin-top: 170px;
+  margin-top: $margin-top-large;
 }
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   footer {
-    margin-top: 10px;
+    margin-top: $margin-top-xsmall;
   }
 }
 
 @media screen and (min-width: 960px) and (max-width: 1024px) {
   footer {
-    margin-top: 25px;
+    margin-top: $margin-top-small;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 960px) {
   footer {
-    margin-top: 32px;
+    margin-top: $margin-top-medium;
   }
 }
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   footer {
-    margin-top: 170px;
+    margin-top: $margin-top-large;
   }
 }

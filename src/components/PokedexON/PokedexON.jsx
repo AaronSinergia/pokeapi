@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import './PokedexON.css';
+import './PokedexON.scss';
 import PokedexIMG from '../PokedexIMG/PokedexIMG';
 import { pokeContext } from '../../hooks/context/pokeContext';
 import Navbar from '../Navbar/Navbar';
@@ -10,7 +10,7 @@ import Button from '../Button/Button';
 import { styleButtons } from '../../utils/buttons/style/styleButtons';
 
 const PokedexON = () => {
-  const { pokemonFighterData, decrement, increment } = useContext(pokeContext);
+  const { state, increment, decrement } = useContext(pokeContext);
 
   const prevNextBttns = (text, onClickHandler) => (
     <Button
@@ -31,7 +31,9 @@ const PokedexON = () => {
       <FightersInfo />
       <WinnerResult />
       <div
-        style={pokemonFighterData ? { display: 'none' } : { display: 'flex' }}
+        style={
+          state.pokemonFighterData ? { display: 'none' } : { display: 'flex' }
+        }
         className="pokenavigate_btns"
       >
         {prevNextBttns('⬅', decrement)}

@@ -1,5 +1,5 @@
+import './H3Comp.scss';
 import React from 'react';
-import './H3Comp.css';
 
 const H3Comp = ({ className, text, style }) => {
   return (

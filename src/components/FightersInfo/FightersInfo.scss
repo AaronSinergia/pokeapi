@@ -1,41 +1,3 @@
-.your_fighter_info {
-  font-family: monospace;
-  display: grid;
-  position: absolute;
-  grid-template-columns: minmax(min-content, 195px) minmax(min-content, 160px);
-  grid-template-rows: minmax(min-content, 20px) minmax(min-content, 20px);
-  text-transform: uppercase;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.active_fighter_info {
-  font-family: monospace;
-  display: grid;
-  position: absolute;
-  top: 140px;
-  grid-template-columns: minmax(min-content, 195px) minmax(min-content, 160px);
-  grid-template-rows: minmax(min-content, 20px) minmax(min-content, 20px);
-  text-transform: uppercase;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-}
-
-.enemy_fighter_info {
-  font-family: monospace;
-  display: grid;
-  position: absolute;
-  top: 78px;
-  grid-template-columns: minmax(min-content, 195px) minmax(min-content, 160px);
-  grid-template-rows: minmax(min-content, 20px);
-  text-transform: uppercase;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-}
-
 @keyframes blink {
   0% {
     opacity: 1;
@@ -60,6 +22,30 @@
   }
 }
 
+
+.your_fighter_info,
+.active_fighter_info,
+.enemy_fighter_info {
+  font-family: monospace;
+  display: grid;
+  position: absolute;
+  grid-template-columns: minmax(min-content, 195px) minmax(min-content, 160px);
+  grid-template-rows: minmax(min-content, 20px) minmax(min-content, 20px);
+  text-transform: uppercase;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.active_fighter_info {
+  top: 140px;
+}
+
+.enemy_fighter_info {
+  top: 78px;
+  grid-template-rows: minmax(min-content, 20px);
+}
+
 .loading_gif {
   position: absolute;
   z-index: 19;
@@ -68,6 +54,7 @@
   margin-right: 180px;
   clip-path: polygon(0% 10%, 100% 10%, 100% 80%, 0% 80%);
 }
+
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .your_fighter_info {

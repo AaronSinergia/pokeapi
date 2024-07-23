@@ -27,11 +27,12 @@
   font-size: 30px;
   background: linear-gradient(#c62d1f, #f24437);
   color: #fff;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 }
 
-.nextandprev_btns:hover {
-  transform: scale(1.02);
-}
 
 @media screen and (min-width: 1024px) and (max-width: 3328px) {
   .submit_btn {

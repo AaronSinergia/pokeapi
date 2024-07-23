@@ -1,4 +1,4 @@
-import './footLogos.css';
+import './footLogos.scss';
 import { footerLogos } from '../../../utils/footer/footerLogos';
 
 const FootLogos = () => {

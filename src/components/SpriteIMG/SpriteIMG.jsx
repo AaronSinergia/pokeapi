@@ -1,5 +1,5 @@
 import React from 'react';
-import './SpriteIMG.css';
+import './SpriteIMG.scss';
 
 export const SpriteIMG = ({ style, className, onClick, src, alt }) => {
   return (

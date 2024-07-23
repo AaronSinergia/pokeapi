@@ -1,5 +1,5 @@
+import './FightersInfo.scss';
 import React, { useCallback, useContext, useEffect } from 'react';
-import './FightersInfo.css';
 import { SpriteIMG } from '../SpriteIMG/SpriteIMG';
 import {
   handleImageClick,
@@ -16,43 +16,22 @@ import H3Comp from '../H3Comp/H3Comp';
 import { comparePokemonTypes } from '../../function/comparePokemonTypes';
 
 const FightersInfo = () => {
-  const {
-    data,
-    pokemonFighterData,
-    pokemonFighter,
-    setPokemonFighter,
-    setRandomID,
-    setPokemonFighterData,
-    playAudio,
-    pauseAudio,
-    comparisionResult,
-    setComparisionResult,
-    showGif,
-    setShowGif,
-  } = useContext(pokeContext);
+  const { state, dispatch, playAudio, pauseAudio } = useContext(pokeContext);
 
   const clickInIMG = useCallback(() => {
     handleImageClick(
-      setComparisionResult,
-      setPokemonFighter,
-      setRandomID,
+      (value) => dispatch({ type: 'SET_POKEMON_FIGHTER', payload: value }),
+      (value) => dispatch({ type: 'SET_RANDOM_ID', payload: value }),
+      (value) => dispatch({ type: 'SET_SHOW_GIF', payload: value }),
       playAudio,
-      pauseAudio,
-      setShowGif
+      pauseAudio
     );
-  }, [
-    setRandomID,
-    setComparisionResult,
-    playAudio,
-    pauseAudio,
-    setShowGif,
-    setPokemonFighter,
-  ]);
+  }, [dispatch, playAudio, pauseAudio]);
 
   useEffect(() => {
-    if (pokemonFighterData) {
-      const pokemonChoosedToFight = data.types[0].type.name;
-      const pokemonRandomToFight = pokemonFighterData.types[0].type.name;
+    if (state.pokemonFighterData) {
+      const pokemonChoosedToFight = state.data.types[0].type.name;
+      const pokemonRandomToFight = state.pokemonFighterData.types[0].type.name;
 
       comparePokemonTypes(
         pokemonChoosedToFight,
@@ -61,41 +40,30 @@ const FightersInfo = () => {
         pauseAudio
       )
         .then((comparisionResult) => {
-          setComparisionResult(comparisionResult);
+          dispatch({
+            type: 'SET_COMPARISION_RESULT',
+            payload: comparisionResult,
+          });
         })
         .catch((error) => {
           console.error('Error with comparision:', error);
         });
     }
-  }, [
-    pokemonFighterData,
-    data,
-    setComparisionResult,
-    setPokemonFighter,
-    setPokemonFighterData,
-    playAudio,
-    pauseAudio,
-  ]);
+  }, [state.pokemonFighterData, state.data, dispatch, playAudio, pauseAudio]);
 
   const clickInSTOPBTN = useCallback(() => {
     handleStopFight(
-      setComparisionResult,
-      setPokemonFighter,
-      setPokemonFighterData,
+      (value) => dispatch({ type: 'SET_COMPARISION_RESULT', payload: value }),
+      (value) => dispatch({ type: 'SET_POKEMON_FIGHTER', payload: value }),
+      (value) => dispatch({ type: 'SET_POKEMON_FIGHTER_DATA', payload: value }),
       playAudio,
       pauseAudio
     );
-  }, [
-    setComparisionResult,
-    setPokemonFighter,
-    setPokemonFighterData,
-    playAudio,
-    pauseAudio,
-  ]);
+  }, [dispatch, playAudio, pauseAudio]);
 
   return (
     <>
-      {showGif && (
+      {state.showGif && (
         <img
           className="loading_gif"
           src="../../../public/assets/gifs/gif_fight.gif"
@@ -104,60 +72,67 @@ const FightersInfo = () => {
       )}
       <section
         className={
-          !pokemonFighter ? 'your_fighter_info' : 'active_fighter_info'
+          !state.pokemonFighter ? 'your_fighter_info' : 'active_fighter_info'
         }
       >
-        {data.sprites.front_default ? (
+        {state.data.sprites.front_default ? (
           <SpriteIMG
-            style={handleMainPkmnClicked(pokemonFighterData, comparisionResult)}
-            className={pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'}
-            onClick={pokemonFighterData ? null : clickInIMG}
-            src={data.sprites.front_default}
-            alt={data.name}
+            style={handleMainPkmnClicked(
+              state.pokemonFighterData,
+              state.comparisionResult
+            )}
+            className={
+              state.pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'
+            }
+            onClick={state.pokemonFighterData ? null : clickInIMG}
+            src={state.data.sprites.front_default}
+            alt={state.data.name}
           />
         ) : (
           <SpriteIMG
             style={
-              comparisionResult === 'YOU WIN!!!!! 😎'
+              state.comparisionResult === 'YOU WIN!!!!! 😎'
                 ? { animation: 'zoom-effect 2s infinite' }
                 : { animation: 'none' }
             }
-            className={pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'}
+            className={
+              state.pokemonFighterData ? 'pkmn_goto_fight' : 'pokemon_img'
+            }
             src={'./assets/no-image-icon-4.png'}
-            alt={data.name}
+            alt={state.data.name}
           />
         )}
         <H3Comp
-          style={styleTextMainPKMN(comparisionResult)}
+          style={styleTextMainPKMN(state.comparisionResult)}
           className={'titlename_pkmn_h3'}
-          text={data.name}
+          text={state.data.name}
         />
         <H3Comp
-          style={styleTextMainPKMN(comparisionResult)}
+          style={styleTextMainPKMN(state.comparisionResult)}
           className={'type_pkmn_h3'}
-          text={`TYPE: ${data.types[0].type.name}`}
+          text={`TYPE: ${state.data.types[0].type.name}`}
         />
       </section>
 
       <section className={'enemy_fighter_info'}>
-        {pokemonFighterData?.sprites ? (
+        {state.pokemonFighterData?.sprites ? (
           <>
             <SpriteIMG
-              style={handleStyleOponentPkmnClicked(comparisionResult)}
+              style={handleStyleOponentPkmnClicked(state.comparisionResult)}
               className={'pkmn_random_enemy'}
-              src={pokemonFighterData.sprites.front_default}
-              alt={pokemonFighterData.name}
+              src={state.pokemonFighterData.sprites.front_default}
+              alt={state.pokemonFighterData.name}
             />
             <H3Comp className={'pokemon_vs_title'} text={'vs'} />
             <H3Comp
-              style={styleTextOponentPKMN(comparisionResult)}
+              style={styleTextOponentPKMN(state.comparisionResult)}
               className={'titlename_pkmn_h3 titlename_enemy_h3'}
-              text={pokemonFighterData.name}
+              text={state.pokemonFighterData.name}
             />
             <H3Comp
-              style={styleTextOponentPKMN(comparisionResult)}
+              style={styleTextOponentPKMN(state.comparisionResult)}
               className={'type_pkmn_h3 type_enemy_h3'}
-              text={`TYPE: ${pokemonFighterData.types[0].type.name}`}
+              text={`TYPE: ${state.pokemonFighterData.types[0].type.name}`}
             />
             <Button
               className={'stop_fight'}

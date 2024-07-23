@@ -1,0 +1,55 @@
+.navbar {
+  z-index: 1;
+  display: flex;
+  position: absolute;
+  margin: 168px 0 0 189px;
+
+  @media screen and (min-width: 1024px) and (max-width: 3328px) {
+    margin: 365px 0 0 400px;
+  }
+
+  @media screen and (min-width: 960px) and (max-width: 1024px) {
+    margin: 335px 0 0 371px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    margin: 335px 0 0 371px;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 768px) {
+    margin: 212px 0 0 236px;
+  }
+}
+
+.poke_input {
+  width: 75px;
+  height: 30px;
+  margin-top: 6px;
+  color: rgb(175, 76, 48);
+
+  @media screen and (min-width: 1024px) and (max-width: 3328px) {
+    width: 180px;
+    height: 40px;
+    margin-right: 5px;
+    font-size: 25px;
+  }
+
+  @media screen and (min-width: 960px) and (max-width: 1024px) {
+    width: 180px;
+    height: 40px;
+    margin-right: 5px;
+    font-size: 25px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    width: 180px;
+    height: 40px;
+    margin-right: 5px;
+    font-size: 25px;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 768px) {
+    width: 100px;
+    margin-right: 5px;
+  }
+}

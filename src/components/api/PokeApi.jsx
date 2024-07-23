@@ -7,35 +7,26 @@ import { default_POKEAPI_Url } from '../../config/urls';
 
 const PokeApi = () => {
   const { pokemonName } = useParams();
-  const {
-    data,
-    setData,
-    pokemon,
-    setPokemon,
-    inputPkmID,
-    pokemonFighter,
-    setPokemonFighterData,
-    randomID,
-  } = useContext(pokeContext);
+  const { state, dispatch } = useContext(pokeContext);
 
-  const defaultAPI_URL = `${default_POKEAPI_Url}/${pokemon}`;
+  const defaultAPI_URL = `${default_POKEAPI_Url}/${state.pokemon}`;
 
   useEffect(() => {
     fetchFunction(defaultAPI_URL)
       .then((apiData) => {
-        setData(apiData);
+        dispatch({ type: 'SET_DATA', payload: apiData });
       })
       .catch((error) => {
         console.log(error);
         alert('No se ha encontrado ningún Pokemon');
       });
-  }, [pokemon]);
+  }, [state.pokemon, dispatch, defaultAPI_URL]);
 
   useEffect(() => {
-    if (inputPkmID) {
-      fetchFunction(`${default_POKEAPI_Url}/${inputPkmID}`)
+    if (state.inputPkmID) {
+      fetchFunction(`${default_POKEAPI_Url}/${state.inputPkmID}`)
         .then((apiData) => {
-          setPokemon(apiData.id);
+          dispatch({ type: 'SET_POKEMON', payload: apiData.id });
         })
         .catch((error) => {
           console.log(error);
@@ -45,43 +36,31 @@ const PokeApi = () => {
       const pokemonWritedInSEARCHBAR = pokemonName.toLowerCase();
       fetchFunction(`${default_POKEAPI_Url}/${pokemonWritedInSEARCHBAR}`)
         .then((apiData) => {
-          setPokemon(apiData.id);
+          dispatch({ type: 'SET_POKEMON', payload: apiData.id });
         })
         .catch((error) => {
           console.log(error);
           alert('No se ha encontrado ningún Pokemon');
         });
     }
-  }, [inputPkmID, pokemonName, setPokemon]);
+  }, [state.inputPkmID, pokemonName, dispatch]);
 
   useEffect(() => {
-    if (pokemonFighter) {
-      const pokemonFightURL = `${default_POKEAPI_Url}/${randomID}`;
+    if (state.pokemonFighter) {
+      const pokemonFightURL = `${default_POKEAPI_Url}/${state.randomID}`;
 
       fetchFunction(pokemonFightURL)
         .then((apiData) => {
-          setPokemonFighterData(apiData);
+          dispatch({ type: 'SET_POKEMON_FIGHTER_DATA', payload: apiData });
         })
         .catch((error) => {
           console.log(error);
           alert('No se ha encontrado ningún Pokemon para luchar');
         });
     }
-  }, [pokemonFighter, setPokemonFighterData, randomID]);
+  }, [state.pokemonFighter, state.randomID, dispatch]);
 
-  return (
-    <>
-      {data ? (
-        <>
-          <PokedexON />
-        </>
-      ) : (
-        <>
-          <p>Cargando...</p>
-        </>
-      )}
-    </>
-  );
+  return <>{state.data ? <PokedexON /> : <p>Cargando...</p>}</>;
 };
 
 export default PokeApi;

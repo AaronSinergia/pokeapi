@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import PokeHome from './pages/PokeHome';
 import NotFound from './pages/NotFound';

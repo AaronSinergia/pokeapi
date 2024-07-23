@@ -1,0 +1,147 @@
+.pokemon_img {
+  width: 100px;
+  margin-bottom: 38px;
+  margin-left: 37px;
+  cursor: pointer;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+
+  &:hover {
+    animation: blink 1s infinite alternate, zoom 1s infinite alternate;
+  }
+
+  @media screen and (min-width: 1024px) and (max-width: 3328px) {
+    width: 200px;
+    margin-bottom: 50px;
+    margin-left: 35px;
+  }
+
+  @media screen and (min-width: 960px) and (max-width: 1024px) {
+    width: 200px;
+    margin-bottom: 40px;
+    margin-left: 35px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    width: 200px;
+    margin-bottom: 40px;
+    margin-left: 40px;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 768px) {
+    width: 150px;
+  }
+}
+
+.pkmn_goto_fight {
+  z-index: 12;
+  position: absolute;
+  width: 60px;
+  max-width: 60px;
+  transform: scaleX(-1);
+  margin-bottom: 55px;
+  margin-left: 20px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+
+  @media screen and (min-width: 1024px) and (max-width: 3328px) {
+    width: 140px;
+    max-width: 100px;
+    margin-bottom: 140px;
+    right: 345px;
+  }
+
+  @media screen and (min-width: 960px) and (max-width: 1024px) {
+    width: 140px;
+    max-width: 100px;
+    margin-bottom: 130px;
+    right: 310px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    width: 140px;
+    max-width: 100px;
+    margin-bottom: 140px;
+    right: 300px;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 768px) {
+    width: 80px;
+    max-width: 100px;
+    margin-bottom: 95px;
+    right: 153px;
+  }
+}
+
+.pkmn_random_enemy {
+  z-index: 12;
+  position: absolute;
+  width: 60px;
+  max-width: 60px;
+  margin-bottom: 15px;
+  margin-left: 90px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+
+  @media screen and (min-width: 1024px) and (max-width: 3328px) {
+    width: 140px;
+    max-width: 100px;
+    margin-bottom: 40px;
+    right: 125px;
+  }
+
+  @media screen and (min-width: 960px) and (max-width: 1024px) {
+    width: 140px;
+    max-width: 100px;
+    margin-bottom: 45px;
+    right: 95px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    width: 140px;
+    max-width: 100px;
+    margin-bottom: 40px;
+    right: 110px;
+  }
+
+  @media screen and (min-width: 480px) and (max-width: 768px) {
+    width: 80px;
+    max-width: 100px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes zoom-effect {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+}
